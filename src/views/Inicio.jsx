@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from '../components/Navbar';
 import plantio from '../img/plantio.jpeg';
 import monitorear from '../img/monitorear.jpeg';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import nosotros from '../img/invernadero.jpeg'
+import nosotros from '../img/pexels-adrien-olichon-3767172.jpg'
 import servicio from '../img/dron.png'
 
 
@@ -48,7 +48,7 @@ const Inicio = () => {
             En AgroBoost, nos apasiona impulsar el futuro de la agricultura mediante soluciones tecnológicas de vanguardia. Fundada por un equipo de expertos en agronomía y desarrollo de software, nuestra misión es proporcionar a los agricultores las herramientas necesarias para superar los desafíos modernos y cosechar los frutos del éxito sostenible.
           </span>
           <div className='flex justify-center'>
-            <Button text="Conoce Más"/>
+            <Button text="Conoce Más" to="/nosotros"/>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ const Inicio = () => {
             AgroBoost va más allá de ser una aplicación; es tu socio en el campo. Desde el monitoreo del clima hasta el análisis detallado del suelo, ofrecemos un conjunto integral de servicios para mejorar la eficiencia, aumentar la productividad y promover prácticas agrícolas sostenibles. Descubre cómo AgroBoost está transformando la manera en que cultivas.
           </span>
           <div className='flex justify-center'>
-            <Button text='Descubre Más'/>
+            <Button text='Descubre Más' to="/servicio"/>
           </div>
         </div>
         <div className='m-10 relative shadow-2xl rounded-2xl'>

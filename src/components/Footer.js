@@ -1,6 +1,7 @@
 import React from 'react';
 import facebook from '../img/facebook.png';
 import instagram from '../img/instagram.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -21,10 +22,10 @@ const Footer = () => {
         </div>
         <div className='text-left m-10 text-white'>
             <span className='block font-semibold mb-2 text-lg'>Enlaces Rápidos:</span>
-            <span className='block'>Inicio</span>
-            <span className='block'>Sobre Nosotros</span>
-            <span className='block'>Nuestro Servicio</span>
-            <span className='block'>Producto</span>
+            <Link to="/" className='block'>Inicio</Link>
+            <Link to="/nosotros" className='block'>Sobre Nosotros</Link>
+            <Link to="/servicio" className='block'>Nuestro Servicio</Link>
+            <Link to="/producto" className='block'>Producto</Link>
         </div>
       </div>
       <div className='justify-center text-center text-white'>

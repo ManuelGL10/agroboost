@@ -5,7 +5,9 @@ module.exports = {
     "./src/components/Navbar.js",
     "./src/views/Inicio.jsx",
     "./src/components/Button.js",
-    "./src/views/Nosotros.jsx"
+    "./src/views/Nosotros.jsx",
+    "./src/views/Producto.jsx",
+    "./src/views/Servicio.jsx"
   ],
   theme: {
     extend: {

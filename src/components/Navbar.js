@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Logo from '../img/LogoAgroBoostPNG.svg'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -9,10 +10,10 @@ const Navbar = () => {
           <h1 className='font-semibold text-2xl'>AgroBoost</h1>
         </div>
       <div className='flex items-center'>
-          <span className='mr-5 text-xl'>Inicio</span>
-          <span className='mr-5 text-xl'>Sobre Nosotros</span>
-          <span className='mr-5 text-xl'>Nuestro Servicios</span>
-          <span className='mr-5 text-xl'>Productos</span>
+          <Link to="/" className='mr-5 text-2xl cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Inicio</Link>
+          <Link to="/nosotros" className='mr-5 text-2xl cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Sobre Nosotros</Link>
+          <Link to="/servicio" className='mr-5 text-2xl cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Nuestro Servicios</Link>
+          <Link to="/producto" className='mr-5 text-2xl cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Productos</Link>
       </div>
     </div>
   )
