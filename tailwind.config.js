@@ -7,7 +7,13 @@ module.exports = {
     "./src/components/Button.js",
     "./src/views/Nosotros.jsx",
     "./src/views/Producto.jsx",
-    "./src/views/Servicio.jsx"
+    "./src/views/Servicio.jsx",
+    "./src/components/Hero.js",
+    "./src/components/Agroboost.js",
+    "./src/components/Cards.js",
+    "./src/components/CardsService.js",
+    "./src/components/CardsProduct.js",
+    "./src/components/Beneficios.js"
   ],
   theme: {
     extend: {
