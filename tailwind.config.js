@@ -13,7 +13,10 @@ module.exports = {
     "./src/components/Cards.js",
     "./src/components/CardsService.js",
     "./src/components/CardsProduct.js",
-    "./src/components/Beneficios.js"
+    "./src/components/Beneficios.js",
+    "./src/components/Footer.js",
+    "./src/components/InfoNosotros.js",
+    "./src/components/InfoProducto.js",
   ],
   theme: {
     extend: {

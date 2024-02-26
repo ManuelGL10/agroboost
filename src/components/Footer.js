@@ -1,45 +1,45 @@
 import React from 'react';
-import facebook from '../img/facebook.png';
-import instagram from '../img/instagram.png';
+import facebook from '../img/facebook.svg';
+import instagram from '../img/instagram.svg';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className='bg-custom-204E51'>
-      <div className='flex items-center m-4'>
-        <div className='m-10'>
-          <span className='block font-semibold text-lg text-white mb-2 text-left'>
+    <div className='bg-custom-204E51 p-4'>
+      <div className='flex mx-5 my-2'>
+        <div>
+          <span className='block font-semibold lg:text-xl md:text-lg text-base text-white mb-2 text-left'>
             Contáctanos:
           </span>
-          <span className='block text-white mb-4 text-left text-sm'>
+          <span className='block text-white mb-4 text-left lg:text-lg md:text-base text-sm'>
             ¿Tienes alguna pregunta o comentario? Estamos aquí para ayudarte.
           </span>
-          <span className='block text-white text-lg font-semibold mb-4 text-left'>Redes Sociales</span>
+          <span className='block text-white lg:text-lg md:text-base text-sm font-semibold mb-4 text-left'>Redes Sociales</span>
           <div className='flex'>
-            <img src={facebook} alt='facebook' style={{height: '30px', width: '30px'}}/>
-            <img src={instagram} alt='instagram' style={{height: '30px', width: '30px', margin: '0 10px'}}/>
+            <img src={facebook} alt='facebook' className='mr-2 hover:scale-125 hover:opacity-70 transition inline-block'/>
+            <img src={instagram} alt='instagram' className='hover:scale-125 hover:opacity-70 transition inline-block'/>
           </div>
         </div>
-        <div className='text-left m-10 text-white'>
-            <span className='block font-semibold mb-2 text-lg'>Enlaces Rápidos:</span>
-            <Link to="/" className='block'>Inicio</Link>
-            <Link to="/nosotros" className='block'>Sobre Nosotros</Link>
-            <Link to="/servicio" className='block'>Nuestro Servicio</Link>
-            <Link to="/producto" className='block'>Producto</Link>
+        <div className='text-left text-white md:ml-8 ml-4 lg:text-xl md:text-lg text-base'>
+            <span className='block font-semibold mb-2'>Enlaces Rápidos:</span>
+            <Link to="/" className='block cursor-pointer hover:underline hover:text-white hover:font-medium'>Inicio</Link>
+            <Link to="/nosotros" className='block cursor-pointer hover:underline hover:text-white hover:font-medium'>Sobre Nosotros</Link>
+            <Link to="/servicio" className='block cursor-pointer hover:underline hover:text-white hover:font-medium'>Nuestro Servicio</Link>
+            <Link to="/producto" className='block cursor-pointer hover:underline hover:text-white hover:font-medium'>Producto</Link>
         </div>
       </div>
-      <div className='justify-center text-center text-white'>
+      <div className='justify-center text-center text-white border-t-2 mx-5 mt-10'>
         <div>
-          <span className='block text-white'>
+          <span className='block text-white lg:text-lg md:text-base text-sm my-2'>
             Copyright© 2020-2023 AgroBoost. Todos los derechos reservados
           </span> 
         </div>
-        <div >
-          <span className='m-4'>Accesibilidad</span>
-          <span>|</span>
-          <span className='m-4'>Política de privacidad</span>
-          <span>|</span>
-          <span className='m-4'>Términos de uso</span>
+        <div className='grid md:grid-cols-5 justify-center items-center lg:text-lg md:text-base text-sm'>
+          <span>Accesibilidad</span>
+          <span className='hidden md:inline'>|</span>
+          <span>Política de privacidad</span>
+          <span className='hidden md:inline'>|</span>
+          <span>Términos de uso</span>
         </div>
       </div>
     </div>
