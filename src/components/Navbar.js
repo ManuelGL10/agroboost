@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Logo from '../img/LogoAgroBoostPNG.svg';
 import { Link } from 'react-router-dom';
 import { IconMenu2, IconX } from '@tabler/icons-react';

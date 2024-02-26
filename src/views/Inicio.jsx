@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
-import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Agroboost from '../components/Agroboost';

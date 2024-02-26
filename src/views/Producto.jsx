@@ -1,11 +1,6 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import invernadero from '../img/invernaderos.jpeg'
-import regar from '../img/pexels-fox-750836.jpg'
-import sensor from '../img/sensor.jpeg'
-import nutriente from '../img/nutriente.jpeg'
-import monitoreo from '../img/monitoreo.jpeg'
 import CardsProduct from '../components/CardsProduct'
 
 const Producto = () => {

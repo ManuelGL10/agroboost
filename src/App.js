@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import Inicio from './views/Inicio';
 import Nosotros from './views/Nosotros'
 import Producto from './views/Producto';
 import Servicio from './views/Servicio';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import '@fontsource/hind-madurai'
 
 function App() {
   return (
