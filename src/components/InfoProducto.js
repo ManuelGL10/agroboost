@@ -4,7 +4,7 @@ import Button from './Button'
 
 const InfoProducto = () => {
   return (
-    <div className='w-full flex justify-center items-center py-6 px-4'>
+    <div className='w-full flex justify-center items-center py-6 px-12'>
         <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
             <div className='m-6 text-center flex flex-col justify-center'>
                 <span className='block font-medium lg:text-4xl md:text-3xl text-2xl text-custom-204E51 mb-4 md:text-left text-center'>

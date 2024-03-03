@@ -17,6 +17,7 @@ module.exports = {
     "./src/components/Footer.js",
     "./src/components/InfoNosotros.js",
     "./src/components/InfoProducto.js",
+    "./src/components/Download.js",
   ],
   theme: {
     extend: {
