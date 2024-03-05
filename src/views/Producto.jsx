@@ -7,7 +7,7 @@ const Producto = () => {
   return (
     <div>
         <Navbar/>
-            <div className='flex flex-col text-center mx-10 mt-10'>
+            <div className='flex flex-col text-center px-12 py-6'>
                 <span className='block font-semibold md:text-6xl sm:text-5xl text-4xl text-custom-204E51'>
                     Nuestro Producto Destacado
                 </span>

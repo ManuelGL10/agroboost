@@ -3,7 +3,7 @@ import { IconStarFilled, IconBox, IconCheck, IconUsersGroup } from '@tabler/icon
 
 const Beneficios = () => {
   return (
-    <div className='w-full flex justify-center items-center py-6 px-4'>
+    <div className='w-full flex justify-center items-center py-6 px-12'>
         <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
             <div className='m-10 text-center flex flex-col justify-center'>
                 <span className='block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 mb-4 text-center'>
