@@ -18,6 +18,7 @@ module.exports = {
     "./src/components/InfoNosotros.js",
     "./src/components/InfoProducto.js",
     "./src/components/Download.js",
+    "./src/components/Questions.js",
   ],
   theme: {
     extend: {

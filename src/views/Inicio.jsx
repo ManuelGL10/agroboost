@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Agroboost from '../components/Agroboost';
 import InfoNosotros from '../components/InfoNosotros';
 import InfoProducto from '../components/InfoProducto';
+import Questions from '../components/Questions';
 
 const Inicio = () => {
   return (
@@ -14,6 +15,7 @@ const Inicio = () => {
       <Agroboost/>
       <InfoNosotros/>
       <InfoProducto/>
+      <Questions/>
       <Footer/>
     </div>
   );
