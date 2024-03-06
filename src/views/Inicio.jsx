@@ -6,6 +6,7 @@ import Agroboost from '../components/Agroboost';
 import InfoNosotros from '../components/InfoNosotros';
 import InfoProducto from '../components/InfoProducto';
 import Questions from '../components/Questions';
+import Download from '../components/Download';
 
 const Inicio = () => {
   return (
@@ -15,6 +16,7 @@ const Inicio = () => {
       <Agroboost/>
       <InfoNosotros/>
       <InfoProducto/>
+      <Download/>
       <Questions/>
       <Footer/>
     </div>
