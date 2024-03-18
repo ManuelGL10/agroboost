@@ -3,6 +3,7 @@ import Inicio from './views/Inicio';
 import Nosotros from './views/Nosotros'
 import Producto from './views/Producto';
 import Servicio from './views/Servicio';
+import Login from './views/Login';
 import { Route, Routes } from 'react-router-dom';
 import '@fontsource/hind-madurai'
 
@@ -13,6 +14,7 @@ function App() {
       <Route path='/nosotros' element={<Nosotros/>}/>
       <Route path='/producto' element={<Producto/>}/>
       <Route path='/servicio' element={<Servicio/>}/>
+      <Route path='/login' element={<Login/>}/>
     </Routes>
   );
 }
