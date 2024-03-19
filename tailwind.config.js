@@ -9,6 +9,7 @@ module.exports = {
     "./src/views/Producto.jsx",
     "./src/views/Servicio.jsx",
     "./src/views/Login.jsx",
+    "./src/views/Registro.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -20,7 +21,8 @@ module.exports = {
     "./src/components/InfoProducto.js",
     "./src/components/Download.js",
     "./src/components/Questions.js",
-    "./src/components/LoginForm.js"
+    "./src/components/LoginForm.js", 
+    "./src/components/RegistroForm.js",
     
   ],
   theme: {
