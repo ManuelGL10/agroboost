@@ -8,6 +8,7 @@ module.exports = {
     "./src/views/Nosotros.jsx",
     "./src/views/Producto.jsx",
     "./src/views/Servicio.jsx",
+    "./src/views/Dashboard_Home.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -19,6 +20,9 @@ module.exports = {
     "./src/components/InfoProducto.js",
     "./src/components/Download.js",
     "./src/components/Questions.js",
+    "./src/components/Navbar_Admin.js",
+    "./src/components/Navbar_Top.js",
+    "./src/components/MainHome.js",
   ],
   theme: {
     extend: {
@@ -26,7 +30,8 @@ module.exports = {
         custom: {
           '204E51': '#204E51',
           'F0F0F0': '#F0F0F0',
-          '264948': '#264948'
+          '264948': '#264948',
+          'color_logo': '#66bc8a'
         }
       }
     },

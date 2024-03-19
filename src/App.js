@@ -4,6 +4,7 @@ import Nosotros from './views/Nosotros'
 import Producto from './views/Producto';
 import Servicio from './views/Servicio';
 import { Route, Routes } from 'react-router-dom';
+import DashboardHome from './views/Dashboard_Home';
 import '@fontsource/hind-madurai'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path='/nosotros' element={<Nosotros/>}/>
       <Route path='/producto' element={<Producto/>}/>
       <Route path='/servicio' element={<Servicio/>}/>
+      <Route path='/dashboardhome' element={<DashboardHome/>}/>
     </Routes>
   );
 }
