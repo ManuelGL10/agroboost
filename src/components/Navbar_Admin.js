@@ -14,8 +14,10 @@ const Navbar_Admin = () => {
         </div>
         <ul className='py-8 px-6 text-xl'>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <IconDashboard size={30} stroke={1.5}/>
-                <span className='ml-4'>Panel</span>
+                <Link to='/dashboardhome' className='flex'>
+                    <IconDashboard size={30} stroke={1.5}/>
+                    <span className='ml-4'>Panel</span>
+                </Link>
             </li>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <IconUser size={30} stroke={1.5}/>
@@ -26,12 +28,17 @@ const Navbar_Admin = () => {
                 <span className='ml-4'>Cultivos</span>
             </li>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <IconShoppingCart size={30} stroke={1.5}/>
-                <span className='ml-4'>Ventas</span>
+                <Link to='/dashboardventa' className='flex'>
+                    <IconShoppingCart size={30} stroke={1.5}/>
+                    <span className='ml-4'>Ventas</span>
+                </Link>
             </li>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <IconPackage size={30} stroke={1.5}/>
-                <span className='ml-4'>Productos</span>
+                <Link to='/dashboardproduct' className='flex'>
+                    <IconPackage size={30} stroke={1.5}/>
+                    <span className='ml-4'>Productos</span>
+                </Link>
+                
             </li>
         </ul>
         <ul className='p-6 text-xl absolute bottom-0 left-0 right-0'>

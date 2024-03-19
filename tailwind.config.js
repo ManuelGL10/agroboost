@@ -9,6 +9,8 @@ module.exports = {
     "./src/views/Producto.jsx",
     "./src/views/Servicio.jsx",
     "./src/views/Dashboard_Home.jsx",
+    "./src/views/DashboardVenta.jsx",
+    "./src/views/DashboardProduct.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -23,6 +25,9 @@ module.exports = {
     "./src/components/Navbar_Admin.js",
     "./src/components/Navbar_Top.js",
     "./src/components/MainHome.js",
+    "./src/components/MenuAdmin.js",
+    "./src/components/MainVenta.js",
+    "./src/components/MainProduct.js",
   ],
   theme: {
     extend: {

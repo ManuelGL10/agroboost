@@ -7,8 +7,8 @@ const Dashboard_Home = () => {
   return (
     <div>
       <NavbarTop />
-      <NavbarAdmin />
       <MainHome/>
+      <NavbarAdmin />
     </div>
   );
 };
