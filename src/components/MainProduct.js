@@ -6,12 +6,12 @@ import nutriente from '../img/nutriente.jpeg';
 
 const MainProduct = () => {
   return (
-    <div className='bg-custom-F0F0F0 ml-[20%] p-4'>
-      <h1 className='text-3xl font-semibold mt-16'>Productos</h1>
+    <div className='bg-background ml-[20%] p-4'>
+      <h1 className='text-3xl font-semibold mt-20'>Productos</h1>
       <div className='py-6'>
         <div className='w-full bg-white rounded-2xl overflow-hidden'>
           <table className='w-full'>
-            <thead className='bg-gray-50 text-medium'>
+            <thead className='bg-white text-medium'>
               <tr>
                 <th className='px-4 py-4 text-left'>ID</th>
                 <th className='px-4 py-4 text-left'>Imagen</th>
@@ -29,7 +29,7 @@ const MainProduct = () => {
                 <td className='px-4 py-4'>$199</td>
                 <td className='px-4 py-4'>126</td>
                 <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-100 border border-gray-300'>
+                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                         <IconEdit className='text-gray-500'/>
                         <span className='mx-2 text-gray-300 font-semibold'>|</span>
                         <IconTrash className='text-[#D33363]'/>
@@ -43,7 +43,7 @@ const MainProduct = () => {
                 <td className='px-4 py-4'>$199</td>
                 <td className='px-4 py-4'>78</td>
                 <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-100 border border-gray-300'>
+                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                         <IconEdit className='text-gray-500'/>
                         <span className='mx-2 text-gray-300 font-semibold'>|</span>
                         <IconTrash className='text-[#D33363]'/>
@@ -57,7 +57,7 @@ const MainProduct = () => {
                 <td className='px-4 py-4'>$199</td>
                 <td className='px-4 py-4'>43</td>
                 <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-100 border border-gray-300'>
+                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                         <IconEdit className='text-gray-500'/>
                         <span className='mx-2 text-gray-300 font-semibold'>|</span>
                         <IconTrash className='text-[#D33363]'/>
@@ -71,7 +71,7 @@ const MainProduct = () => {
                 <td className='px-4 py-4'>$1289</td>
                 <td className='px-4 py-4'>91</td>
                 <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-100 border border-gray-300'>
+                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                         <IconEdit className='text-gray-500'/>
                         <span className='mx-2 text-gray-300 font-semibold'>|</span>
                         <IconTrash className='text-[#D33363]'/>

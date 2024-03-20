@@ -2,12 +2,12 @@ import React from 'react';
 
 const MainVenta = () => {
   return (
-    <div className='bg-custom-F0F0F0 ml-[20%] p-4 h-screen'>
-      <h1 className='text-3xl font-semibold mt-16'>Orden de Venta</h1>
+    <div className='bg-background ml-[20%] p-4 h-screen'>
+      <h1 className='text-3xl font-semibold mt-20'>Orden de Venta</h1>
       <div className='py-6'>
         <div className='w-full bg-white rounded-2xl overflow-hidden'>
           <table className='w-full'>
-            <thead className='bg-gray-50 text-medium'>
+            <thead className='bg-white text-medium'>
               <tr>
                 <th className='px-4 py-4 text-left'>ID</th>
                 <th className='px-4 py-4 text-left'>Nombre</th>

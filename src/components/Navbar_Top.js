@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IconChevronDown, IconChevronUp, IconSearch, IconSun, IconMoon, IconLogout, IconUserCog, IconKey } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 const Navbar_Top = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,9 +12,9 @@ const Navbar_Top = () => {
   return (
     <div className='w-full items-center px-6 py-2 bg-white fixed'>
       <div className='flex ml-[20%]'>
-        <div className='flex items-center bg-custom-F0F0F0 border-2 border-gray-200 p-2 rounded-full w-[30%]'>
+        <div className='flex items-center bg-background border-2 border-gray-200 py-2 px-4 rounded-full w-[35%]'>
           <IconSearch size={18} className='text-[#9ca3af] ml-2' />
-          <input placeholder='Buscar' className='bg-custom-F0F0F0 ml-2 w-[80%] focus:outline-none' />
+          <input placeholder='Buscar' className='bg-background ml-2 w-[80%] focus:outline-none' />
         </div>
         <div className='items-center flex ml-auto'>
           <div className='items-center flex mr-4'>
@@ -48,8 +49,10 @@ const Navbar_Top = () => {
                 <span>Cambiar Contraseña</span>
             </div>
             <div className='flex items-center'>
+              <Link to='/login' className='flex'>
                 <IconLogout className='mr-2' stroke={1.5}/>
                 <span>Cerrar Sesión</span>
+              </Link>
             </div>
           </div>
         </div>

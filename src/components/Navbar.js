@@ -23,7 +23,7 @@ const Navbar = () => {
         <li className='p-2'><Link to="/servicio" className='lg:text-lg md:text-base sm:text-sm cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Nuestro Servicios</Link></li>
         <li className='p-2'><Link to="/producto" className='lg:text-lg md:text-base sm:text-sm cursor-pointer hover:underline hover:text-custom-264948 hover:font-medium'>Productos</Link></li>
         <li className='p-2'>
-          <Link to="/dashboardhome" className='bg-custom-204E51 p-3 max-w-max max-h-max rounded-lg hover:scale-110 transition inline-block text-center'>
+          <Link to="/login" className='bg-custom-204E51 p-3 max-w-max max-h-max rounded-lg hover:scale-110 transition inline-block text-center'>
             <span className='text-white lg:text-lg md:text-base sm:text-sm font-semibold'>Iniciar Sesión</span>
           </Link>
         </li>

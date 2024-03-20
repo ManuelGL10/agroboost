@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../img/LogoAgroBoostPNG.svg';
-import { IconEye, IconEyeOff } from '@tabler/icons-react'; 
+import { IconEye, IconEyeOff } from '@tabler/icons-react';
+import { Link } from 'react-router-dom'; 
 
 const RegistroForm = () => {
   const [name, setName] = useState('');
@@ -103,7 +104,7 @@ const RegistroForm = () => {
           Registrarse
         </button>
         <div className="text-center mt-3">
-          <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
+          <p>¿No tienes una cuenta? <Link to='/Login' className="text-[#4D7A7D]">Regístrate</Link></p>
         </div>
       </form>
     </div>
