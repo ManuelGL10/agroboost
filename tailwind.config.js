@@ -34,6 +34,10 @@ module.exports = {
     "./src/components/MainUsers.js",
     "./src/components/LoginForm.js", 
     "./src/components/RegistroForm.js",
+    "./src/components/LoginForm.js", 
+    "./src/components/RegistroForm.js",
+    "./src/components/ModalError.js", 
+    "./src/components/ModalBienvenida.js"
   ],
   theme: {
     extend: {
