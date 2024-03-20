@@ -6,7 +6,6 @@ import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Link } from 'react-router-dom'; 
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
-import { IconEye, IconEyeOff } from '@tabler/icons-react'; 
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

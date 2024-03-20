@@ -46,8 +46,11 @@ const Navbar_Admin = () => {
         </ul>
         <ul className='p-6 text-xl absolute bottom-0 left-0 right-0'>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <IconSettings size={30} stroke={1.5}/>
-                <span className='ml-4'>Ajustes</span>
+                <Link to='/dashboardconfig' className='flex'>
+                    <IconSettings size={30} stroke={1.5}/>
+                    <span className='ml-4'>Ajustes</span>
+                </Link>
+                
             </li>
             <li className='flex p-2 cursor-pointer hover:text-[#D33363] hover:rounded-md hover:font-semibold'>
                 <Link to='/login' className='flex w-full'>

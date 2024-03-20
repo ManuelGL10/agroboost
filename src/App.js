@@ -10,6 +10,7 @@ import DashboardHome from './views/Dashboard_Home';
 import DashboardVenta from './views/DashboardVenta';
 import DashboardProduct from './views/DashboardProduct';
 import DashboardUsuarios from './views/DashboardUsuarios';
+import DashboardConfig from './views/DashboardConfig';
 import '@fontsource/hind-madurai'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path='/dashboardventa' element={<DashboardVenta/>}/>
       <Route path='/dashboardproduct' element={<DashboardProduct/>}/>
       <Route path='/dashboardusers' element={<DashboardUsuarios/>}/>
+      <Route path='/dashboardconfig' element={<DashboardConfig/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/registro' element={<Registro/>} />
     </Routes>

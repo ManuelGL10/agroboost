@@ -49,7 +49,7 @@ const Navbar_Top = () => {
                 <span>Cambiar Contraseña</span>
             </div>
             <div className='flex items-center'>
-              <Link to='/login' className='flex'>
+              <Link to='/login' className='flex items-center'>
                 <IconLogout className='mr-2' stroke={1.5}/>
                 <span>Cerrar Sesión</span>
               </Link>

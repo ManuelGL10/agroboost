@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconTrash, IconEdit } from '@tabler/icons-react'
+import { IconTrash, IconEdit, IconSearch } from '@tabler/icons-react'
 import regar from '../img/pexels-fox-750836.jpg';
 import sensor from '../img/sensor.jpeg';
 import nutriente from '../img/nutriente.jpeg';
@@ -7,7 +7,13 @@ import nutriente from '../img/nutriente.jpeg';
 const MainProduct = () => {
   return (
     <div className='bg-background ml-[20%] p-4'>
-      <h1 className='text-3xl font-semibold mt-20'>Productos</h1>
+      <div className='flex mt-20'>
+        <h1 className='text-3xl font-semibold'>Productos</h1>
+        <div className='flex items-center bg-white border-2 border-gray-200 p-2 rounded-full w-[30%] ml-auto'>
+          <IconSearch size={18} className='text-[#9ca3af] ml-2' />
+          <input placeholder='Buscar' className='bg-white ml-2 w-[80%] focus:outline-none' />
+        </div>
+      </div>
       <div className='py-6'>
         <div className='w-full bg-white rounded-2xl overflow-hidden'>
           <table className='w-full'>
