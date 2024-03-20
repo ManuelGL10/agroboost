@@ -17,10 +17,6 @@ const Navbar_Top = () => {
           <input placeholder='Buscar' className='bg-background ml-2 w-[80%] focus:outline-none' />
         </div>
         <div className='items-center flex ml-auto'>
-          <div className='items-center flex mr-4'>
-            <IconMoon />
-            <IconSun />
-          </div>
           <div className='flex items-center'>
             <div className='rounded-full bg-custom-color_logo h-10 w-10' />
             <ul className='ml-4'>

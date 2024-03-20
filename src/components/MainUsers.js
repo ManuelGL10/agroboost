@@ -72,10 +72,6 @@ const MainUsers = () => {
         </div>
       </div>
       <div className='flex'>
-        <button className='flex py-2 px-4 rounded-lg bg-custom-color_logo right-0 text-white font-medium hover:bg-[#2F9B5D]'>
-          <IconPlus className='mr-2'/>
-          <span>Agregar Nuevo Usuario</span>
-        </button>
         <div className='flex justify-around py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 ml-auto'>
             <IconChevronLeft className='text-gray-500'/>
             <span className='mx-4 text-gray-300 font-semibold'>|</span>
