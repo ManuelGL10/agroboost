@@ -4,6 +4,7 @@ import ImgFacebook from '../img/facebook_logo.svg';
 import ImgGoogle from '../img/Google_logo.png';
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
+import { IconEyeOff, IconEye } from '@tabler/icons-react';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
