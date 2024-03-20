@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Logo from '../img/LogoAgroBoostPNG.svg';
 import ImgFacebook from '../img/facebook_logo.svg';
 import ImgGoogle from '../img/Google_logo.png';
-import { IconEye, IconEyeOff } from '@tabler/icons-react';
-import { Link } from 'react-router-dom'; 
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
 import { IconEye, IconEyeOff } from '@tabler/icons-react'; 
@@ -12,14 +10,12 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     console.log('Email:', email);
     console.log('Contraseña:', password);
-    setModalIsOpen(true);
     
   };
 
@@ -28,10 +24,10 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="block font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 mb-4 text-center">Inicio de Sesión</h2>
-      <div className="flex items-center justify-center mb-6">
-        <img src={Logo} alt="Logo AgroBoost" className="h-28"/>
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 mb-4 text-center">Inicio de Sesión</h2>
+      <div className="flex items-center mb-6">
+        <img src={Logo} alt="Logo AgroBoost" className="w-40 h-auto mx-auto"/>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -68,10 +64,10 @@ const LoginForm = () => {
         </div>
         
         <div className="text-right mb-6">
-          <Link className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</Link>
+          <a href="" className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</a>
         </div>
         <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-          <Link to='/dashboardhome'>Iniciar Sesión</Link>
+          Iniciar Sesión
         </button>
         <div className="flex items-center mt-6 mb-4">
           <hr className="border-black flex-grow" />
@@ -89,7 +85,7 @@ const LoginForm = () => {
           </button>
         </div>
         <div className="text-center mt-3">
-         <p>¿No tienes una cuenta? <Link to='/registro' className="text-[#4D7A7D]">Regístrate</Link></p>
+         <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
         </div>
       </form>
       {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
