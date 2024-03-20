@@ -8,9 +8,14 @@ module.exports = {
     "./src/views/Nosotros.jsx",
     "./src/views/Producto.jsx",
     "./src/views/Servicio.jsx",
+<<<<<<< HEAD
     "./src/views/Dashboard_Home.jsx",
     "./src/views/DashboardVenta.jsx",
     "./src/views/DashboardProduct.jsx",
+=======
+    "./src/views/Login.jsx",
+    "./src/views/Registro.jsx",
+>>>>>>> 669d3387dbf90f26ad919a26efc05e8c862c74a6
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -22,12 +27,18 @@ module.exports = {
     "./src/components/InfoProducto.js",
     "./src/components/Download.js",
     "./src/components/Questions.js",
+<<<<<<< HEAD
     "./src/components/Navbar_Admin.js",
     "./src/components/Navbar_Top.js",
     "./src/components/MainHome.js",
     "./src/components/MenuAdmin.js",
     "./src/components/MainVenta.js",
     "./src/components/MainProduct.js",
+=======
+    "./src/components/LoginForm.js", 
+    "./src/components/RegistroForm.js",
+    
+>>>>>>> 669d3387dbf90f26ad919a26efc05e8c862c74a6
   ],
   theme: {
     extend: {
