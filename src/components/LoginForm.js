@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import Logo from '../img/LogoAgroBoostPNG.svg';
 import ImgFacebook from '../img/facebook_logo.svg';
 import ImgGoogle from '../img/Google_logo.png';
+import ModalBienvenida from './ModalBienvenida';
+import ModalError from './ModalError';
 import { IconEye, IconEyeOff } from '@tabler/icons-react'; 
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     console.log('Email:', email);
     console.log('Contraseña:', password);
+    setModalIsOpen(true);
     
   };
 
@@ -86,6 +90,8 @@ const LoginForm = () => {
          <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
         </div>
       </form>
+      {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
+      <ModalError isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />*/}
     </div>
   );
 };

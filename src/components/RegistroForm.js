@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../img/LogoAgroBoostPNG.svg';
+import ModalBienvenida from './ModalBienvenida';
+import ModalError from './ModalError';
 import { IconEye, IconEyeOff } from '@tabler/icons-react'; 
 
 const RegistroForm = () => {
@@ -9,6 +11,7 @@ const RegistroForm = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +20,7 @@ const RegistroForm = () => {
     console.log('Correo:', email);
     console.log('Contraseña:', password);
     console.log('¿Términos aceptados?:', termsAccepted);
+    setModalIsOpen(true);
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -106,6 +110,8 @@ const RegistroForm = () => {
           <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
         </div>
       </form>
+      {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
+      <ModalError isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />*/}
     </div>
   );
 };

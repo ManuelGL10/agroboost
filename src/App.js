@@ -18,14 +18,11 @@ function App() {
       <Route path='/nosotros' element={<Nosotros/>}/>
       <Route path='/producto' element={<Producto/>}/>
       <Route path='/servicio' element={<Servicio/>}/>
-<<<<<<< HEAD
       <Route path='/dashboardhome' element={<DashboardHome/>}/>
       <Route path='/dashboardventa' element={<DashboardVenta/>}/>
       <Route path='/dashboardproduct' element={<DashboardProduct/>}/>
-=======
       <Route path='/login' element={<Login/>}/>
       <Route path='/registro' element={<Registro/>} />
->>>>>>> 669d3387dbf90f26ad919a26efc05e8c862c74a6
     </Routes>
   );
 }
