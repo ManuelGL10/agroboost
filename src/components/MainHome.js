@@ -88,8 +88,10 @@ const MainHome = () => {
             <div className='py-4 col-span-1'>
                 <div className='w-full h-full bg-white rounded-lg p-4'>
                     <h1 className='text-lg font-medium'>Detalles de Ventas</h1>
-                    <div className='flex justify-center items-center'>
-                        <PiesChar />
+                    <div className='flex justify-center items-center h-full w-full'>
+                        <div className='h-[90%] w-[90%]'>
+                            <PiesChar />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import MainConfig from '../components/MainConfig'
 
 const DashboardConfig = () => {
   return (
-    <div>
+    <div className='bg-background h-screen'>
         <NavbarTop/>
         <NavbarAdmin/>
         <MainConfig/>
