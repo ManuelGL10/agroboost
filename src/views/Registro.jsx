@@ -3,7 +3,7 @@ import RegistroForm from '../components/RegistroForm'
 
 const Registro = () => {
   return (
-    <div>
+    <div className='bg-background p-4'>
       <RegistroForm/>
     </div>
   )

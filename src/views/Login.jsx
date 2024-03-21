@@ -3,7 +3,7 @@ import LoginForm from '../components/LoginForm'
 
 const Login = () => {
   return (
-    <div>
+    <div className='bg-background p-4'>
       <LoginForm/>
     </div>
   )

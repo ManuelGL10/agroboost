@@ -28,13 +28,13 @@ const RegistroForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 mb-4 text-center">Regístrate</h2>
-      <div className="flex items-center mb-6">
-        <img src={Logo} alt="Logo AgroBoost" className="w-40 h-auto mx-auto"/>
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 text-center">Regístrate</h2>
+      <div className="flex items-center my-4">
+        <img src={Logo} alt="Logo AgroBoost" className="w-32 h-auto mx-auto"/>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className="mb-3">
           <label htmlFor="name" className="block font-medium text-base text-custom-00000 mb-2 text-left">Nombre(s)</label>
           <input
             type="text"
@@ -46,7 +46,7 @@ const RegistroForm = () => {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellidos</label>
           <input
             type="text"
@@ -58,7 +58,7 @@ const RegistroForm = () => {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 text-left">Correo Electrónico</label>
           <input
             type="email"
@@ -90,7 +90,7 @@ const RegistroForm = () => {
             {showPassword ? <IconEyeOff size={24} /> : <IconEye size={24} />}
           </button>
         </div>
-        <div className="mb-4">
+        <div className="my-3">
           <label htmlFor="terms" className="flex items-center">
             <input
               type="checkbox"
