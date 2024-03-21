@@ -107,8 +107,7 @@ const RegistroForm = () => {
           Registrarse
         </button>
         <div className="text-center mt-3">
-          <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
-          <p>¿Ya tienes cuenta? <a href="#" className="text-[#4D7A7D]">Inicia sesión</a></p>
+          <p>¿Ya tienes cuenta? <a href="/login" className="text-[#4D7A7D] font-bold">Inicia sesión</a></p>
         </div>
       </form>
       {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />

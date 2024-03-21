@@ -82,7 +82,7 @@ const NewPassword = () => {
         <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
           Cambiar contraseña
         </button>
-        <div className="text-center mt-40">
+        <div className="text-center mt-4">
         </div>
       </form>
     </div>

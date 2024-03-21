@@ -64,7 +64,7 @@ const LoginForm = () => {
         </div>
         
         <div className="text-right mb-6">
-          <a href="" className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</a>
+          <a href="/password" className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</a>
         </div>
         <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
           Iniciar Sesión
@@ -85,7 +85,7 @@ const LoginForm = () => {
           </button>
         </div>
         <div className="text-center mt-3">
-         <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D]">Regístrate</a></p>
+         <p>¿No tienes una cuenta? <a href="#" className="text-[#4D7A7D] font-bold">Regístrate</a></p>
         </div>
       </form>
       {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />

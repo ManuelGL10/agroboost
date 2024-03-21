@@ -37,7 +37,7 @@ const ForgottenPassword = () => {
         <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
           Enviar código
         </button>
-        <div className="flex items-center mt-6 mb-40">
+        <div className="flex items-center mt-4">
         </div>
       </form>
     </div>

@@ -28,7 +28,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className='p-2'>
-          <Link className='bg-white p-3 max-w-max max-h-max rounded-lg border-2 border-custom-264948 hover:scale-110 transition inline-block text-center'>
+          <Link to="/registro" className='bg-white p-3 max-w-max max-h-max rounded-lg border-2 border-custom-264948 hover:scale-110 transition inline-block text-center'>
             <span className='text-custom-264948 lg:text-lg md:text-base sm:text-sm font-semibold'>Registrarse</span>
           </Link>
         </li>
