@@ -10,6 +10,7 @@ import DashboardHome from './views/Dashboard_Home';
 import DashboardVenta from './views/DashboardVenta';
 import DashboardProduct from './views/DashboardProduct';
 import DashboardUsuarios from './views/DashboardUsuarios';
+import DashboardRegistro from './views/DashboardRegistro'; 
 import DashboardConfig from './views/DashboardConfig';
 import DasboardCultivo from './views/DasboardCultivo';
 import '@fontsource/hind-madurai'
@@ -29,6 +30,7 @@ function App() {
       <Route path='/dasboardcultivo' element={<DasboardCultivo/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/registro' element={<Registro/>} />
+      <Route path='/dashboardregistro' element={<DashboardRegistro/>}/>
     </Routes>
   );
 }

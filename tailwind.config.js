@@ -16,6 +16,7 @@ module.exports = {
     "./src/views/DashboardCultivo.jsx",
     "./src/views/Login.jsx",
     "./src/views/Registro.jsx",
+    "./src/views/DashboardRegistro.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -41,7 +42,8 @@ module.exports = {
     "./src/components/LoginForm.js", 
     "./src/components/RegistroForm.js",
     "./src/components/ModalError.js", 
-    "./src/components/ModalBienvenida.js"
+    "./src/components/ModalBienvenida.js",
+    "./src/components/MainRegistro.js",
   ],
   theme: {
     extend: {
