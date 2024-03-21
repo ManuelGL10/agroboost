@@ -31,7 +31,9 @@ const MainVenta = () => {
                 <td className='px-4 py-4'>Industria, 342</td>
                 <td className='px-4 py-4'>2024-02-02</td>
                 <td className='px-4 py-4'>Sensor Humedad</td>
-                <td className='px-4 py-4 text-[#4AD991] font-bold'>Completado</td>
+                <td className='px-4 py-4 font-bold'>
+                  <span className='px-3 py-1 bg-green-300 bg-opacity-35 text-[#2F9B5D] rounded-md'>Completado</span>
+                </td>
               </tr>
               <tr className='border-gray-200 border-y'>
                 <td className='px-4 py-4'>002</td>
@@ -39,7 +41,9 @@ const MainVenta = () => {
                 <td className='px-4 py-4'>Vicente Guerrero, 26</td>
                 <td className='px-4 py-4'>2024-02-07</td>
                 <td className='px-4 py-4'>Sensor Temperatura</td>
-                <td className='px-4 py-4 text-orange-600 font-bold'>Rechazado</td>
+                <td className='px-4 py-4 font-bold'>
+                  <span className='px-4 py-1 bg-red-300 bg-opacity-35 text-[#D33363] rounded-md'>Rechazado</span>
+                </td>
               </tr>
               <tr className='border-gray-200 border-y'>
                 <td className='px-4 py-4'>003</td>
@@ -47,7 +51,9 @@ const MainVenta = () => {
                 <td className='px-4 py-4'>Juárez, 190</td>
                 <td className='px-4 py-4'>2024-02-09</td>
                 <td className='px-4 py-4'>Sensor Humedad</td>
-                <td className='px-4 py-4 text-[#FEC53D] font-bold'>Pendiente</td>
+                <td className='px-4 py-4 font-bold'>
+                  <span className='px-5 py-1 bg-yellow-200 bg-opacity-35 text-[#ffc131] rounded-md'>Pendiente</span>
+                </td>
               </tr>
             </tbody>
           </table>

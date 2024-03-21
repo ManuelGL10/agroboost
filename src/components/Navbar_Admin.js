@@ -27,8 +27,11 @@ const Navbar_Admin = () => {
                 
             </li>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <IconPlant size={30} stroke={1.5}/>
-                <span className='ml-4'>Cultivos</span>
+                <Link to='/dasboardcultivo' className='flex w-full'>
+                    <IconPlant size={30} stroke={1.5}/>
+                    <span className='ml-4'>Cultivos</span>
+                </Link>
+                
             </li>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dashboardventa' className='flex w-full'>
@@ -46,7 +49,7 @@ const Navbar_Admin = () => {
         </ul>
         <ul className='p-6 text-xl absolute bottom-0 left-0 right-0'>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='/dashboardconfig' className='flex'>
+                <Link to='/dashboardconfig' className='flex w-full'>
                     <IconSettings size={30} stroke={1.5}/>
                     <span className='ml-4'>Ajustes</span>
                 </Link>
