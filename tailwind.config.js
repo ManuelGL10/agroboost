@@ -17,6 +17,9 @@ module.exports = {
     "./src/views/Login.jsx",
     "./src/views/Registro.jsx",
     "./src/views/DashboardRegistro.jsx",
+    "./src/views/Password.jsx",
+    "./src/views/NewPass.jsx",
+    "./src/views/Domicilio.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -44,6 +47,10 @@ module.exports = {
     "./src/components/ModalError.js", 
     "./src/components/ModalBienvenida.js",
     "./src/components/MainRegistro.js",
+    "./src/components/ForgottenPassword.js",
+    "./src/components/NewPassword.js",
+    "./src/components/InfoDomicilio.js",
+    
   ],
   theme: {
     extend: {

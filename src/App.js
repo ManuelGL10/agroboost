@@ -5,6 +5,9 @@ import Producto from './views/Producto';
 import Servicio from './views/Servicio';
 import Login from './views/Login';
 import Registro from './views/Registro';
+import Password from './views/Password';
+import NewPass from './views/NewPass';
+import Domicilio from './views/Domicilio';
 import { Route, Routes } from 'react-router-dom';
 import DashboardHome from './views/Dashboard_Home';
 import DashboardVenta from './views/DashboardVenta';
@@ -31,6 +34,9 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/registro' element={<Registro/>} />
       <Route path='/dashboardregistro' element={<DashboardRegistro/>}/>
+      <Route path='/password' element={<Password/>} />
+      <Route path='/newpass' element={<NewPass/>} />
+      <Route path='/domicilio' element={<Domicilio/>} />
     </Routes>
   );
 }
