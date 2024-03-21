@@ -3,7 +3,7 @@ import ForgottenPassword from '../components/ForgottenPassword'
 
 const Password = () => {
   return (
-    <div>
+    <div className='bg-background h-screen flex justify-center items-center'>
       <ForgottenPassword/>
     </div>
   )
