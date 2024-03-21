@@ -12,11 +12,16 @@ const ForgottenPassword = () => {
     console.log('Email:', email);    
   };
 
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className="max-w-md p-6 bg-white rounded-lg shadow-lg h-[85%]">
-      <Link to="/Login">
+      <button onClick={handleGoBack}>
         <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-      </Link>
+      </button>
+      
       <div className='flex flex-col h-full justify-between py-6'>
         <h2 className="font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 text-center">¿Olvidaste tu contraseña?</h2>
         <h1 className="md:text-xl sm:text-lg text-base text-gray-500 text-center">Te enviaremos un código de verificación para restablecerla</h1>
