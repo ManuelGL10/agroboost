@@ -50,7 +50,6 @@ module.exports = {
     "./src/components/ForgottenPassword.js",
     "./src/components/NewPassword.js",
     "./src/components/InfoDomicilio.js",
-    
   ],
   theme: {
     extend: {

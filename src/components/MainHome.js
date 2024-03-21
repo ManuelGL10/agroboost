@@ -1,5 +1,8 @@
 import React from 'react'
 import { IconUsers, IconTrendingUp, IconShoppingCart, IconClockStop, IconTrendingDown } from '@tabler/icons-react'
+import LinesChart from './graphics/LinesChar'
+import PiesChar from './graphics/PiesChar'
+import BarsChar from './graphics/BarsChar'
 
 const MainHome = () => {
   return (
@@ -68,13 +71,27 @@ const MainHome = () => {
             </div>
         </div>
         <div className='py-4'>
-            <div className='w-full bg-white h-60 rounded-lg p-4'>
-                <h1 className='text-lg font-medium'>Detalles de Ventas</h1>
+            <div className='w-full bg-white rounded-lg p-4'>
+                <h1 className='text-lg font-medium'>Ventas Mensuales</h1>
+                <LinesChart/>                
             </div>
         </div>
-        <div className='py-4'>
-            <div className='w-full bg-white h-60 rounded-lg p-4'>
-                <h1 className='text-lg font-medium'>Detalles de Ventas</h1>
+        <div className='grid grid-cols-3 gap-x-4'>
+            <div className='py-4 col-span-2'>
+                <div className='w-full bg-white rounded-lg p-4'>
+                    <h1 className='text-lg font-medium'>Usuarios Mensuales</h1>
+                    <div className='flex justify-center items-center h-full'>
+                        <BarsChar style={{ flexGrow: 1 }} />
+                    </div>
+                </div>
+            </div>
+            <div className='py-4 col-span-1'>
+                <div className='w-full h-full bg-white rounded-lg p-4'>
+                    <h1 className='text-lg font-medium'>Detalles de Ventas</h1>
+                    <div className='flex justify-center items-center'>
+                        <PiesChar />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
