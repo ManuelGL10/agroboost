@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarTop from '../components/Navbar_Top'
 import NavbarAdmin from '../components/Navbar_Admin'
-import MainCultivo from '../components/MainCultivo'
+import MainCultivo from '../components/dashboard/MainCultivo'
 
 const DasboardCultivo = () => {
   return (

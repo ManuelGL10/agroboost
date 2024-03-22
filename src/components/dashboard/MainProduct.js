@@ -1,8 +1,8 @@
 import React from 'react'
 import { IconTrash, IconEdit, IconSearch } from '@tabler/icons-react'
-import regar from '../img/pexels-fox-750836.jpg';
-import sensor from '../img/sensor.jpeg';
-import nutriente from '../img/nutriente.jpeg';
+import regar from '../../img/pexels-fox-750836.jpg';
+import sensor from '../../img/sensor.jpeg';
+import nutriente from '../../img/nutriente.jpeg';
 
 const MainProduct = () => {
   return (

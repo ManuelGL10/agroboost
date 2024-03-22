@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarAdmin from '../components/Navbar_Admin'
 import NavbarTop from '../components/Navbar_Top'
-import MainVenta from '../components/MainVenta'
+import MainVenta from '../components/dashboard/MainVenta'
 
 const DashboardVenta = () => {
   return (
