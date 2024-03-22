@@ -36,20 +36,18 @@ const Navbar_Top = () => {
       {isModalOpen && (
         <div className='fixed top-14 right-0 p-4'>
           <div className='bg-white p-4 rounded-xl shadow-lg grid text-lg gap-2'>
-            <div className='flex items-center'>
-                <IconUserCog className='mr-2' stroke={1.5}/>
-                <span>Administrar Cuenta</span>
-            </div>
+            <Link to='/profile' className='flex w-full items-center'>
+              <IconUserCog className='mr-2' stroke={1.5}/>
+              <span>Administrar Cuenta</span>
+            </Link>
             <div className='flex items-center'>
                 <IconKey className='mr-2' stroke={1.5}/>
                 <span>Cambiar Contraseña</span>
             </div>
-            <div className='flex items-center'>
-              <Link to='/login' className='flex items-center'>
-                <IconLogout className='mr-2' stroke={1.5}/>
-                <span>Cerrar Sesión</span>
-              </Link>
-            </div>
+            <Link to='/login' className='flex w-full items-center'>
+              <IconLogout className='mr-2' stroke={1.5}/>
+              <span>Cerrar Sesión</span>
+            </Link>
           </div>
         </div>
       )}

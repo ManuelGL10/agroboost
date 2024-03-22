@@ -20,6 +20,7 @@ module.exports = {
     "./src/views/Password.jsx",
     "./src/views/NewPass.jsx",
     "./src/views/Domicilio.jsx",
+    "./src/views/ProfileUser.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -50,6 +51,7 @@ module.exports = {
     "./src/components/ForgottenPassword.js",
     "./src/components/NewPassword.js",
     "./src/components/InfoDomicilio.js",
+    "./src/components/MainProfile.js",
   ],
   theme: {
     extend: {

@@ -17,6 +17,7 @@ import DashboardRegistro from './views/DashboardRegistro';
 import DashboardConfig from './views/DashboardConfig';
 import DasboardCultivo from './views/DasboardCultivo';
 import '@fontsource/hind-madurai'
+import ProfileUser from './views/ProfileUser';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Route path='/password' element={<Password/>} />
       <Route path='/newpass' element={<NewPass/>} />
       <Route path='/domicilio' element={<Domicilio/>} />
+      <Route path='/profile' element={<ProfileUser/>} />
     </Routes>
   );
 }
