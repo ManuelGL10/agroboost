@@ -6,9 +6,9 @@ import MainProduct from '../components/dashboard/MainProduct'
 function DashboardProduct() {
   return (
     <div>
-        <NavbarTop/>
-        <NavbarAdmin/>
-        <MainProduct/>
+      <NavbarTop/>
+      <MainProduct/>
+      <NavbarAdmin/>
     </div>
   )
 }

@@ -13,33 +13,33 @@ const Navbar_Admin = () => {
             </div>
         </div>
         <ul className='py-8 px-6 text-xl'>
-            <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dashboardhome' className='flex w-full'>
                     <IconDashboard size={30} stroke={1.5}/>
                     <span className='ml-4'>Panel</span>
                 </Link>
             </li>
-            <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dashboardusers' className='flex w-full'>
                     <IconUser size={30} stroke={1.5}/>
                     <span className='ml-4'>Usuarios</span>
                 </Link>
                 
             </li>
-            <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dasboardcultivo' className='flex w-full'>
                     <IconPlant size={30} stroke={1.5}/>
                     <span className='ml-4'>Cultivos</span>
                 </Link>
                 
             </li>
-            <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dashboardventa' className='flex w-full'>
                     <IconShoppingCart size={30} stroke={1.5}/>
                     <span className='ml-4'>Ventas</span>
                 </Link>
             </li>
-            <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='/dashboardproduct' className='flex w-full'>
                     <IconPackage size={30} stroke={1.5}/>
                     <span className='ml-4'>Productos</span>
