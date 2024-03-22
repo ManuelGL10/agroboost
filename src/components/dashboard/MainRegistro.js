@@ -1,96 +1,65 @@
-import React, { useState } from 'react';
-import { IconEye, IconEyeOff } from '@tabler/icons-react';
+import React, { useState } from 'react'
+import { IconCameraUp, IconEye, IconEyeOff } from '@tabler/icons-react'
 
-const MainRegistro = () => {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+const MainProfile = () => {
+    const [isOpen, setIsOpen] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Nombre:', name);
-    console.log('Apellidos:', lastName);
-    console.log('Correo:', email);
-    console.log('Contraseña:', password);
-    // Lógica para registrar al administrador
-  };
-
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword(!showPassword); 
-  };
+    const handleOpen = () => {
+        setIsOpen(!isOpen)
+    }
 
   return (
-    <div className="bg-background min-h-screen flex justify-center items-center">
-      <div className="w-[60%] p-8 bg-white rounded-lg auto ml-[20%]">
-        <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 mb-4 mt-50 text-center">Registro de Usuarios</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-          <div className="col-span-1 mb-4">
-            <label htmlFor="name" className="block font-medium text-base text-custom-00000 mb-2 mt-7 text-left">Nombre(s)</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese su nombre"
-              required
-            />
-          </div>
-          <div className="col-span-1 mb-4">
-            <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 mt-7 text-left">Apellidos</label>
-            <input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese sus apellidos"
-              required
-            />
-          </div>
-          <div className="col-span-1 mb-4">
-            <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 mt-7 text-left">Correo Electrónico</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese su correo"
-              required
-            />
-          </div>
-          <div className="col-span-1 mb-4 mt-7 relative">
-            <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-            <input
-              type={showPassword ? "text" : "password"} 
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese su contraseña"
-              required
-            />
-            <button
-              type="button"
-              onClick={handleTogglePasswordVisibility}
-              className="absolute inset-y-0 right-2 flex items-center bg-transparent focus:outline-none"
-              style={{ top: 'calc(50% + -5px)' }} 
-            >
-              {showPassword ? <IconEyeOff size={24} /> : <IconEye size={24} />}
-            </button>
-          </div>
-          <div className="col-span-2 mb-4 mt-7 flex justify-center"> 
-              <button type="submit" className="w-40 bg-custom-204E51 text-white font-semibold px-4 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-              Registrar
-              </button>
-          </div>
-        </form>
-      </div>
+    <div className='bg-background ml-[20%] p-4'>
+        <h1 className='text-3xl font-semibold mt-20'>Registro de Usuario</h1>
+        <div className='py-6'>
+            <div className='w-full bg-white rounded-2xl py-4 px-8'>
+                <div className='w-full flex flex-col items-center justify-center py-2'>
+                    <div className='bg-gray-300 rounded-full p-10'>
+                        <IconCameraUp size={32}/>
+                    </div>
+                    <button className='mt-4 text-lg font-medium py-1 px-3 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                        Cambiar foto
+                    </button>
+                </div>
+                <form className='flex flex-col'>
+                    <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600'>
+                        <div className='flex flex-col order-1'>
+                            <span>Nombre</span>
+                            <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2'/>
+                        </div>
+                        <div className='flex flex-col order-3'>
+                            <span>Apellido Paterno</span>
+                            <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2'/>
+                        </div>
+                        <div className='flex flex-col order-5'>
+                            <span>Apellido Materno</span>
+                            <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2'/>
+                        </div>
+                        <div className='flex flex-col order-2'>
+                            <span>Correo</span>
+                            <input type='email' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2'/>
+                        </div>
+                        <div className='flex flex-col order-4'>
+                            <span>Contraseña</span>
+                            <div className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2 flex items-center'>
+                                <input type='password' className='bg-background w-full focus:outline-none'/>
+                                <button type='button' onClick={handleOpen}>
+                                    {isOpen ? <IconEye size={28} stroke={1.8} color='#4b5563'/> : <IconEyeOff size={28} stroke={1.8} color='#4b5563'/>}
+                                </button>  
+                            </div>
+                        </div>
+                    </div>
+                    <div className='justify-center flex py-2'>
+                        <button className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                            Guardar Datos
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default MainRegistro;
+export default MainProfile
