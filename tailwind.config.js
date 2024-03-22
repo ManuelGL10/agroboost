@@ -47,7 +47,7 @@ module.exports = {
     "./src/components/RegistroForm.js",
     "./src/components/ModalError.js", 
     "./src/components/ModalBienvenida.js",
-    "./src/components/MainRegistro.js",
+    "./src/components/dashboard/MainRegistro.js",
     "./src/components/ForgottenPassword.js",
     "./src/components/NewPassword.js",
     "./src/components/InfoDomicilio.js",
