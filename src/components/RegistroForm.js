@@ -6,8 +6,7 @@ import { IconEye, IconEyeOff } from '@tabler/icons-react';
 
 const RegistroForm = () => {
   const [name, setName] = useState('');
-  const [apellidopaterno, setapellidopaterno] = useState('');
-  const [apellidomaterno, setapellidomaterno] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
@@ -17,8 +16,7 @@ const RegistroForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Nombre:', name);
-    console.log('Apellidopaterno:', apellidopaterno);
-    console.log('Apellidomaterno:', apellidomaterno);
+    console.log('Apellidos:', lastName);
     console.log('Correo:', email);
     console.log('Contraseña:', password);
     console.log('¿Términos aceptados?:', termsAccepted);
@@ -49,24 +47,12 @@ const RegistroForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Paterno</label>
+          <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellidos</label>
           <input
             type="text"
-            id="apellidomaterno"
-            value={apellidopaterno}
-            onChange={(e) => setapellidopaterno(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-            placeholder="Ingrese sus apellidos"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Materno</label>
-          <input
-            type="text"
-            id="apellidomaterno"
-            value={apellidomaterno}
-            onChange={(e) => setapellidomaterno(e.target.value)}
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
             placeholder="Ingrese sus apellidos"
             required
