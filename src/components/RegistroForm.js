@@ -70,25 +70,25 @@ const RegistroForm = () => {
             required
           />
         </div>
-        <div className="mb-3 relative">
+        <div className="mb-3">
           <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-          <input
-            type={showPassword ? "text" : "password"} 
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-            placeholder="Ingrese su contraseña"
-            required
-          />
-          <button
-            type="button"
-            onClick={handleTogglePasswordVisibility}
-            className="absolute inset-y-0 right-2 flex items-center bg-transparent focus:outline-none"
-            style={{ top: 'calc(50% + -5px)' }} 
-          >
-            {showPassword ? <IconEyeOff size={24} /> : <IconEye size={24} />}
-          </button>
+          <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
+            <input
+              type={showPassword ? "text" : "password"} 
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full focus:outline-none focus:border-blue-500"
+              placeholder="Ingresa su contraseña"
+              required
+            />
+            <button
+              type="button"
+              onClick={handleTogglePasswordVisibility}
+            >
+              {showPassword ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+            </button>
+          </div>
         </div>
         <div className="my-3">
           <label htmlFor="terms" className="flex items-center">

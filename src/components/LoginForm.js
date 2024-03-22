@@ -42,7 +42,7 @@ const LoginForm = () => {
             required
           />
         </div>
-        <div className="mb-3 relative">
+        <div className="mb-3">
           <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
           <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
             <input
@@ -62,7 +62,6 @@ const LoginForm = () => {
             </button>
           </div>
         </div>
-        
         <div className="text-right my-4">
           <a href="/password" className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</a>
         </div>
