@@ -7,7 +7,7 @@ import BarsChar from '../graphics/BarsChar'
 const MainHome = () => {
   return (
     <div className='bg-background ml-[20%] p-4'>
-        <h1 className='text-3xl font-semibold mt-16'>Panel</h1>
+        <h1 className='text-3xl font-semibold mt-20'>Panel</h1>
         <div className='py-4 flex justify-between'>
             <div className='p-4 bg-white rounded-lg'>
                 <div className='flex items-center'>

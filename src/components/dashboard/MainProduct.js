@@ -86,7 +86,7 @@ const MainProduct = () => {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> 
       </div>
     </div>
   )
