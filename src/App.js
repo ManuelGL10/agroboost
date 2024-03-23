@@ -16,6 +16,7 @@ import DashboardUsuarios from './views/DashboardUsuarios';
 import DashboardRegistro from './views/DashboardRegistro'; 
 import DashboardConfig from './views/DashboardConfig';
 import DasboardCultivo from './views/DasboardCultivo';
+import VerificationPage from './views/VerificationPage';
 import '@fontsource/hind-madurai'
 import ProfileUser from './views/ProfileUser';
 
@@ -39,6 +40,7 @@ function App() {
       <Route path='/newpass' element={<NewPass/>} />
       <Route path='/domicilio' element={<Domicilio/>} />
       <Route path='/profile' element={<ProfileUser/>} />
+      <Route path='/verificationpage' element={<VerificationPage/>} />
     </Routes>
   );
 }
