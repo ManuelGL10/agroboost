@@ -3,7 +3,7 @@ import NewPassword from '../components/NewPassword'
 
 const NewPass = () => {
   return (
-    <div>
+    <div className='bg-background h-screen flex justify-center items-center'>
       <NewPassword/>
     </div>
   )
