@@ -3,6 +3,8 @@ import Logo from '../img/LogoAgroBoostPNG.svg';
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
+import RegistroRequest from './request/RegistroRequest';
+import { useNavigate } from 'react-router-dom';
 
 const RegistroForm = () => {
   const [name, setName] = useState('');
@@ -13,16 +15,26 @@ const RegistroForm = () => {
   const [showPassword, setShowPassword] = useState(false); 
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Nombre:', name);
-    console.log('Apellidopaterno:', apellidopaterno);
-    console.log('Apellidomaterno:', apellidomaterno);
-    console.log('Correo:', email);
-    console.log('Contraseña:', password);
-    console.log('¿Términos aceptados?:', termsAccepted);
-    setModalIsOpen(true);
+
+    const { success, error } = await RegistroRequest({ 
+      name, 
+      apellidopaterno, 
+      apellidomaterno,
+      email,
+      password 
+    });
+
+    if (success) {
+      console.log('Registro exitoso:');
+      navigate('/login')
+    } else {
+      console.error('Error registro:', error);
+      // Puedes mostrar un mensaje de error al usuario, por ejemplo, en un modal
+    }
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -52,7 +64,7 @@ const RegistroForm = () => {
           <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Paterno</label>
           <input
             type="text"
-            id="apellidomaterno"
+            id="apellidopaterno"
             value={apellidopaterno}
             onChange={(e) => setapellidopaterno(e.target.value)}
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"

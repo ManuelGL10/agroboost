@@ -4,19 +4,29 @@ import ImgFacebook from '../img/facebook_logo.svg';
 import ImgGoogle from '../img/Google_logo.png';
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
+import LoginRequest from './request/LoginRequest';
 import { IconEyeOff, IconEye } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log('Email:', email);
-    console.log('Contraseña:', password);
-    
+
+    const { success, data, error } = await LoginRequest({ email, password });
+
+    if (success) {
+      console.log('Inicio de sesión exitoso');
+      const userId = data.usuario._id;
+      navigate(`/dashboardhome/${userId}`)
+    } else {
+      console.error('Error en inicio de sesión:', error);
+      // Puedes mostrar un mensaje de error al usuario, por ejemplo, en un modal
+    }
   };
 
   const handleTogglePasswordVisibility = () => {

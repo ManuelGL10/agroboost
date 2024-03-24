@@ -1,10 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { IconUsers, IconTrendingUp, IconShoppingCart, IconClockStop, IconTrendingDown } from '@tabler/icons-react'
 import LinesChart from '../graphics/LinesChar'
 import PiesChar from '../graphics/PiesChar'
 import BarsChar from '../graphics/BarsChar'
+import GetUser from '../request/GetUser'
+import { useParams } from 'react-router-dom';
 
 const MainHome = () => {
+    const { userId } = useParams()
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await GetUser(userId);
+        setUserData(data);
+      } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
+
+  if (!userData) {
+    return <div>Cargando...</div>;
+  }
+
   return (
     <div className='bg-background ml-[20%] p-4'>
         <h1 className='text-3xl font-semibold mt-20'>Panel</h1>

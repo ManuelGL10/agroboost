@@ -26,7 +26,7 @@ function App() {
       <Route path='/nosotros' element={<Nosotros/>}/>
       <Route path='/producto' element={<Producto/>}/>
       <Route path='/servicio' element={<Servicio/>}/>
-      <Route path='/dashboardhome' element={<DashboardHome/>}/>
+      <Route path='/dashboardhome/:userId' element={<DashboardHome/>}/>
       <Route path='/dashboardventa' element={<DashboardVenta/>}/>
       <Route path='/dashboardproduct' element={<DashboardProduct/>}/>
       <Route path='/dashboardusers' element={<DashboardUsuarios/>}/>

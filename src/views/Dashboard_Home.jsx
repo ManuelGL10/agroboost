@@ -5,11 +5,11 @@ import MainHome from '../components/dashboard/MainHome';
 
 const Dashboard_Home = () => {
   return (
-    <div>
-      <NavbarTop />
-      <MainHome/>
-      <NavbarAdmin />
-    </div>
+      <div>
+        <NavbarTop />
+        <MainHome/>
+        <NavbarAdmin />
+      </div>
   );
 };
 
