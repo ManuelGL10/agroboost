@@ -22,6 +22,7 @@ const LoginForm = () => {
     if (success) {
       console.log('Inicio de sesión exitoso');
       const userId = data.usuario._id;
+      console.log(userId)
       navigate(`/dashboardhome/${userId}`)
     } else {
       console.error('Error en inicio de sesión:', error);

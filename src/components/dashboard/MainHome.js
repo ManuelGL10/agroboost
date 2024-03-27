@@ -7,25 +7,6 @@ import GetUser from '../request/GetUser'
 import { useParams } from 'react-router-dom';
 
 const MainHome = () => {
-    const { userId } = useParams()
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await GetUser(userId);
-        setUserData(data);
-      } catch (error) {
-        console.error('Error al obtener los datos del usuario:', error);
-      }
-    };
-
-    fetchData();
-  }, [userId]);
-
-  if (!userData) {
-    return <div>Cargando...</div>;
-  }
 
   return (
     <div className='bg-background ml-[20%] p-4'>

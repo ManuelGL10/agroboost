@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { IconChevronDown, IconChevronUp, IconSearch, IconSun, IconMoon, IconLogout, IconUserCog, IconKey } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
-const Navbar_Top = () => {
+const Navbar_Top = ({ userData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handdleModal = () => {
@@ -21,7 +21,9 @@ const Navbar_Top = () => {
             <div className='rounded-full bg-custom-color_logo h-10 w-10' />
             <ul className='ml-4'>
               <li>
-                <span className='text-lg font-semibold'>Edgar</span>
+                <span className='text-lg font-semibold'>
+                  {userData && <p>{userData.nombre}</p>}
+                </span>
               </li>
               <li>
                 <span className='text-base font-light'>Admin</span>
@@ -36,7 +38,7 @@ const Navbar_Top = () => {
       {isModalOpen && (
         <div className='fixed top-14 right-0 p-4'>
           <div className='bg-white p-4 rounded-xl shadow-lg grid text-lg gap-2'>
-            <Link to='/profile' className='flex w-full items-center'>
+            <Link to={`/profile/${userData._id}`} className='flex w-full items-center'>
               <IconUserCog className='mr-2' stroke={1.5}/>
               <span>Administrar Cuenta</span>
             </Link>

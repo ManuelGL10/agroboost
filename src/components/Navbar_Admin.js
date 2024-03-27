@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../img/LogoAgroBoostPNG.svg'
 import { IconDashboard, IconUser, IconPlant, IconShoppingCart, IconPackage, IconSettings, IconLogout } from '@tabler/icons-react'
 
-const Navbar_Admin = () => {
+const NavbarAdmin = ({ userData }) => {
   return (
     <div className='bg-white w-[20%] h-full fixed left-0 top-0 justify-center'>
         <div className='mt-4'>
@@ -20,7 +20,7 @@ const Navbar_Admin = () => {
                 </Link>
             </li>
             <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='/dashboardusers' className='flex w-full'>
+                <Link to={`/dashboardusers/${userData._id}`} className='flex w-full'>
                     <IconUser size={30} stroke={1.5}/>
                     <span className='ml-4'>Usuarios</span>
                 </Link>
@@ -66,4 +66,4 @@ const Navbar_Admin = () => {
   )
 }
 
-export default Navbar_Admin
+export default NavbarAdmin

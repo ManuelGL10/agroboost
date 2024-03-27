@@ -19,6 +19,7 @@ import DasboardCultivo from './views/DasboardCultivo';
 import VerificationPage from './views/VerificationPage';
 import '@fontsource/hind-madurai'
 import ProfileUser from './views/ProfileUser';
+import Navbar_Top from './components/Navbar_Top';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
       <Route path='/password' element={<Password/>} />
       <Route path='/newpass' element={<NewPass/>} />
       <Route path='/domicilio' element={<Domicilio/>} />
-      <Route path='/profile' element={<ProfileUser/>} />
+      <Route path='/profile/:userId' element={<ProfileUser/>} />
       <Route path='/verificationpage' element={<VerificationPage/>} />
     </Routes>
   );

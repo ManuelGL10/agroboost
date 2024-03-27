@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { IconEdit, IconTrash, IconSearch, IconChevronRight, IconChevronLeft, IconPlus } from '@tabler/icons-react'
+import GetUsers from '../request/GetUsers';
 
 const MainUsers = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const usersData = await GetUsers();
+        setUsers(usersData);
+      } catch (error) {
+        console.error('Error al obtener los datos de los usuarios:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const fullName = `${users.nombre} ${users.apellido_paterno} ${users.apellido_materno}`;
+  // const fullAddress = `${users.direccion.numero_ex}, ${users.direccion.calle}, ${users.direccion.colonia}, ${users.direccion.cuidad}, ${users.direccion.estado}`;
+
   return (
     <div className='bg-background ml-[20%] p-4 h-screen'>
       <div className='flex mt-20'>
@@ -25,48 +44,22 @@ const MainUsers = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>001</td>
-                <td className='px-4 py-4'>Luis Hernandez Pérez</td>
-                <td className='px-4 py-4'>Industria, 342</td>
-                <td className='px-4 py-4'>luis@gmail.com</td>
-                <td className='px-4 py-4 font-bold text-xl'>··········</td>
-                <td className='px-4 py-4'>
+              {users.map((user, index) => (
+                <tr key={user._id} className='border-gray-200 border-y text-sm'>
+                  <td className='text-center font-medium py-4 px-2'>{index + 1}</td>
+                  <td className='py-4 px-2'>{user.nombre} {user.apellido_paterno} {user.apellido_materno}</td>
+                  <td className='py-4 px-2'>{user.direccion && user.direccion.codigo_postal}, {user.direccion && user.direccion.calle}, {user.direccion && user.direccion.cuidad}, {user.direccion && user.direccion.estado}</td>
+                  <td className='py-4 px-2'>{user.correo_electronico}</td>
+                  <td className='py-4 px-2'>{user.contrasena}</td>
+                  <td className='py-4 px-2'>
                     <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
-                        <IconEdit className='text-gray-500'/>
-                        <span className='mx-2 text-gray-300 font-semibold'>|</span>
-                        <IconTrash className='text-[#D33363]'/>
+                      <IconEdit className='text-gray-500'/>
+                      <span className='mx-2 text-gray-300 font-semibold'>|</span>
+                      <IconTrash className='text-[#D33363]'/>
                     </div>
-                </td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>002</td>
-                <td className='px-4 py-4'>María González Gutierrez</td>
-                <td className='px-4 py-4'>Vicente Guerrero, 26</td>
-                <td className='px-4 py-4'>maria@gmail.com</td>
-                <td className='px-4 py-4 font-bold text-xl'>··········</td>
-                <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
-                        <IconEdit className='text-gray-500'/>
-                        <span className='mx-2 text-gray-300 font-semibold'>|</span>
-                        <IconTrash className='text-[#D33363]'/>
-                    </div>
-                </td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>003</td>
-                <td className='px-4 py-4'>Juan Suárez Alvarado</td>
-                <td className='px-4 py-4'>Juárez, 190</td>
-                <td className='px-4 py-4'>juan@gmail.com</td>
-                <td className='px-4 py-4 font-bold text-xl'>··········</td>
-                <td className='px-4 py-4'>
-                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
-                        <IconEdit className='text-gray-500'/>
-                        <span className='mx-2 text-gray-300 font-semibold'>|</span>
-                        <IconTrash className='text-[#D33363]'/>
-                    </div>
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
