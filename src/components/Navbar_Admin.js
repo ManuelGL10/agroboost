@@ -20,7 +20,7 @@ const NavbarAdmin = ({ userData }) => {
                 </Link>
             </li>
             <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to={`/dashboardusers/${userData._id}`} className='flex w-full'>
+                <Link to={`/dashboardusers`} className='flex w-full'>
                     <IconUser size={30} stroke={1.5}/>
                     <span className='ml-4'>Usuarios</span>
                 </Link>
