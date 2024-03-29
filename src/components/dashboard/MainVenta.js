@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconSearch } from '@tabler/icons-react';
+import GetVentas from '../request/GetVentas'
 
 const MainVenta = () => {
+  const [ ventas, setVentas ] = useState([])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const ventasData = await GetVentas();
+        setVentas(ventasData);
+      } catch (error) {
+        console.error('Error al obtener los datos de los usuarios:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className='bg-background ml-[20%] p-4 h-screen'>
       <div className='flex mt-20'>
@@ -25,36 +41,35 @@ const MainVenta = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>001</td>
-                <td className='px-4 py-4'>Luis</td>
-                <td className='px-4 py-4'>Industria, 342</td>
-                <td className='px-4 py-4'>2024-02-02</td>
-                <td className='px-4 py-4'>Sensor Humedad</td>
-                <td className='px-4 py-4 font-bold'>
-                  <span className='px-3 py-1 bg-green-300 bg-opacity-35 text-[#2F9B5D] rounded-md'>Completado</span>
-                </td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>002</td>
-                <td className='px-4 py-4'>María</td>
-                <td className='px-4 py-4'>Vicente Guerrero, 26</td>
-                <td className='px-4 py-4'>2024-02-07</td>
-                <td className='px-4 py-4'>Sensor Temperatura</td>
-                <td className='px-4 py-4 font-bold'>
-                  <span className='px-4 py-1 bg-red-300 bg-opacity-35 text-[#D33363] rounded-md'>Rechazado</span>
-                </td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>003</td>
-                <td className='px-4 py-4'>Juan</td>
-                <td className='px-4 py-4'>Juárez, 190</td>
-                <td className='px-4 py-4'>2024-02-09</td>
-                <td className='px-4 py-4'>Sensor Humedad</td>
-                <td className='px-4 py-4 font-bold'>
-                  <span className='px-5 py-1 bg-yellow-200 bg-opacity-35 text-[#ffc131] rounded-md'>Pendiente</span>
-                </td>
-              </tr>
+              {ventas.map((venta, index) => {
+                let estadoClass = '';
+                switch (venta.estado_venta) {
+                  case 'Completado':
+                    estadoClass = 'px-3 py-1 bg-green-300 bg-opacity-35 text-[#2F9B5D] font-bold';
+                    break;
+                  case 'Rechazado':
+                    estadoClass = 'px-4 py-1 bg-red-300 bg-opacity-35 text-[#D33363] font-bold';
+                    break;
+                  case 'Pendiente':
+                    estadoClass = 'px-5 py-1 bg-yellow-200 bg-opacity-35 text-[#ffc131] font-bold';
+                    break;
+                  default:
+                    estadoClass = '';
+                }
+
+                const fechaVenta = new Date(venta.fecha_venta).toLocaleDateString();
+
+                return(
+                  <tr className='border-gray-200 border-y'>
+                    <td className='px-4 py-4 text-center'>{index + 1}</td>
+                    <td className='px-4 py-4'>{venta.usuario.nombre}</td>
+                    <td className='px-4 py-4'>{venta.usuario.direccion.colonia}, {venta.usuario.direccion.ciudad}, {venta.usuario.direccion.estado}, {venta.usuario.direccion.codigo_postal}</td>
+                    <td className='px-4 py-4'>{fechaVenta}</td>
+                    <td className='px-4 py-4'>{venta.producto.nombre_producto}</td>
+                    <td className='px-4 py-4'><span className={`rounded-md ${estadoClass}`}>{venta.estado_venta}</span></td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

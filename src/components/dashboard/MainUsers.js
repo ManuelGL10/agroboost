@@ -18,9 +18,6 @@ const MainUsers = () => {
     fetchData();
   }, []);
 
-  const fullName = `${users.nombre} ${users.apellido_paterno} ${users.apellido_materno}`;
-  // const fullAddress = `${users.direccion.numero_ex}, ${users.direccion.calle}, ${users.direccion.colonia}, ${users.direccion.cuidad}, ${users.direccion.estado}`;
-
   return (
     <div className='bg-background ml-[20%] p-4 h-screen'>
       <div className='flex mt-20'>
@@ -39,18 +36,16 @@ const MainUsers = () => {
                 <th className='px-4 py-4 text-left'>Nombre</th>
                 <th className='px-4 py-4 text-left'>Dirección</th>
                 <th className='px-4 py-4 text-left'>Correo Electrónico</th>
-                <th className='px-4 py-4 text-left'>Contraseña</th>
                 <th className='px-4 py-4 text-left'>Acción</th>
               </tr>
             </thead>
             <tbody>
               {users.map((user, index) => (
-                <tr key={user._id} className='border-gray-200 border-y text-sm'>
+                <tr key={user._id} className='border-gray-200 border-y'>
                   <td className='text-center font-medium py-4 px-2'>{index + 1}</td>
                   <td className='py-4 px-2'>{user.nombre} {user.apellido_paterno} {user.apellido_materno}</td>
                   <td className='py-4 px-2'>{user.direccion && user.direccion.codigo_postal}, {user.direccion && user.direccion.calle}, {user.direccion && user.direccion.cuidad}, {user.direccion && user.direccion.estado}</td>
                   <td className='py-4 px-2'>{user.correo_electronico}</td>
-                  <td className='py-4 px-2'>{user.contrasena}</td>
                   <td className='py-4 px-2'>
                     <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                       <IconEdit className='text-gray-500'/>

@@ -1,13 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { IconChevronDown, IconChevronUp, IconSearch, IconSun, IconMoon, IconLogout, IconUserCog, IconKey } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from './request/AuthContext';
+import GetUser from './request/GetUser';
 
-const Navbar_Top = ({ userData }) => {
+const Navbar_Top = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const { userId } = useAuth();
 
   const handdleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+
+  useEffect(() => {
+    if (userId) {
+      GetUser(userId)
+        .then(userData => {
+          setUserData(userData);
+        })
+        .catch(error => {
+          console.error('Error al obtener los datos del usuario:', error);
+        });
+    }
+  }, [userId]);
 
   return (
     <div className='w-full items-center px-6 py-2 bg-white fixed'>

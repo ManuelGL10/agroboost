@@ -7,12 +7,14 @@ import ModalError from './ModalError';
 import LoginRequest from './request/LoginRequest';
 import { IconEyeOff, IconEye } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './request/AuthContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
+  const { login } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const LoginForm = () => {
     if (success) {
       console.log('Inicio de sesión exitoso');
       const userId = data.usuario._id;
-      console.log(userId)
+      login(userId)
       navigate(`/dashboardhome/${userId}`)
     } else {
       console.error('Error en inicio de sesión:', error);

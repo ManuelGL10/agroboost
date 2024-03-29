@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IconSearch, IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
+import GetCultivos from '../request/GetCultivos'
 
 const MainCultivo = () => {
+  const [ cultivos, setCultivos ] = useState([])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const cultivoData = await GetCultivos();
+        setCultivos(cultivoData);
+      } catch (error) {
+        console.error('Error al obtener los datos de los usuarios:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const calcularDiasRestantes = (fechaPrevista) => {
+    const hoy = new Date();
+    const fechaPrevistaDate = new Date(fechaPrevista);
+    const unDia = 24 * 60 * 60 * 1000; // milisegundos en un día
+
+    const diffTiempo = fechaPrevistaDate.getTime() - hoy.getTime();
+    const diffDias = Math.ceil(diffTiempo / unDia);
+
+    return diffDias;
+  };
+
   return (
     <div className='bg-background ml-[20%] p-4 h-screen'>
       <div className='flex mt-20'>
@@ -25,30 +52,21 @@ const MainCultivo = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>001</td>
-                <td className='px-4 py-4'>Luis Hernandez Pérez</td>
-                <td className='px-4 py-4'>Industria, 342</td>
-                <td className='px-4 py-4'>Frambuesa</td>
-                <td className='px-4 py-4'>120 m²</td>
-                <td className='px-4 py-4'>87 días</td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>002</td>
-                <td className='px-4 py-4'>María González Gutierrez</td>
-                <td className='px-4 py-4'>Vicente Guerrero, 26</td>
-                <td className='px-4 py-4'>Maíz</td>
-                <td className='px-4 py-4'>172 m²</td>
-                <td className='px-4 py-4'>125 días</td>
-              </tr>
-              <tr className='border-gray-200 border-y'>
-                <td className='px-4 py-4'>003</td>
-                <td className='px-4 py-4'>Juan Suárez Alvarado</td>
-                <td className='px-4 py-4'>Juárez, 190</td>
-                <td className='px-4 py-4'>Frambuesa</td>
-                <td className='px-4 py-4'>83 m²</td>
-                <td className='px-4 py-4'>230 días</td>
-              </tr>
+              {cultivos.map((cultivo, index) => {
+                const diasRestantes = calcularDiasRestantes(cultivo.fecha_pervista);
+                console.log(cultivo.fecha_pervista)
+
+                return(
+                <tr key={cultivo._id} className='border-gray-200 border-y'>
+                  <td className='px-4 py-4'>{index + 1}</td>
+                  <td className='px-4 py-4'>{cultivo.usuario.nombre}</td>
+                  <td className='px-4 py-4'>{cultivo.usuario.direccion.colonia}, {cultivo.usuario.direccion.ciudad}, {cultivo.usuario.direccion.estado}, {cultivo.usuario.direccion.codigo_postal}</td>
+                  <td className='px-4 py-4'>{cultivo.tipo_cultivo}</td>
+                  <td className='px-4 py-4'>{cultivo.medidas_siembra} m²</td>
+                  <td className='px-4 py-4'>{diasRestantes > 0 ? `${diasRestantes} días` : 'Hoy'}</td>
+                </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
