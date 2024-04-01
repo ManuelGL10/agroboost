@@ -20,6 +20,8 @@ import VerificationPage from './views/VerificationPage';
 import '@fontsource/hind-madurai'
 import ProfileUser from './views/ProfileUser';
 import Navbar_Top from './components/Navbar_Top';
+import ProductosVenta from './views/ProductosVenta';
+import UserHome from './views/UserHome';
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
       <Route path='/domicilio' element={<Domicilio/>} />
       <Route path='/profile/:userId' element={<ProfileUser/>} />
       <Route path='/verificationpage' element={<VerificationPage/>} />
+      <Route path='/productosventa' element={<ProductosVenta/>} />
+      <Route path='/userhome' element={<UserHome/>} />
     </Routes>
   );
 }

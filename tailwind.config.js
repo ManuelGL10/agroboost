@@ -22,6 +22,8 @@ module.exports = {
     "./src/views/Domicilio.jsx",
     "./src/views/ProfileUser.jsx",
     "./src/views/VerificationPage.jsx",
+    "./src/views/ProductosVenta.jsx",
+    "./src/views/UserHome.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -56,6 +58,12 @@ module.exports = {
     "./src/components/MainProfile.js",
     "./src/components/Verificacion.js",
     "./src/components/Modals/ProductModal.js",
+    "./src/components/Producto.js",
+    "./src/components/User/NavBarUser.js",
+    "./src/components/User/NavBarLat.js",
+    "./src/components/User/InicioUser.js",
+    "./src/components/User/DatosUser.js",
+    "./src/components/User/GraficaHumedad.js",
   ],
   theme: {
     extend: {
