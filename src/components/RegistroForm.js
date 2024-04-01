@@ -55,7 +55,7 @@ const RegistroForm = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
             placeholder="Ingrese su nombre"
             required
           />
@@ -67,7 +67,7 @@ const RegistroForm = () => {
             id="apellidopaterno"
             value={apellidopaterno}
             onChange={(e) => setapellidopaterno(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
             placeholder="Ingrese sus apellidos"
             required
           />
@@ -79,7 +79,7 @@ const RegistroForm = () => {
             id="apellidomaterno"
             value={apellidomaterno}
             onChange={(e) => setapellidomaterno(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
             placeholder="Ingrese sus apellidos"
             required
           />
@@ -91,20 +91,20 @@ const RegistroForm = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
             placeholder="Ingrese su correo"
             required
           />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-          <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
+          <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51] flex">
             <input
               type={showPassword ? "text" : "password"} 
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full focus:outline-none focus:border-blue-500"
+              className="w-full focus:outline-none focus:border-[#204E51]"
               placeholder="Ingresa su contraseña"
               required
             />
