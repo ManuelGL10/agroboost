@@ -36,7 +36,7 @@ const MainProfile = ({ userData }) => {
                 contrasena: password
             });
 
-            console.log('Datos actualizados:', data.mensaje);
+            console.log('Datos actualizados:');
         } catch (error) {
             console.error('Error al actualizar los datos:', error.message);
         }

@@ -55,6 +55,7 @@ module.exports = {
     "./src/components/dashboard/MainProfile.js",
     "./src/components/MainProfile.js",
     "./src/components/Verificacion.js",
+    "./src/components/Modals/ProductModal.js",
   ],
   theme: {
     extend: {

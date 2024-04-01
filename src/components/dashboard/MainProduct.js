@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { IconTrash, IconEdit, IconSearch } from '@tabler/icons-react'
+import React, { useState, useEffect } from 'react';
+import { IconTrash, IconEdit, IconSearch } from '@tabler/icons-react';
 import regar from '../../img/pexels-fox-750836.jpg';
 import sensor from '../../img/sensor.jpeg';
 import nutriente from '../../img/nutriente.jpeg';
 import GetProductos from '../request/GetProductos';
+import ProductModal from '../Modals/ProductModal';
 
 const MainProduct = () => {
-  const [ productos, setProductos ] = useState([])
-  
+  const [productos, setProductos] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,6 +23,17 @@ const MainProduct = () => {
 
     fetchData();
   }, []);
+
+  const handleEditClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <div className='bg-background ml-[20%] p-4'>
       <div className='flex mt-20'>
@@ -43,30 +57,32 @@ const MainProduct = () => {
               </tr>
             </thead>
             <tbody>
-              {productos.map((producto, index) => {
-                return(
-                  <tr key={producto._id} className='border-gray-200 border-y'>
-                    <td className='px-4 py-4 text-center'>{index + 1}</td>
-                    <td className='px-4 py-4'><img className='w-24 mx-auto rounded-xl' src={nutriente} alt='nutriente' /></td>
-                    <td className='px-4 py-4'>{producto.nombre_producto}</td>
-                    <td className='px-4 py-4'>${producto.precio}</td>
-                    <td className='px-4 py-4'>{producto.stock}</td>
-                    <td className='px-4 py-4'>
-                      <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
-                          <IconEdit className='text-gray-500'/>
-                          <span className='mx-2 text-gray-300 font-semibold'>|</span>
-                          <IconTrash className='text-[#D33363]'/>
-                      </div>
+              {productos.map((producto, index) => (
+                <tr key={producto._id} className='border-gray-200 border-y'>
+                  <td className='px-4 py-4 text-center'>{index + 1}</td>
+                  <td className='px-4 py-4'><img className='w-24 mx-auto rounded-xl' src={nutriente} alt='nutriente' /></td>
+                  <td className='px-4 py-4'>{producto.nombre_producto}</td>
+                  <td className='px-4 py-4'>${producto.precio}</td>
+                  <td className='px-4 py-4'>{producto.stock}</td>
+                  <td className='px-4 py-4'>
+                    <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
+                      <button type='button' onClick={() => handleEditClick(producto)} ><IconEdit className='text-gray-500' /></button>
+                      <span className='mx-2 text-gray-300 font-semibold'>|</span>
+                      <IconTrash className='text-[#D33363]' />
+                    </div>
                   </td>
-                  </tr>
-                )
-              })}
+                </tr>
+              ))}
             </tbody>
           </table>
-        </div> 
+        </div>
       </div>
+      {/* Renderiza el modal si está abierto y si hay un producto seleccionado */}
+      {isModalOpen && selectedProduct && (
+        <ProductModal product={selectedProduct} isOpen={isModalOpen} onClose={handleCloseModal} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default MainProduct
+export default MainProduct;
