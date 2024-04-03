@@ -63,6 +63,7 @@ module.exports = {
     "./src/components/User/InicioUser.js",
     "./src/components/User/DatosUser.js",
     "./src/components/User/GraficaHumedad.js",
+    "./src/components/User/ClimateDay.js",
   ],
   theme: {
     extend: {

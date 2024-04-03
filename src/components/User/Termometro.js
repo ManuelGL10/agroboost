@@ -17,7 +17,7 @@ const GraficaTemperatura = ({ temperatura }) => {
   }
 
   return (
-    <div className="flex flex-col bg-white w-50 h-50 mr-4 mt-4 p-2">
+    <div className="flex flex-col bg-white w-50 h-40 mr-4 p-2">
       <h3 className="text-lg font-semibold mb-2 ml-2"></h3>
       <div className="flex items-center justify-center h-52">
         <CircularProgressbar

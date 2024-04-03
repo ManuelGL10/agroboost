@@ -15,7 +15,7 @@ const DatosExtras = () => {
   };
 
   return (
-    <div className='flex flex-col mt-5'>
+    <div className='flex flex-col mt-5 ml-4'>
       <div className="flex items-center mb-4">
         <h2 className='text-lg font-semibold text-xl mr-4'>Cultivo</h2>
         
@@ -37,22 +37,22 @@ const DatosExtras = () => {
       {cultivoSeleccionado && (
         <div className="flex flex-row">
 
-          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-60 h-80 mr-4'>
-            <h2 className='flex items-center font-semibold text-custom-204E51 text-xl mb-2 mt-2 ml-2'>Humedad</h2>
+          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-60 h-64 mr-4'>
+            <h2 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Humedad</h2>
             <div className='ml-4'>
               <GraficaHumedad humedad={92} />
             </div>
           </div>
 
-          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-60 h-80 mr-4'>
-            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl mb-2 mt-2 ml-2'>Temperatura</h3>
+          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-60 h-64 mr-4'>
+            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Temperatura</h3>
             <div className='ml-4'>
               <Termometro temperatura={-10} />
             </div>
           </div>
 
-          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-7/12 h-80 mr-4'>
-            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl mb-2 mt-2 ml-2'>Nutrientes</h3>
+          <div className='flex flex-col bg-white rounded-md shadow-md border border-custom-D9D9D9 border-2 w-7/12 h-64 mr-4'>
+            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Nutrientes</h3>
             <div className='flex flex-rol ml-4'>
               <GraficaNitrogeno nitrogeno={170} />
               <GraficaFosforo fosforo={50} />
