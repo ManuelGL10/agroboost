@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../img/LogoAgroBoostPNG.svg';
-import { IconDroplet, IconPlant, IconDevices, IconSettings, IconLogout,IconHome } from '@tabler/icons-react'
+import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout,IconHome } from '@tabler/icons-react'
 
 const NavbarLat = () => {
   return (
@@ -14,13 +14,13 @@ const NavbarLat = () => {
         </div>
         <ul className='py-8 px-6 text-xl'>
             <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='' className='flex w-full'>
+                <Link to='/userhome' className='flex w-full'>
                     <IconHome size={30} stroke={1.5}/>
                     <span className='ml-4'>Inicio</span>
                 </Link>
             </li>
             <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='' className='flex w-full'>
+                <Link to='/userDevice' className='flex w-full'>
                     <IconDevices size={30} stroke={1.5}/>
                     <span className='ml-4'>Dispositivo</span>
                 </Link>
@@ -34,8 +34,8 @@ const NavbarLat = () => {
             </li>
             <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to='' className='flex w-full'>
-                    <IconDroplet size={30} stroke={1.5}/>
-                    <span className='ml-4'>Riego</span>
+                    <IconListDetails size={30} stroke={1.5}/>
+                    <span className='ml-4'>Recordatorio</span>
                 </Link>
                 
             </li>

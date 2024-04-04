@@ -8,7 +8,7 @@ const InicioUser = () => {
   return (
     <div className='bg-background ml-[20%] p-4 h-screen h-full'>
       <div className='mt-16 mb-6 flex flex-row items-center'>
-        <div className='bg-white shadow-md rounded-md border border-custom-D9D9D9 border-5 flex items-center w-full'>
+        <div className='bg-white rounded-lg border border-custom-D9D9D9 border-2 flex items-center w-full'>
           <div className='flex flex-col'>
             <div className="mr-5 ml-72">
                 <div className='flex items-center justify-center'> 
