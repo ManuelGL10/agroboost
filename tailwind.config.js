@@ -24,6 +24,7 @@ module.exports = {
     "./src/views/VerificationPage.jsx",
     "./src/views/ProductosVenta.jsx",
     "./src/views/UserHome.jsx",
+    "./src/views/UserDevice.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -66,6 +67,9 @@ module.exports = {
     "./src/components/User/InicioUser.js",
     "./src/components/User/DatosUser.js",
     "./src/components/User/GraficaHumedad.js",
+    "./src/components/User/ClimateDay.js",
+    "./src/components/User/DeviceUser.js",
+    "./src/components/User/ModalEditar.js",
   ],
   theme: {
     extend: {

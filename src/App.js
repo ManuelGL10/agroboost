@@ -22,6 +22,7 @@ import ProfileUser from './views/ProfileUser';
 import Navbar_Top from './components/Navbar_Top';
 import ProductosVenta from './views/ProductosVenta';
 import UserHome from './views/UserHome';
+import UserDevice from './views/UserDevice';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <Route path='/verificationpage' element={<VerificationPage/>} />
       <Route path='/productosventa' element={<ProductosVenta/>} />
       <Route path='/userhome' element={<UserHome/>} />
+      <Route path='/userDevice' element={<UserDevice/>} />
     </Routes>
   );
 }

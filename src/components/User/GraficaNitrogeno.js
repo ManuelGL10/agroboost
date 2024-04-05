@@ -16,7 +16,7 @@ const GraficaNitrogeno = ({ nitrogeno }) => {
   const valorMaximo = 250; 
 
   return (
-    <div className="flex flex-col bg-white w-50 h-50 mr-4 mt-4 p-2">
+    <div className="flex flex-col bg-white w-50 h-40 mr-4 p-2">
       <div className="flex items-center justify-center h-52 relative">
         <CircularProgressbar
           value={nitrogeno}
@@ -34,7 +34,7 @@ const GraficaNitrogeno = ({ nitrogeno }) => {
           ppm
         </div>
       </div>
-      <h3 className="flex items-center justify-center font-bold mb-2 ml-2 text-[#4D7A7D]">Nitrógeno</h3>
+      <h3 className="flex items-center justify-center font-bold mb-2 ml-2 text-[#4D7A7D] h-0">Nitrógeno</h3>
     </div>
   );
 };
