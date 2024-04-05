@@ -38,10 +38,6 @@ const MainProduct = () => {
     <div className='bg-background ml-[20%] p-4'>
       <div className='flex mt-20'>
         <h1 className='text-3xl font-semibold'>Productos</h1>
-        <div className='flex items-center bg-white border-2 border-gray-200 p-2 rounded-full w-[30%] ml-auto'>
-          <IconSearch size={18} className='text-[#9ca3af] ml-2' />
-          <input placeholder='Buscar' className='bg-white ml-2 w-[80%] focus:outline-none' />
-        </div>
       </div>
       <div className='py-6'>
         <div className='w-full bg-white rounded-2xl overflow-hidden'>
@@ -59,12 +55,12 @@ const MainProduct = () => {
             <tbody>
               {productos.map((producto, index) => (
                 <tr key={producto._id} className='border-gray-200 border-y'>
-                  <td className='px-4 py-4 text-center'>{index + 1}</td>
-                  <td className='px-4 py-4'><img className='w-24 mx-auto rounded-xl' src={nutriente} alt='nutriente' /></td>
-                  <td className='px-4 py-4'>{producto.nombre_producto}</td>
-                  <td className='px-4 py-4'>${producto.precio}</td>
-                  <td className='px-4 py-4'>{producto.stock}</td>
-                  <td className='px-4 py-4'>
+                  <td className='px-2 py-4 text-center font-medium'>{index + 1}</td>
+                  <td className='px-2 py-4'><img className='w-24 mx-auto rounded-xl' src={nutriente} alt='nutriente' /></td>
+                  <td className='px-2 py-4'>{producto.nombre_producto}</td>
+                  <td className='px-2 py-4'>${producto.precio}</td>
+                  <td className='px-2 py-4'>{producto.stock}</td>
+                  <td className='px-2 py-4'>
                     <div className='flex justify-around p-2 rounded-lg bg-gray-50 border border-gray-300'>
                       <button type='button' onClick={() => handleEditClick(producto)} ><IconEdit className='text-gray-500' /></button>
                       <span className='mx-2 text-gray-300 font-semibold'>|</span>
@@ -77,7 +73,6 @@ const MainProduct = () => {
           </table>
         </div>
       </div>
-      {/* Renderiza el modal si está abierto y si hay un producto seleccionado */}
       {isModalOpen && selectedProduct && (
         <ProductModal product={selectedProduct} isOpen={isModalOpen} onClose={handleCloseModal} />
       )}

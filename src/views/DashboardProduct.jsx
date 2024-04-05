@@ -7,8 +7,8 @@ function DashboardProduct() {
   return (
     <div>
       <NavbarTop/>
-      <MainProduct/>
       <NavbarAdmin/>
+      <MainProduct/>
     </div>
   )
 }

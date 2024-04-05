@@ -20,11 +20,6 @@ const ModalBienvenida = ({ isOpen, onClose }) => {
             <img src={ImgComprobado} alt="ImgComprobado" className="w-24 h-24" />
           </div>
           <div className="text-center text-[#4D7A7D]">¡Te has registrado exitosamente!</div>
-          <div className="flex justify-center mt-4">
-            <button onClick={onClose} className="bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-              Cerrar
-            </button>
-          </div>
         </div>
       </div>
     </>

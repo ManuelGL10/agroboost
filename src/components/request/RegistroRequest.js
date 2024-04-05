@@ -1,5 +1,3 @@
-import React from 'react'
-
 const RegistroRequest = async ({name, apellidopaterno, apellidomaterno, email, password }) => {
     try {
         const response = await fetch('http://localhost:4000/register', {

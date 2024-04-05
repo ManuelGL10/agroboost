@@ -1,45 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { IconCameraUp, IconEye, IconEyeOff } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const MainProfile = ({ userData }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [motherLastName, setMotherLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    
+    const validationSchema = Yup.object({
+        nombre: Yup.string().required('Campo requerido'),
+        apellido_paterno: Yup.string().required('Campo requerido'),
+        apellido_materno: Yup.string().required('Campo requerido'),
+        correo_electronico: Yup.string().email('Correo electrónico inválido').required('Campo requerido'),
+        contrasena: Yup.string().min(8, 'La contraseña debe tener al menos 8 caracteres').required('Campo requerido')
+    });
 
-    useEffect(() => {
-        if (userData) {
-            setName(userData.nombre || '');
-            setLastName(userData.apellido_paterno || '');
-            setMotherLastName(userData.apellido_materno || '');
-            setEmail(userData.correo_electronico || '');
-            setPassword(userData.contrasena || '');
-        }
-    }, [userData]);
+    const handleSubmit = async (values, { setSubmitting }) => {
+        const {nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena} = values
+        setTimeout(async () => {
+            try {
+                await UpdateUser({
+                    id: userData._id,
+                    nombre: nombre,
+                    apellido_paterno: apellido_paterno,
+                    apellido_materno: apellido_materno,
+                    correo_electronico: correo_electronico,
+                    contrasena: contrasena
+                });
+                console.log('Datos actualizados:');
+            } catch (error) {
+                console.error('Error al actualizar los datos:', error.message);
+            }
+            setSubmitting(false);
+        }, 400);
+    };
 
     const handleOpen = () => {
         setIsOpen(!isOpen);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const data = await UpdateUser({
-                id: userData._id,
-                nombre: name,
-                apellido_paterno: lastName,
-                apellido_materno: motherLastName,
-                correo_electronico: email,
-                contrasena: password
-            });
-
-            console.log('Datos actualizados:');
-        } catch (error) {
-            console.error('Error al actualizar los datos:', error.message);
-        }
     };
 
     return (
@@ -55,43 +52,96 @@ const MainProfile = ({ userData }) => {
                             Cambiar foto
                         </button>
                     </div>
-                    <form className='flex flex-col' onSubmit={handleSubmit}>
-                        <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600'>
-                            <div className='flex flex-col order-1'>
-                                <span>Nombre</span>
-                                <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' value={name} onChange={e => setName(e.target.value)} />
-                            </div>
-                            <div className='flex flex-col order-3'>
-                                <span>Apellido Paterno</span>
-                                <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' value={lastName} onChange={e => setLastName(e.target.value)} />
-                            </div>
-                            <div className='flex flex-col order-5'>
-                                <span>Apellido Materno</span>
-                                <input type='text' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' value={motherLastName} onChange={e => setMotherLastName(e.target.value)} />
-                            </div>
-                            <div className='flex flex-col order-2'>
-                                <span>Correo</span>
-                                <input type='email' className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' value={email} onChange={e => setEmail(e.target.value)} />
-                            </div>
-                            <div className='flex flex-col order-4'>
-                                <span>Contraseña</span>
-                                <div className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2 flex items-center'>
-                                    <input type={isOpen ? 'text' : 'password'} className='bg-background w-full focus:outline-none' value={password} onChange={e => setPassword(e.target.value)} />
-                                    <button type='button' onClick={handleOpen}>
-                                        {isOpen ? <IconEye size={28} stroke={1.8} color='#4b5563' /> : <IconEyeOff size={28} stroke={1.8} color='#4b5563' />}
-                                    </button>
+                    <Formik
+                        enableReinitialize
+                        initialValues={userData ? {
+                            nombre: userData.nombre || '',
+                            apellido_paterno: userData.apellido_paterno || '',
+                            apellido_materno: userData.apellido_materno || '',
+                            correo_electronico: userData.correo_electronico || '',
+                            contrasena: userData.contrasena || ''
+                        } : {
+                            nombre: '',
+                            apellido_paterno: '',
+                            apellido_materno: '',
+                            correo_electronico: '',
+                            contrasena: ''
+                        }}
+                        validationSchema={validationSchema}
+                        onSubmit={handleSubmit}
+                    >
+                        <Form className='flex flex-col'>
+                            <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600'>
+                                <div className='flex flex-col order-1'>
+                                    <span>Nombre</span>
+                                    <Field 
+                                        type='text' 
+                                        id='nombre' 
+                                        name='nombre' 
+                                        className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' />
+                                    <ErrorMessage name='nombre' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Apellido Paterno</span>
+                                    <Field 
+                                        type='text' 
+                                        id='apellido_paterno'
+                                        name='apellido_paterno' 
+                                        className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' 
+                                    />
+                                    <ErrorMessage name='apellido_paterno' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Apellido Materno</span>
+                                    <Field 
+                                        type='text' 
+                                        id='apellido_materno'
+                                        name='apellido_materno' 
+                                        className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2' 
+                                    />
+                                    <ErrorMessage name='apellido_materno' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Correo Electrónico</span>
+                                    <Field 
+                                        type='email' 
+                                        id='correo_electronico'
+                                        name='correo_electronico' 
+                                        className='border border-gray-300 bg-background p-2 rounded-md text-black mt-2'
+                                        disabled={true}
+                                    />
+                                    <ErrorMessage name='correo_electronico' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Contraseña</span>
+                                    <div className='flex border border-gray-300 bg-background p-2 rounded-md text-black mt-2'>
+                                        <Field
+                                            type={isOpen ? "text" : "password"} 
+                                            id="contrasena"
+                                            name="contrasena"
+                                            className="w-full bg-background focus:outline-none focus:border-[#204E51]"
+                                            placeholder="Ingresa su contraseña"
+                                            />
+                                            <button
+                                            type="button"
+                                            onClick={handleOpen}
+                                            >
+                                            {isOpen ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+                                        </button>
+                                    </div>
+                                    <ErrorMessage name='contrasena' component='div' className='text-red-500' />
                                 </div>
                             </div>
-                        </div>
-                        <div className='justify-evenly flex py-2'>
-                            <button type='button' className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
-                                Eliminar Cuenta
-                            </button>
-                            <button type='submit' className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
-                                Actualizar Datos
-                            </button>
-                        </div>
-                    </form>
+                            <div className='justify-evenly flex py-2'>
+                                <button type='button' className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
+                                    Eliminar Cuenta
+                                </button>
+                                <button type='submit' className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                                    Actualizar Datos
+                                </button>
+                            </div>
+                        </Form>
+                    </Formik>
                 </div>
             </div>
         </div>

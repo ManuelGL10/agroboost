@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import Logo from '../img/LogoAgroBoostPNG.svg';
 import ModalBienvenida from './ModalBienvenida';
 import ModalError from './ModalError';
@@ -7,18 +9,29 @@ import RegistroRequest from './request/RegistroRequest';
 import { useNavigate } from 'react-router-dom';
 
 const RegistroForm = () => {
-  const [name, setName] = useState('');
-  const [apellidopaterno, setapellidopaterno] = useState('');
-  const [apellidomaterno, setapellidomaterno] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const initialValues = {
+    name: '',
+    apellidopaterno: '',
+    apellidomaterno: '',
+    email: '',
+    password: '',
+    termsAccepted: false
+  };
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Campo requerido'),
+    apellidopaterno: Yup.string().required('Campo requerido'),
+    apellidomaterno: Yup.string().required('Campo requerido'),
+    email: Yup.string().email('Correo electrónico inválido').required('Campo requerido'),
+    password: Yup.string().required('Campo requerido').min(8, "La contraseña debe tener al menos 8 caracteres"),
+    termsAccepted: Yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones')
+  });
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const { name, apellidopaterno, apellidomaterno, email, password } = values;
 
     const { success, error } = await RegistroRequest({ 
       name, 
@@ -35,6 +48,8 @@ const RegistroForm = () => {
       console.error('Error registro:', error);
       // Puedes mostrar un mensaje de error al usuario, por ejemplo, en un modal
     }
+
+    setSubmitting(false);
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -47,100 +62,86 @@ const RegistroForm = () => {
       <div className="flex items-center my-4">
         <img src={Logo} alt="Logo AgroBoost" className="w-32 h-auto mx-auto"/>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="block font-medium text-base text-custom-00000 mb-2 text-left">Nombre(s)</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
-            placeholder="Ingrese su nombre"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Paterno</label>
-          <input
-            type="text"
-            id="apellidopaterno"
-            value={apellidopaterno}
-            onChange={(e) => setapellidopaterno(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
-            placeholder="Ingrese sus apellidos"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="lastName" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Materno</label>
-          <input
-            type="text"
-            id="apellidomaterno"
-            value={apellidomaterno}
-            onChange={(e) => setapellidomaterno(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
-            placeholder="Ingrese sus apellidos"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 text-left">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
-            placeholder="Ingrese su correo"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-          <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51] flex">
-            <input
-              type={showPassword ? "text" : "password"} 
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full focus:outline-none focus:border-[#204E51]"
-              placeholder="Ingresa su contraseña"
-              required
-            />
-            <button
-              type="button"
-              onClick={handleTogglePasswordVisibility}
-            >
-              {showPassword ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <div className="mb-3">
+              <label htmlFor="name" className="block font-medium text-base text-custom-00000 mb-2 text-left">Nombre(s)</label>
+              <Field
+                type="text"
+                id="name"
+                name="name"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                placeholder="Ingrese su Nombre"
+              />
+              <ErrorMessage name="name" component="div" className="text-red-500" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="apellidopaterno" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Paterno</label>
+              <Field
+                type="text"
+                id="apellidopaterno"
+                name="apellidopaterno"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                placeholder="Ingrese su Apellido Paterno"
+              />
+              <ErrorMessage name="apellidopaterno" component="div" className="text-red-500" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="apellidomaterno" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Materno</label>
+              <Field
+                type="text"
+                id="apellidomaterno"
+                name="apellidomaterno"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                placeholder="Ingrese su Apellido Materno"
+              />
+              <ErrorMessage name="apellidomaterno" component="div" className="text-red-500" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 text-left">Correo Electrónico</label>
+              <Field
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                placeholder="Ingrese su nombre"
+              />
+              <ErrorMessage name="email" component="div" className="text-red-500" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
+              <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
+                <Field
+                  type={showPassword ? "text" : "password"} 
+                  id="password"
+                  name="password"
+                  className="w-full focus:outline-none focus:border-[#204E51]"
+                  placeholder="Ingresa su contraseña"
+                />
+                <button
+                  type="button"
+                  onClick={handleTogglePasswordVisibility}
+                >
+                  {showPassword ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+                </button>
+              </div>
+              <ErrorMessage name="password" component="div" className="text-red-500" />
+            </div>
+            <button type="submit" className="w-full my-4 bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51" disabled={isSubmitting}>
+              Registrarse
             </button>
-          </div>
-        </div>
-        <div className="my-3">
-          <label htmlFor="terms" className="flex items-center">
-            <input
-              type="checkbox"
-              id="terms"
-              checked={termsAccepted}
-              onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mr-2"
-              required
-            />
-            <span className="text-base text-custom-204E51">Acepto los términos y condiciones</span>
-          </label>
-        </div>
-        <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-          Registrarse
-        </button>
-        <div className="text-center mt-3">
-          <p>¿Ya tienes cuenta? <a href="/login" className="text-[#4D7A7D] font-bold">Inicia sesión</a></p>
-        </div>
-      </form>
-      {/*<ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
-      <ModalError isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />*/}
+            <div className="text-center">
+              <p>¿Ya tienes cuenta? <a href="/login" className="text-[#4D7A7D] font-bold">Inicia sesión</a></p>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
-    
-    
   );
 };
 

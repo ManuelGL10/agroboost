@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../img/LogoAgroBoostPNG.svg'
 import { IconDashboard, IconUser, IconPlant, IconShoppingCart, IconPackage, IconSettings, IconLogout } from '@tabler/icons-react'
@@ -7,8 +7,14 @@ import { useAuth } from './request/AuthContext'
 const NavbarAdmin = () => {
     const { userId } = useAuth();
 
+    useEffect(() => {
+        if (userId) {
+          localStorage.setItem('userId', userId);
+        }
+    }, [userId]);
+
   return (
-    <div className='bg-white w-[20%] h-full fixed left-0 top-0 justify-center'>
+    <div className='bg-white w-[20%] h-full fixed left-0 top-0'>
         <div className='mt-4'>
             <div className='flex items-center justify-center'>
                 <img className='h-14' src={Logo} alt="Logo AgroBoost" />

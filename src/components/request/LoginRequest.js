@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LoginRequest = async ({ email, password }) => {
   try {
     const response = await fetch('http://localhost:4000/login', {

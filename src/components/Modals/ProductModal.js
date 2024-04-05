@@ -13,6 +13,8 @@ const ProductModal = ({ product, isOpen, onClose }) => {
     setStock(product.stock || '');
   }, [product]);
 
+  console.log(product)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
         try {
@@ -31,9 +33,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
 
   return (
     <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
-      {/* Fondo oscuro */}
       <div className="fixed inset-0 bg-black opacity-50"></div>
-      {/* Contenido del modal */}
       <div className="bg-white px-4 py-6 rounded-xl z-10 max-w-lg">
         <div className='flex w-full justify-end'>
           <button onClick={onClose}>
