@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { IconX } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser'
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 const ProductModal = ({ users, isOpen, onClose }) => {
-    const [ nombre, setNombre ] = useState('')
-    const [ apellidoPaterno, setApellidoPaterno ] = useState('')
-    const [ apellidoMaterno, setApellidoMaterno ] = useState('')
-    const [ correo, setCorreo ] = useState('')
-    const [ contrasena, setContrasena ] = useState('')
-    const [ eyeOpen, setEyeOpen ] = useState(false)
+    const [eyeOpen, setEyeOpen] = useState(false);
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
-    useEffect(() => {
-        setNombre( users.nombre || '' );
-        setApellidoPaterno( users.apellido_paterno || '' );
-        setApellidoMaterno( users.apellido_materno || '' );
-        setCorreo( users.correo_electronico || '' );
-        setContrasena( users.contrasena || '' )
-    }, [users]);
+    const validationSchema = Yup.object({
+        nombre: Yup.string().required('Campo requerido'),
+        apellido_paterno: Yup.string().required('Campo requerido'),
+        apellido_materno: Yup.string().required('Campo requerido'),
+        correo_electronico: Yup.string().email('Correo electrónico inválido').required('Campo requerido'),
+        contrasena: Yup.string().min(8, 'La contraseña debe tener al menos 8 caracteres').required('Campo requerido')
+    });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (values) => {
+        const { nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena } = values
         try {
             const data = await UpdateUser({
               id: users._id,
               nombre: nombre,
-              apellido_paterno: apellidoPaterno,
-              apellido_materno: apellidoMaterno,
-              correo_electronico: correo,
+              apellido_paterno: apellido_paterno,
+              apellido_materno: apellido_materno,
+              correo_electronico: correo_electronico,
               contrasena: contrasena
             });
             console.log("Datos actualizados")
@@ -43,61 +42,103 @@ const ProductModal = ({ users, isOpen, onClose }) => {
     };
 
   return (
-    <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
-      <div className="fixed inset-0 bg-black opacity-50"></div>
-      <div className="bg-white px-4 py-6 rounded-xl z-10 w-[55%]">
-        <div className='flex w-full justify-end'>
-          <button onClick={onClose}>
-            <IconX size={28}/>
-          </button>
+    <div className={`${darkMode && "dark"}`}>
+        <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
+            <div className="fixed inset-0 bg-black opacity-50"></div>
+            <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 w-[55%]">
+                <div className='flex w-full justify-end'>
+                    <button onClick={onClose}>
+                        <IconX size={28} className='dark:text-white'/>
+                    </button>
+                </div>
+                <h2 className="text-2xl font-semibold w-full dark:text-white">Editar Usuario</h2>
+                <Formik
+                        enableReinitialize
+                        initialValues={users ? {
+                            nombre: users.nombre || '',
+                            apellido_paterno: users.apellido_paterno || '',
+                            apellido_materno: users.apellido_materno || '',
+                            correo_electronico: users.correo_electronico || '',
+                            contrasena: users.contrasena || ''
+                        } : {
+                            nombre: '',
+                            apellido_paterno: '',
+                            apellido_materno: '',
+                            correo_electronico: '',
+                            contrasena: ''
+                        }}
+                        validationSchema={validationSchema}
+                        onSubmit={handleSubmit}
+                    >
+                        <Form className='flex flex-col'>
+                            <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600 dark:text-gray-300'>
+                                <div className='flex flex-col order-1'>
+                                    <span>Nombre</span>
+                                    <Field 
+                                        type='text' 
+                                        id='nombre' 
+                                        name='nombre' 
+                                        className='border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' />
+                                    <ErrorMessage name='nombre' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Apellido Paterno</span>
+                                    <Field 
+                                        type='text' 
+                                        id='apellido_paterno'
+                                        name='apellido_paterno' 
+                                        className='border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' 
+                                    />
+                                    <ErrorMessage name='apellido_paterno' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Apellido Materno</span>
+                                    <Field 
+                                        type='text' 
+                                        id='apellido_materno'
+                                        name='apellido_materno' 
+                                        className='border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' 
+                                    />
+                                    <ErrorMessage name='apellido_materno' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Correo Electrónico</span>
+                                    <Field 
+                                        type='email' 
+                                        id='correo_electronico'
+                                        name='correo_electronico' 
+                                        className='border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'
+                                        disabled={true}
+                                    />
+                                    <ErrorMessage name='correo_electronico' component='div' className='text-red-500' />
+                                </div>
+                                <div className='flex flex-col order-1'>
+                                    <span>Contraseña</span>
+                                    <div className='flex border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'>
+                                        <Field
+                                            type={eyeOpen ? "text" : "password"} 
+                                            id="contrasena"
+                                            name="contrasena"
+                                            className="w-full bg-white dark:bg-[#323D4E] focus:outline-none"
+                                            placeholder="Ingresa su contraseña"
+                                            />
+                                            <button
+                                            type="button"
+                                            onClick={handleOpen}
+                                            >
+                                            {eyeOpen ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+                                        </button>
+                                    </div>
+                                    <ErrorMessage name='contrasena' component='div' className='text-red-500' />
+                                </div>
+                            </div>
+                            <div className='flex justify-center items-center mt-4'>
+                                <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+                            </div>
+                        </Form>
+                    </Formik>
+            </div>
         </div>
-        <h2 className="text-2xl font-semibold w-full">Editar Usuario</h2>
-        <form className='py-2 w-full' onSubmit={handleSubmit}>
-            <div className='grid grid-cols-2 gap-x-4'>
-                <div className='text-lg py-2 flex flex-col'>
-                    <p>Nombre:</p>
-                    <input 
-                        className='mt-2 border border-gray-100 rounded-lg py-1 px-1'
-                        value={nombre}
-                        onChange={e => setNombre(e.target.value)}/>
-                </div>
-                <div className='text-lg py-2 flex flex-col'>
-                    <p>Apellido Paterno:</p>
-                    <input 
-                    className='mt-2 border border-gray-100 rounded-lg py-1 px-1'
-                    value={apellidoPaterno}
-                    onChange={e => setApellidoPaterno(e.target.value)}/>
-                </div>
-                <div className='text-lg py-2 flex flex-col'>
-                    <p>Apellido Materno:</p>
-                    <input 
-                    className='mt-2 border border-gray-100 rounded-lg py-1 px-1'
-                    value={apellidoMaterno}
-                    onChange={e => setApellidoMaterno(e.target.value)}/>
-                </div>
-                <div className='text-lg py-2 flex flex-col'>
-                    <p>Correo:</p>
-                    <input 
-                        className='mt-2 border border-gray-100 rounded-lg py-1 px-1'
-                        value={correo}
-                        onChange={e => setCorreo(e.target.value)}/>
-                </div>
-                <div className='text-lg py-2 flex flex-col'>
-                    <p>Contraseña:</p>
-                    <div className='mt-2 border border-gray-100 rounded-lg py-1 px-1 flex'>
-                        <input type={eyeOpen ? 'text' : 'password'} className='w-full focus:outline-none' value={contrasena} onChange={e => setContrasena(e.target.value)} />
-                        <button type='button' onClick={handleOpen}>
-                            {eyeOpen ? <IconEye size={28} stroke={1.8} color='#4b5563' /> : <IconEyeOff size={28} stroke={1.8} color='#4b5563' />}
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className='flex justify-center items-center mt-4'>
-                <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
-            </div>
-        </form>
-        
-      </div>
     </div>
   );
 };

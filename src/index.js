@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@fontsource/hind-madurai';
 import { AuthProvider } from './components/request/AuthContext';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <App />
+        <DarkModeProvider>
+          <App />
+        </DarkModeProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,
