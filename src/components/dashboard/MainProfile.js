@@ -4,10 +4,13 @@ import { UpdateUser } from '../request/UpdateUser';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import { DeleteUser } from '../request/DeleteUser';
+import DeleteModal from '../Modals/DeleteModal';
 
 const MainProfile = ({ userData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const [ onClose, setIsOnClose] = useState(false)
     
     const validationSchema = Yup.object({
         nombre: Yup.string().required('Campo requerido'),
@@ -37,9 +40,22 @@ const MainProfile = ({ userData }) => {
         }, 400);
     };
 
+    const handleDelete = async () => {
+        try {
+            const data = await DeleteUser({id: userData._id})
+            setIsOnClose(!onClose)
+        } catch (error) {
+            console.error('Error al actualizar los datos:', error.message);
+        }
+    }
+
     const handleOpen = () => {
         setIsOpen(!isOpen);
     };
+
+    const handleCloseModal = () => {
+        setIsOnClose(!onClose);
+      };
 
     return (
         <div className={`${darkMode && "dark"}`}>
@@ -136,7 +152,7 @@ const MainProfile = ({ userData }) => {
                                     </div>
                                 </div>
                                 <div className='justify-evenly flex py-2'>
-                                    <button type='button' className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
+                                    <button type='button' onClick={handleCloseModal} className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
                                         Eliminar Cuenta
                                     </button>
                                     <button type='submit' className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
@@ -148,6 +164,7 @@ const MainProfile = ({ userData }) => {
                     </div>
                 </div>
             </div>
+            <DeleteModal users={userData} isOpen={onClose} onClose={handleCloseModal}/>
         </div>
     );
 };

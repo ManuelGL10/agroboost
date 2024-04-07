@@ -10,10 +10,10 @@ const Download = () => {
         <img src={appmovil} className='order-2 md:order-none rounded-2xl w-[250px] mx-auto my-4 bg-transparent' alt="appmovil"/>
         <div className='order-1 md:order-none m-6 flex flex-col justify-center'>
             <span className='block font-medium lg:text-4xl md:text-3xl text-2xl text-custom-204E51 mb-4 md:text-left text-center'>
-                Descarga la aplicación en tu disposivo móvil.
+                Descarga la aplicación en tu dispositivo móvil.
             </span>
             <span className='block text-black lg:text-xl md:text-lg text-base text-justify'>
-                Disfruta al máximo todas las funcionalidades que AgroBoost tiene para ti
+                Disfruta al máximo todas las funcionalidades que AgroBoost tiene para ti.
             </span>
             <div className='flex justify-evenly mt-6'>
                 <img src={appstore} alt='appstore' className='hover:scale-110 transition inline-block'/>

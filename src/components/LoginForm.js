@@ -112,14 +112,14 @@ const LoginForm = () => {
         <span className="text-black px-4">o iniciar sesión con</span>
         <hr className="border-black flex-grow" />
       </div>
-      <div className="flex justify-evenly">
-        <button type="button" className="flex items-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+      <div className="grid grid-cols-2 gap-x-4">
+        <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
           <img src={ImgGoogle} alt="ImgGoogle" className="w-6 h-6 mr-2" />
-          Google
+          <span>Google</span>
         </button>
-        <button type="button" className="flex items-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
-        <img src={ImgFacebook} alt="ImgFacebook" className="w-6 h-6 mr-2" />
-          Facebook
+        <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+          <img src={ImgFacebook} alt="ImgFacebook" className="w-6 h-6 mr-2" />
+          <span>Facebook</span>
         </button>
       </div>
       <div className="text-center mt-4">

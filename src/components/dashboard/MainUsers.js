@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext} from 'react';
 import { IconEdit, IconTrash, IconSearch, IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
 import GetUsers from '../request/GetUsers';
 import UsersModal from '../../components/Modals/UsersModal';
+import DeleteModal from '../Modals/DeleteModal';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
 const MainUsers = () => {
@@ -9,6 +10,7 @@ const MainUsers = () => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenD, setIsModalOpenD] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(5);
@@ -43,6 +45,16 @@ const MainUsers = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setSelectedUsers(null);
+  };
+  
+  const handleDeleteClick = (user) => {
+    setSelectedUsers(user);
+    setIsModalOpenD(true);
+  };
+
+  const handleCloseModalD = () => {
+    setIsModalOpenD(false);
     setSelectedUsers(null);
   };
 
@@ -95,7 +107,9 @@ const MainUsers = () => {
                             <IconEdit  className='text-gray-500 dark:text-gray-300'/>
                           </button>
                           <span className='mx-2 text-gray-300 font-semibold'>|</span>
-                          <IconTrash className='text-[#D33363]'/>
+                          <button type='button' onClick={() => handleDeleteClick(user)}>
+                            <IconTrash className='text-[#D33363]'/>
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -122,6 +136,9 @@ const MainUsers = () => {
         )}
         {isModalOpen && selectedUsers && (
           <UsersModal users={selectedUsers} isOpen={isModalOpen} onClose={handleCloseModal} />
+        )}
+        {isModalOpenD && selectedUsers && (
+          <DeleteModal users={selectedUsers} isOpen={isModalOpenD} onClose={handleCloseModalD} />
         )}
       </div>
     </div>

@@ -61,6 +61,7 @@ module.exports = {
     "./src/components/Modals/ProductModal.js",
     "./src/components/Modals/UsersModal.js",
     "./src/components/Modals/PasswordModal.js",
+    "./src/components/Modals/DeleteModal.js",
     "./src/components/Producto.js",
     "./src/components/User/NavBarUser.js",
     "./src/components/User/NavBarLat.js",
