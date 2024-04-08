@@ -25,6 +25,9 @@ module.exports = {
     "./src/views/ProductosVenta.jsx",
     "./src/views/UserHome.jsx",
     "./src/views/UserDevice.jsx",
+    "./src/views/UserInf.jsx",
+    "./src/views/AddressInf.jsx",
+    "./src/views/Cultivo.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -71,6 +74,9 @@ module.exports = {
     "./src/components/User/ClimateDay.js",
     "./src/components/User/DeviceUser.js",
     "./src/components/User/ModalEditar.js",
+    "./src/components/UserInfo.js",
+    "./src/components/AddressInformation.js",
+    "./src/components/CultivoForm.js",
   ],
   theme: {
     extend: {
