@@ -26,6 +26,7 @@ module.exports = {
     "./src/views/UserHome.jsx",
     "./src/views/UserDevice.jsx",
     "./src/views/UserReminder.jsx",
+    "./src/views/UserCrop.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -73,6 +74,7 @@ module.exports = {
     "./src/components/User/DeviceUser.js",
     "./src/components/User/ModalEditar.js",
     "./src/components/User/ReminderUser.js",
+    "./src/components/User/CropUser.js",
   ],
   theme: {
     extend: {
