@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { UpdatePassAdmin } from '../request/UpdatePassAdmin';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
-const PasswordModal = ({ userData, isOpen, onClose }) => {
+const PasswordModal = ({ userData, isOpen, onClose, onSuccessModalOpen }) => {
   const [ eyeOpen, setEyeOpen ] = useState(false)
   const [ newEyeOpen, setNewEyeOpen ] = useState(false)
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
@@ -34,6 +34,7 @@ const PasswordModal = ({ userData, isOpen, onClose }) => {
               contrasena,
             });
             onClose()
+            onSuccessModalOpen()
           } catch (error) {
             console.error('Error al actualizar los datos:', error.message);
         }

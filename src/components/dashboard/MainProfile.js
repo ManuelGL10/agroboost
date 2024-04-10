@@ -6,11 +6,14 @@ import * as Yup from 'yup';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { DeleteUser } from '../request/DeleteUser';
 import DeleteModal from '../Modals/DeleteModal';
+import SuccessModal from '../Modals/SuccessModal';
 
 const MainProfile = ({ userData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
     const [ onClose, setIsOnClose] = useState(false)
+    const [ onCloseS, setIsOnCloseS] = useState(false)
+    const [ onCloseSE, setIsOnCloseSE] = useState(false)
     
     const validationSchema = Yup.object({
         nombre: Yup.string().required('Campo requerido'),
@@ -32,6 +35,7 @@ const MainProfile = ({ userData }) => {
                     correo_electronico: correo_electronico,
                     contrasena: contrasena
                 });
+                setIsOnCloseS(!onCloseS)
                 console.log('Datos actualizados:');
             } catch (error) {
                 console.error('Error al actualizar los datos:', error.message);
@@ -40,22 +44,21 @@ const MainProfile = ({ userData }) => {
         }, 400);
     };
 
-    const handleDelete = async () => {
-        try {
-            const data = await DeleteUser({id: userData._id})
-            setIsOnClose(!onClose)
-        } catch (error) {
-            console.error('Error al actualizar los datos:', error.message);
-        }
-    }
-
     const handleOpen = () => {
         setIsOpen(!isOpen);
     };
 
     const handleCloseModal = () => {
         setIsOnClose(!onClose);
-      };
+    };
+
+    const handleCloseModalS = () => {
+        setIsOnCloseS(!onCloseS);
+    };
+
+    const handleCloseModalSE = () => {
+        setIsOnCloseSE(!onCloseSE);
+    };
 
     return (
         <div className={`${darkMode && "dark"}`}>
@@ -164,7 +167,26 @@ const MainProfile = ({ userData }) => {
                     </div>
                 </div>
             </div>
-            <DeleteModal users={userData} isOpen={onClose} onClose={handleCloseModal}/>
+            <DeleteModal 
+                users={userData} 
+                isOpen={onClose} 
+                onClose={handleCloseModal}
+                onSuccessModalOpen={handleCloseModalSE}
+                title={"Eliminar Cuenta"}
+                mensaje={"¿Está seguro de que desea eliminar su cuenta? Esta acción no puede deshacerse."}
+            />
+            <SuccessModal
+                isOpen={onCloseS}
+                onClose={handleCloseModalS}
+                title={"Datos Actualizados"}
+                mensaje={"Sus datos se han actualizado"}
+            />
+            <SuccessModal
+                isOpen={onCloseSE}
+                onClose={handleCloseModalSE}
+                title={"Usuario Eliminado"}
+                mensaje={"Su cuenta ha sido eliminada"}
+            />
         </div>
     );
 };

@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { IconTrash } from '@tabler/icons-react';
 import { DeleteUser } from '../request/DeleteUser';
+import SuccessModal from './SuccessModal'
 
-function DeleteModal({ users, isOpen, onClose }) {
+function DeleteModal({ users, isOpen, onClose, title, mensaje, onSuccessModalOpen }) {
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
     const handleSubmit = async () => {
         try {
             const data = await DeleteUser({id: users._id})
             onClose()
+            onSuccessModalOpen()
         } catch (error) {
             console.error('Error al actualizar los datos:', error.message);
         }
@@ -25,10 +27,10 @@ function DeleteModal({ users, isOpen, onClose }) {
                         <div className='h-10 w-10 rounded-full bg-red-200 flex items-center justify-center'>
                             <IconTrash color='red'/>
                         </div>
-                        <h1 className='text-xl font-semibold mt-2 dark:text-white'>Eliminar Usuario</h1>
+                        <h1 className='text-xl font-semibold mt-2 dark:text-white'>{title}</h1>
                     </div>
                     <div className='py-6 text-lg text-gray-600 dark:text-gray-400 text-center'>
-                        <span>¿Estás seguro de que deseas eliminar al usuario? Esta acción no puede deshacerse.</span>
+                        <span>{mensaje}</span>
                     </div>
                     <div className='w-full grid grid-cols-2 gap-x-4'>
                         <button onClick={onClose} className='border-2 border-gray-500 py-2 font-bold text-gray-500 dark:border-gray-300 dark:text-gray-300 rounded-md'>Cancelar</button>

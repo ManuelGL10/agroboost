@@ -4,6 +4,7 @@ import GetUsers from '../request/GetUsers';
 import UsersModal from '../../components/Modals/UsersModal';
 import DeleteModal from '../Modals/DeleteModal';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import SuccessModal from '../Modals/SuccessModal';
 
 const MainUsers = () => {
   const [users, setUsers] = useState([]);
@@ -11,6 +12,7 @@ const MainUsers = () => {
   const [selectedUsers, setSelectedUsers] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenD, setIsModalOpenD] = useState(false);
+  const [ onOpen, setOnOpen ] = useState(false)
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(5);
@@ -58,6 +60,10 @@ const MainUsers = () => {
     setSelectedUsers(null);
   };
 
+  const handleModal = () => {
+    setOnOpen(!onOpen)
+  }
+
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
@@ -99,7 +105,7 @@ const MainUsers = () => {
                     <tr key={user._id} className='border-gray-200 dark:border-gray-600 border-y'>
                       <td className='text-center font-medium py-4 px-2'>{indexOfFirstUser + index + 1}</td>
                       <td className='py-4 px-2'>{user.nombre} {user.apellido_paterno} {user.apellido_materno}</td>
-                      <td className='py-4 px-2'>{user.direccion && user.direccion.codigo_postal}, {user.direccion && user.direccion.calle}, {user.direccion && user.direccion.cuidad}, {user.direccion && user.direccion.estado}</td>
+                      <td className='py-4 px-2'>{user.direccion && user.direccion.codigo_postal}, {user.direccion && user.direccion.calle}, {user.direccion && user.direccion.ciudad}, {user.direccion && user.direccion.estado}</td>
                       <td className='py-4 px-2'>{user.correo_electronico}</td>
                       <td className='py-4 px-2'>
                         <div className='flex justify-around p-2 rounded-lg bg-gray-50 dark:bg-[#323D4E] border border-gray-300 dark:border-gray-600'>
@@ -138,7 +144,21 @@ const MainUsers = () => {
           <UsersModal users={selectedUsers} isOpen={isModalOpen} onClose={handleCloseModal} />
         )}
         {isModalOpenD && selectedUsers && (
-          <DeleteModal users={selectedUsers} isOpen={isModalOpenD} onClose={handleCloseModalD} />
+          <DeleteModal 
+            users={selectedUsers} 
+            isOpen={isModalOpenD} 
+            onClose={handleCloseModalD} 
+            onSuccessModalOpen={handleModal}
+            title={"Eliminar Usuario"}
+            mensaje={"¿Estás seguro de que deseas eliminar al usuario? Esta acción no puede deshacerse."}/>
+        )}
+        {onOpen && (
+            <SuccessModal
+                title={"Usuario Eliminado"}
+                mensaje={"El usuario ha sido eliminado de la base de datos"}
+                isOpen={onOpen}
+                onClose={handleModal}
+            />
         )}
       </div>
     </div>

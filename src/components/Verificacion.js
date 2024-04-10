@@ -1,40 +1,139 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { IconArrowLeft } from '@tabler/icons-react';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import ErrorModal from './Modals/ErrorModal';
 
 const Verificacion = () => {
-  return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg relative mb-8">
-      <Link to="/Login" className="absolute top-0 left-0 p-4">
-        <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-      </Link>
-      <div className="text-center mb-14">
-        <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51">Verificación de cuenta</h2>
-      </div>
-      <div className="mb-20 text-center">
-        <h1 className="md:text-xl sm:text-lg text-base text-gray-500">Se ha enviado un código de verificación al correo proporcionado.</h1>
-      </div>
-      <form className="text-center">
-        <div className="flex justify-center mb-2">
-          <div className="w-full flex justify-around">
-            <input type="text" id="digit1" name="digit1" maxLength="1" required className="w-16 h-16 p-2 m-2 box-border text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit2" name="digit2" maxLength="1" required className="w-16 h-16 p-2 m-2 box-border text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit3" name="digit3" maxLength="1" required className="w-16 h-16 p-2 m-2 box-border text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit4" name="digit4" maxLength="1" required className="w-16 h-16 p-2 m-2 box-border text-center rounded-lg border border-gray-400" />
-          </div>
-        </div>
+  const navigate = useNavigate();
+  const [erroModal, setErrorModal] = useState(false)
+  const [codigo, setCodigo] = useState({
+    digit1: '',
+    digit2: '',
+    digit3: '',
+    digit4: ''
+  });
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [isResendEnabled, setIsResendEnabled] = useState(false);
 
-        <div className="text-right mb-40">
-          <div className="mr-4">
-            <a href="/text" className="text-[#4D7A7D]">Reenviar código en 1:00 min</a>
-          </div>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime === 0) {
+          clearInterval(timer);
+          setIsResendEnabled(true)
+          return 0;
+        } else {
+          return prevTime - 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCodigo({ ...codigo, [name]: value });
+  };
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const email = params.get('email');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const codigoVerificacion = Object.values(codigo).join('');
+    try {
+      const response = await fetch('http://localhost:4000/verifyCode', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          correo_electronico: email,
+          code: codigoVerificacion
+        }),
+      });
+
+      if (response.ok) {
+        navigate(`/newpass?email=${encodeURIComponent(email)}`);
+      } else {
+        setErrorModal(!erroModal)
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleError = () => {
+    setErrorModal(!erroModal)
+  }
+
+  const handleResendCode = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/resend-code', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          correo_electronico: email,
+        }),
+      });
+  
+      if (response.ok) {
+        alert('Código de verificación reenviado');
+        setIsResendEnabled(false);
+        setTimeLeft(60);
+      } else {
+        alert('Error al reenviar el código de verificación');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al reenviar el código de verificación');
+    }
+  };  
+
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
+  return (
+    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg relative mb-8">
+      <button onClick={handleGoBack}>
+        <IconArrowLeft size={32}/>
+      </button>
+      <div>
+        <div className="text-center mt-4">
+          <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51">Verificación de cuenta</h2>
         </div>
-       
-        <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-          Continuar
-        </button>
-      </form>
+        <div className="my-14 text-center">
+          <h1 className="md:text-xl sm:text-lg text-base text-gray-500">Se ha enviado un código de verificación al correo proporcionado.</h1>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-4 gap-x-6">
+          <input type="text" id="digit1" name="digit1" maxLength="1" value={codigo.digit1} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit2" name="digit2" maxLength="1" value={codigo.digit2} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit3" name="digit3" maxLength="1" value={codigo.digit3} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit4" name="digit4" maxLength="1" value={codigo.digit4} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
+          </div>
+          <div className='w-full flex justify-end mt-4'>
+            <button type='button' className="text-[#4D7A7D]" onClick={handleResendCode} disabled={!isResendEnabled}>
+              Reenviar código en {timeLeft} segundos
+            </button>
+          </div>
+          <button type="submit" className="w-full mt-12 bg-custom-204E51 text-white font-semibold py-3 rounded-lg">
+            Continuar
+          </button>
+        </form>
+      </div>
+      <ErrorModal
+       isOpen={erroModal}
+       onClose={handleError}
+       title={"Algo salió mal"}
+       mensaje={"Código de verificación inválido"}
+      />
     </div>
   );
 }
