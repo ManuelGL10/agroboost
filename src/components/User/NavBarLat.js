@@ -26,9 +26,9 @@ const NavbarLat = () => {
                 </Link>
             </li>
             <li className='flex p-2 my-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='' className='flex w-full'>
+                <Link to='/userCrop' className='flex w-full'>
                     <IconPlant size={30} stroke={1.5}/>
-                    <span className='ml-4'>Cultivo</span>
+                    <span className='ml-4'>Cultivos</span>
                 </Link>
                 
             </li>
