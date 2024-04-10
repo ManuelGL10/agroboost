@@ -22,12 +22,10 @@ const Dashboard_Home = () => {
   }, [userId]);
 
   return (
-    <div className="flex">
+    <div>
       <NavbarAdmin />
-      <div className="flex flex-col w-full">
-        <NavbarTop userData={userData}/>
-        <MainHome/>
-      </div>
+      <NavbarTop userData={userData}/>
+      <MainHome/>
     </div>
   );
 };

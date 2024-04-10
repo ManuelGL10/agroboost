@@ -37,11 +37,11 @@ function App() {
       <Route path='/producto' element={<Producto/>}/>
       <Route path='/servicio' element={<Servicio/>}/>
       <Route path='/dashboardhome/:userId' element={<DashboardHome/>}/>
-      <Route path='/dashboardventa/:userId' element={<DashboardVenta/>}/>
-      <Route path='/dashboardproduct/:userId' element={<DashboardProduct/>}/>
-      <Route path='/dashboardusers/:userId' element={<DashboardUsuarios/>}/>
+      <Route path='/dashboardventa' element={<DashboardVenta/>}/>
+      <Route path='/dashboardproduct' element={<DashboardProduct/>}/>
+      <Route path='/dashboardusers' element={<DashboardUsuarios/>}/>
       <Route path='/dashboardconfig' element={<DashboardConfig/>}/>
-      <Route path='/dasboardcultivo/:userId' element={<DasboardCultivo/>}/>
+      <Route path='/dasboardcultivo' element={<DasboardCultivo/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/registro' element={<Registro/>} />
       <Route path='/dashboardregistro' element={<DashboardRegistro/>}/>

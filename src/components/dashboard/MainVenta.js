@@ -5,7 +5,6 @@ import { DarkModeContext } from '../../context/DarkModeContext';
 
 const MainVenta = () => {
   const [ventas, setVentas] = useState([]);
-  const [filtroFecha, setFiltroFecha] = useState('');
   const [filtroProducto, setFiltroProducto] = useState('');
   const [filtroEstado, setFiltroEstado] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,28 +26,13 @@ const MainVenta = () => {
 
   const filtrarVentas = () => {
     return ventas.filter((venta) => {
-      // Filtrar por fecha
-      if (filtroFecha) {
-        const fechaVenta = new Date(venta.fecha_venta);
-        const fechaFiltro = new Date(filtroFecha);
-        // Establecer las horas, minutos y segundos de ambas fechas a 0
-        fechaVenta.setHours(0, 0, 0, 0);
-        fechaFiltro.setHours(0, 0, 0, 0);
-        // Comparar las fechas
-        if (fechaVenta.getTime() !== fechaFiltro.getTime()) {
-          return false;
-        }
-      }
-      // Filtrar por producto
       if (filtroProducto && venta.producto.nombre_producto !== filtroProducto) return false;
-      // Filtrar por estado
       if (filtroEstado && venta.estado_venta !== filtroEstado) return false;
       return true;
     });
   };
 
   const handleLimpiarFiltros = () => {
-    setFiltroFecha('');
     setFiltroProducto('');
     setFiltroEstado('');
   };
@@ -56,6 +40,16 @@ const MainVenta = () => {
   const indexOfLastVenta = currentPage * ventasPerPage;
   const indexOfFirstVenta = indexOfLastVenta - ventasPerPage;
   const currentVentas = filtrarVentas().slice(indexOfFirstVenta, indexOfLastVenta);
+  const firstElementIndex = indexOfFirstVenta + 1;
+  const lastElementIndex = Math.min(indexOfLastVenta, filtrarVentas().length);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+  };
 
   return (
     <div className={`${darkMode && "dark"}`}>
@@ -64,16 +58,10 @@ const MainVenta = () => {
           <h1 className='text-3xl font-semibold dark:text-white'>Ventas</h1>
         </div> 
         <div className='py-4'>
-          <table className='bg-white dark:bg-[#313D4F] w-full text-sm dark:text-white'>
+          <table className='bg-white dark:bg-[#313D4F] w-[60%] text-sm dark:text-white'>
             <thead>
               <tr>
                 <th className='border border-gray-200 py-2'>Filtrar por:</th>
-                <th className='border border-gray-200 py-2 px-1'>
-                  <div className='flex'>
-                    <span>Fecha:</span>
-                    <input type='date' value={filtroFecha || ''} onChange={(e) => setFiltroFecha(e.target.value)} className='w-full ml-2 dark:bg-[#313D4F]'/>
-                  </div>
-                </th>
                 <th className='border border-gray-200 py-2'>
                   <select value={filtroProducto} onChange={(e) => setFiltroProducto(e.target.value)} className='w-full dark:bg-[#313D4F]'>
                     <option value=''>Producto</option>
@@ -130,14 +118,12 @@ const MainVenta = () => {
                         estadoClass = '';
                     }
 
-                    const fechaVenta = new Date(venta.fecha_venta).toLocaleDateString();
-
                     return(
                       <tr className='border-gray-200 border-y'>
                         <td className='px-2 py-4 text-center font-semibold'>{index + 1}</td>
                         <td className='px-2 py-4'>{venta.usuario.nombre}</td>
                         <td className='px-2 py-4'>{venta.usuario.direccion.colonia}, {venta.usuario.direccion.ciudad}, {venta.usuario.direccion.estado}, {venta.usuario.direccion.codigo_postal}</td>
-                        <td className='px-2 py-4'>{fechaVenta}</td>
+                        <td className='px-2 py-4'>{formatDate(venta.fecha_venta)}</td>
                         <td className='px-2 py-4'>{venta.producto.nombre_producto}</td>
                         <td className='px-2 py-4'><span className={`rounded-md ${estadoClass}`}>{venta.estado_venta}</span></td>
                       </tr>

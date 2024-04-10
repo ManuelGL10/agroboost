@@ -5,12 +5,16 @@ import { useAuth } from './request/AuthContext';
 import GetUser from './request/GetUser';
 import PasswordModal from './Modals/PasswordModal';
 import { DarkModeContext } from '../context/DarkModeContext';
+import SuccessModal from './Modals/SuccessModal';
+import QuestionModal from './Modals/QuestionModal';
 
 const Navbar_Top = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const { userId } = useAuth();
   const [isModalPassOpen, setIsModalPassOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [ questionModal, setQuestionModal ] = useState(false)
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const handdleModal = () => {
@@ -46,6 +50,14 @@ const Navbar_Top = () => {
   const handleCloseModal = () => {
     setIsModalPassOpen(false);
   };
+
+  const handleSuccessModal = () => {
+    setSuccessModalOpen(!successModalOpen);
+  };
+
+  const handleQuestionModal = () => {
+    setQuestionModal(!questionModal)
+  }
 
   return (
     <div className={`${darkMode && "dark"}`}>
@@ -106,16 +118,29 @@ const Navbar_Top = () => {
                   <span>Cambiar Contraseña</span>
                 </button>
               </div>
-              <Link to='/login' className='flex w-full items-center'>
+              <button onClick={handleQuestionModal} className='flex w-full items-center'>
                 <IconLogout className='mr-2' stroke={1.5}/>
                 <span>Cerrar Sesión</span>
-              </Link>
+              </button>
             </div>
           </div>
         )}
         {isModalPassOpen && (
-          <PasswordModal userData={userData} isOpen={isModalPassOpen} onClose={handleCloseModal} />
+          <PasswordModal userData={userData} isOpen={isModalPassOpen} onClose={handleCloseModal} onSuccessModalOpen={handleSuccessModal}/>
         )}
+        {successModalOpen && (
+          <SuccessModal 
+            isOpen={successModalOpen} 
+            onClose={handleSuccessModal}
+            title={"Operación Exitosa"}
+            mensaje={"Su contraseña ha sido actualizada."}/>
+        )}
+        <QuestionModal
+          isOpen={questionModal}
+          onClose={handleQuestionModal}
+          title={"¿Estás seguro que deseas cerrar sesión?"}
+          mensaje={"Si cierras sesión, se te desconectará de tu cuenta. ¿Estás seguro de que deseas continuar?"}
+        />
       </div>
     </div>
     

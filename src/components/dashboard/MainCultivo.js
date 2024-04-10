@@ -93,7 +93,7 @@ const MainCultivo = () => {
                   </tr>
                 ) : (
                   currentCultivos.map((cultivo, index) => {
-                  const diasRestantes = calcularDiasRestantes(cultivo.fecha_pervista);
+                  const diasRestantes = calcularDiasRestantes(cultivo.fecha_prevista);
                   const cultivoIndex = indexOfFirstCultivo + index + 1;
 
                   return (
