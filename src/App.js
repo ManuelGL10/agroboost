@@ -23,6 +23,8 @@ import Navbar_Top from './components/Navbar_Top';
 import ProductosVenta from './views/ProductosVenta';
 import UserHome from './views/UserHome';
 import UserDevice from './views/UserDevice';
+import UserReminder from './views/UserReminder';
+import UserCrop from './views/UserCrop';
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
       <Route path='/productosventa' element={<ProductosVenta/>} />
       <Route path='/userhome' element={<UserHome/>} />
       <Route path='/userDevice' element={<UserDevice/>} />
+      <Route path='/userReminder' element={<UserReminder/>} />
+      <Route path='/userCrop' element={<UserCrop/>} />
     </Routes>
   );
 }
