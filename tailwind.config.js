@@ -28,6 +28,7 @@ module.exports = {
     "./src/views/UserInf.jsx",
     "./src/views/AddressInf.jsx",
     "./src/views/Cultivo.jsx",
+    "./src/views/UserReminder.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -77,6 +78,7 @@ module.exports = {
     "./src/components/UserInfo.js",
     "./src/components/AddressInformation.js",
     "./src/components/CultivoForm.js",
+    "./src/components/User/ReminderUser.js",
   ],
   theme: {
     extend: {

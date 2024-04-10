@@ -26,6 +26,7 @@ import UserDevice from './views/UserDevice';
 import UserInf from './views/UserInf';
 import AddressInf from './views/AddressInf';
 import Cultivo from './views/Cultivo';
+import UserReminder from './views/UserReminder';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
       <Route path='/userinf' element={<UserInf/>} />
       <Route path='/addressinf' element={<AddressInf/>} />
       <Route path='/cultivo' element={<Cultivo/>} />
+      <Route path='/userReminder' element={<UserReminder/>} />
     </Routes>
   );
 }
