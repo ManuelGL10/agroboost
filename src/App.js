@@ -23,6 +23,9 @@ import Navbar_Top from './components/Navbar_Top';
 import ProductosVenta from './views/ProductosVenta';
 import UserHome from './views/UserHome';
 import UserDevice from './views/UserDevice';
+import UserInf from './views/UserInf';
+import AddressInf from './views/AddressInf';
+import Cultivo from './views/Cultivo';
 import UserReminder from './views/UserReminder';
 import UserCrop from './views/UserCrop';
 
@@ -52,6 +55,13 @@ function App() {
       <Route path='/userDevice/:userId' element={<UserDevice/>} />
       <Route path='/userReminder/:userId' element={<UserReminder/>} />
       <Route path='/userCrop/:userId' element={<UserCrop/>} />
+      <Route path='/userhome' element={<UserHome/>} />
+      <Route path='/userDevice' element={<UserDevice/>} />
+      <Route path='/userinf' element={<UserInf/>} />
+      <Route path='/addressinf' element={<AddressInf/>} />
+      <Route path='/cultivo' element={<Cultivo/>} />
+      <Route path='/userReminder' element={<UserReminder/>} />
+      <Route path='/userCrop' element={<UserCrop/>} />
     </Routes>
   );
 }
