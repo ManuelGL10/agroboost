@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconChevronDown, IconChevronUp, IconSearch, IconSun, IconMoon, IconLogout, IconUserCog, IconKey } from '@tabler/icons-react';
+import { IconChevronDown, IconChevronUp, IconSun, IconMoon, IconLogout, IconUserCog, IconKey } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from './request/AuthContext';
 import GetUser from './request/GetUser';

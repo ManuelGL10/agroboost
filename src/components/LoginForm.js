@@ -43,7 +43,11 @@ const LoginForm = () => {
           navigate(`/dashboardhome/${userId}`);
         }, 2000);
       } else {
-        navigate(`/userhome`)
+        localStorage.setItem('userId', userId)
+        setModalIsOpen(true)
+        setTimeout(() => {
+          navigate(`/userhome/${userId}`)
+        }, 2000);
       }
     } else {
       setModalIsOpenE(true)

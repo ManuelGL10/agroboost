@@ -48,10 +48,10 @@ function App() {
       <Route path='/profile/:userId' element={<ProfileUser/>} />
       <Route path='/verificationpage' element={<VerificationPage/>} />
       <Route path='/productosventa' element={<ProductosVenta/>} />
-      <Route path='/userhome' element={<UserHome/>} />
-      <Route path='/userDevice' element={<UserDevice/>} />
-      <Route path='/userReminder' element={<UserReminder/>} />
-      <Route path='/userCrop' element={<UserCrop/>} />
+      <Route path='/userhome/:userId' element={<UserHome/>} />
+      <Route path='/userDevice/:userId' element={<UserDevice/>} />
+      <Route path='/userReminder/:userId' element={<UserReminder/>} />
+      <Route path='/userCrop/:userId' element={<UserCrop/>} />
     </Routes>
   );
 }
