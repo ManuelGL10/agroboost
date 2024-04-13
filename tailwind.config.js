@@ -83,6 +83,11 @@ module.exports = {
     "./src/components/CultivoForm.js",
     "./src/components/User/ReminderUser.js",
     "./src/components/User/CropUser.js",
+    "./src/components/Venta/InfoVenta.js",
+    "./src/components/Venta/ProductDetails.js",
+    "./src/components/Venta/ModalVentaEx.js",
+
+
   ],
   theme: {
     extend: {

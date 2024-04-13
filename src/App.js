@@ -28,6 +28,7 @@ import AddressInf from './views/AddressInf';
 import Cultivo from './views/Cultivo';
 import UserReminder from './views/UserReminder';
 import UserCrop from './views/UserCrop';
+import Venta from './views/Venta';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
       <Route path='/cultivo' element={<Cultivo/>} />
       <Route path='/userReminder' element={<UserReminder/>} />
       <Route path='/userCrop' element={<UserCrop/>} />
+      <Route path='/venta' element={<Venta/>}/>
     </Routes>
   );
 }

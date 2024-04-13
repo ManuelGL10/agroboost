@@ -18,7 +18,7 @@ const ProductosVenta = () => {
     {
       id: 2,
       nombre: 'Sensor de Humedad',
-      precio: 60,
+      precio: 60 ,
       imagen: regar
     },
     {

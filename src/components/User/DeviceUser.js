@@ -58,7 +58,7 @@ const DeviceUser = () => {
                                     </select>
                                 </div>
                                 <div className="mt-7 flex justify-center">
-                                    <button onClick={abrirModalEditar} className="bg-custom-color_logo text-white hover:bg-[#2F9B5D] text-white font-semibold py-2 px-8 rounded-lg mr-2">Editar</button>
+                                    <button onClick={abrirModalEditar} className="bg-custom-color_logo  hover:bg-[#2F9B5D]  text-white font-semibold py-2 px-8 rounded-lg mr-2">Editar</button>
                                     <button onClick={abrirModalEliminar} className="bg-[#D33363] hover:bg-red-700 text-white font-semibold rounded-lg py-2 px-8 ">Borrar</button>
                                 </div>
                             </div>
