@@ -90,8 +90,8 @@ const MainUsers = () => {
                 <tr>
                   <th className='px-2 py-4 text-left'>ID</th>
                   <th className='px-2 py-4 text-left'>Nombre</th>
-                  <th className='px-2 py-4 text-left'>Dirección</th>
                   <th className='px-2 py-4 text-left'>Correo Electrónico</th>
+                  <th className='px-2 py-4 text-left'>Rol</th>
                   <th className='px-2 py-4 text-left'>Acción</th>
                 </tr>
               </thead>
@@ -105,8 +105,8 @@ const MainUsers = () => {
                     <tr key={user._id} className='border-gray-200 dark:border-gray-600 border-y'>
                       <td className='text-center font-medium py-4 px-2'>{indexOfFirstUser + index + 1}</td>
                       <td className='py-4 px-2'>{user.nombre} {user.apellido_paterno} {user.apellido_materno}</td>
-                      <td className='py-4 px-2'>{user.direccion && user.direccion.codigo_postal}, {user.direccion && user.direccion.calle}, {user.direccion && user.direccion.ciudad}, {user.direccion && user.direccion.estado}</td>
                       <td className='py-4 px-2'>{user.correo_electronico}</td>
+                      <td>{user && <p>{user.rol === 1 ? 'Admin' : 'Usuario'}</p>}</td>
                       <td className='py-4 px-2'>
                         <div className='flex justify-around p-2 rounded-lg bg-gray-50 dark:bg-[#323D4E] border border-gray-300 dark:border-gray-600'>
                           <button type='button' onClick={() => handleEditClick(user)}>

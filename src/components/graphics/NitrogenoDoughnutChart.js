@@ -1,15 +1,14 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const NitrogenoDoughnutChart = () => {
-  const nitrogeno = 167
-  const remainingNitrogeno = 200 - nitrogeno;
+const NitrogenoDoughnutChart = ({datos}) => {
+  const remainingNitrogeno = 200 - datos;
 
   // Creamos un objeto de datos con un solo valor
   const data = {
     datasets: [
       {
-        data: [nitrogeno, remainingNitrogeno],
+        data: [datos, remainingNitrogeno],
         backgroundColor: ['#ffbb1d', '#Fff'],
       },
     ],

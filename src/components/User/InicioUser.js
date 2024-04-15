@@ -8,8 +8,26 @@ import { useParams } from 'react-router-dom';
 const InicioUser = () => {
   const [userData, setUserData] = useState('');
   const { userId } = useParams();
+  const [ dispositivos, setDispositivos ] = useState([]);
 
-  console.log(userId)
+  useEffect(() => {
+    fetch(`http://localhost:4000/dispositivo/${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al obtener los datos de los dispositivos');
+      }
+        return response.json();
+    })
+    .then(data => setDispositivos(data))
+    .catch(error => console.error('Error al obtener los dispositivos:', error));
+  }, []);
+
+  console.log(dispositivos)
 
   useEffect(() => {
     fetch(`http://localhost:4000/user/${userId}`, {
@@ -32,8 +50,6 @@ const InicioUser = () => {
   const currentDate = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = currentDate.toLocaleDateString('es-ES', options);
-
-  console.log(userData)
 
   return (
     <div className='bg-background ml-[20%] p-4'>
@@ -59,7 +75,7 @@ const InicioUser = () => {
         </div>
       </div>
       <ClimateDay/>
-      <DatosUser/>
+      <DatosUser datos={dispositivos}/>
     </div>
   );
 };

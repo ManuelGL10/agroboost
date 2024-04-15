@@ -1,15 +1,14 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const PotasioDoughnutChart = () => {
-  const potasio = 188
-  const remainingPotasio = 200 - potasio;
+const PotasioDoughnutChart = ({datos}) => {
+  const remainingPotasio = 200 - datos;
 
   // Creamos un objeto de datos con un solo valor
   const data = {
     datasets: [
       {
-        data: [potasio, remainingPotasio],
+        data: [datos, remainingPotasio],
         backgroundColor: ['#f97316', '#Fff'],
       },
     ],

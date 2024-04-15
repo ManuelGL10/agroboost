@@ -1,15 +1,14 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const FosforoDoughnutChart = () => {
-  const fosforo = 34
-  const remainingFosforo = 50 - fosforo;
+const FosforoDoughnutChart = ({datos}) => {
+  const remainingFosforo = 50 - datos;
 
   // Creamos un objeto de datos con un solo valor
   const data = {
     datasets: [
       {
-        data: [fosforo, remainingFosforo],
+        data: [datos, remainingFosforo],
         backgroundColor: ['#20a752', '#Fff'],
       },
     ],

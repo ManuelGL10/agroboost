@@ -69,6 +69,8 @@ module.exports = {
     "./src/components/Modals/DeleteModal.js",
     "./src/components/Modals/SuccessModal.js",
     "./src/components/Modals/QuestionModal.js",
+    "./src/components/Modals/ReminderModal.js",
+    "./src/components/Modals/DeviceModal.js",
     "./src/components/Producto.js",
     "./src/components/User/NavBarUser.js",
     "./src/components/User/NavBarLat.js",

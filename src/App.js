@@ -59,12 +59,9 @@ function App() {
       <Route path='/userinf/:userId' element={<UserInf/>} />
       <Route path='/addressinf' element={<AddressInf/>} />
       <Route path='/cultivo' element={<Cultivo/>} />
-<<<<<<< HEAD
-=======
       <Route path='/userReminder' element={<UserReminder/>} />
       <Route path='/userCrop' element={<UserCrop/>} />
       <Route path='/venta' element={<Venta/>}/>
->>>>>>> 85c43c0c0bd78d5d5a2ade54562d3bafe0f76dc0
     </Routes>
   );
 }
