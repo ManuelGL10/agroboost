@@ -36,7 +36,7 @@ const MainConfig = () => {
       const selected = collections.filter(collection => selectedCollections.includes(collection));
   
       const response = await fetch('http://localhost:4000/backup', {
-        method: 'POST', // Cambiado a POST
+        method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
         },

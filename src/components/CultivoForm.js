@@ -29,10 +29,9 @@ const CultivoForm = () => {
     };
 
     return (
-        <div>
-            <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-gray-100 mb-10 text-left ml-72">.</h1>
-            <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-black mb-6 text-left ml-72">Agregar cultivo</h1>
-            <div className="relative max-w-5xl mx-auto mt-5 p-3 bg-white rounded-lg shadow-lg ml-auto mr-auto" style={{ marginLeft: '270px', borderRadius: '20px' }}>
+        <div className='bg-background ml-[20%] p-4'>
+            <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-black mb-6 text-left mt-20">Agregar cultivo</h1>
+            <div className="max-w-5xl mx-auto mt-5 p-3 bg-white rounded-lg shadow-lg">
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="mb-4">
@@ -45,7 +44,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                         <div className="mb-4">
@@ -56,7 +54,6 @@ const CultivoForm = () => {
                                 onChange={(e) => setTipoRiego(e.target.value)}
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             >
                                 <option value="">Seleccionar tipo de riego</option>
                                 <option value="1">Riego por goteo</option>
@@ -74,7 +71,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                         <div className="mb-4">
@@ -85,7 +81,6 @@ const CultivoForm = () => {
                                 onChange={(e) => setMetodoFertilizacion(e.target.value)}
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             >
                                 <option value="">Seleccionar método de fertilizacion</option>
                                 <option value="1">Fertilización químmica convencional</option>
@@ -103,7 +98,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                         <div className="mb-4">
@@ -116,7 +110,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                         <div className="mb-4">
@@ -127,7 +120,6 @@ const CultivoForm = () => {
                                 onChange={(e) => setMetodoControl(e.target.value)}
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             >
                                 <option value="">Seleccionar método de control de plagas</option>
                                 <option value="1">Control biológico</option>
@@ -143,7 +135,6 @@ const CultivoForm = () => {
                                 onChange={(e) => setTecnicaPolinizacion(e.target.value)}
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             >
                                 <option value="">Seleccionar técnica de polinización</option>
                                 <option value="1">Introducción de polinizadores naturales</option>
@@ -161,7 +152,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                         <div className="mb-4">
@@ -174,7 +164,6 @@ const CultivoForm = () => {
                                 className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
                             />
                         </div>
                     </div>

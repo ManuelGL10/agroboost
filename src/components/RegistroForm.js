@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const RegistroForm = () => {
   const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenE, setModalIsOpenE] = useState(false);
 
   const initialValues = {
     name: '',
@@ -18,7 +20,6 @@ const RegistroForm = () => {
     apellidomaterno: '',
     email: '',
     password: '',
-    termsAccepted: false
   };
 
   const validationSchema = Yup.object().shape({
@@ -27,34 +28,41 @@ const RegistroForm = () => {
     apellidomaterno: Yup.string().required('Campo requerido'),
     email: Yup.string().email('Correo electrónico inválido').required('Campo requerido'),
     password: Yup.string().required('Campo requerido').min(8, "La contraseña debe tener al menos 8 caracteres"),
-    termsAccepted: Yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones')
   });
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values) => {
     const { name, apellidopaterno, apellidomaterno, email, password } = values;
 
-    const { success, error } = await RegistroRequest({ 
+    const { success, error, response } = await RegistroRequest({ 
       name, 
       apellidopaterno, 
       apellidomaterno,
       email,
-      password 
+      password,
+      rol: 0
     });
 
     if (success) {
-      console.log('Registro exitoso:');
-      navigate('/login')
+      setModalIsOpen(true)
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
     } else {
-      console.error('Error registro:', error);
-      // Puedes mostrar un mensaje de error al usuario, por ejemplo, en un modal
+      setModalIsOpenE(true)
     }
-
-    setSubmitting(false);
   };
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword); 
   };
+
+  const handleSuccessModal = () => {
+    setModalIsOpen(!modalIsOpen)
+  }
+
+  const handleErrorModal = () => {
+    setModalIsOpenE(!modalIsOpenE)
+  }
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
@@ -132,7 +140,7 @@ const RegistroForm = () => {
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500" />
             </div>
-            <button type="submit" className="w-full my-4 bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51" disabled={isSubmitting}>
+            <button type="submit" className="w-full my-4 bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
               Registrarse
             </button>
             <div className="text-center">
@@ -141,6 +149,17 @@ const RegistroForm = () => {
           </Form>
         )}
       </Formik>
+      <ModalBienvenida 
+        isOpen={modalIsOpen} 
+        onClose={handleSuccessModal}
+        title='¡Registro Exitoso!'
+        mensaje='Felicidades, has completado el registro exitosamente.' 
+      />
+      <ModalError 
+        isOpen={modalIsOpenE} 
+        onClose={handleErrorModal} 
+        errorMessage={"El correo electrónico que has proporcionado ya está en uso. Por favor, intenta con otro correo electrónico"} 
+      />
     </div>
   );
 };

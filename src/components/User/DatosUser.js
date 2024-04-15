@@ -4,6 +4,11 @@ import Termometro from './Termometro';
 import GraficaNitrogeno from './GraficaNitrogeno';
 import GraficaFosforo from './GraficaFosforo';
 import GraficaPotasio from './GraficaPotasio';
+import HumidityDoughnutChart from '../graphics/HumidityDoughtnutChar';
+import TemperatureLineChart from '../graphics/TemperatureBarChart';
+import NitrogenoDoughnutChart from '../graphics/NitrogenoDoughnutChart';
+import FosforoDoughnutChart from '../graphics/FosforoDoughnutChart';
+import PotasioDoughnutChart from '../graphics/PotasioDoughnutChart';
 
 const DatosExtras = () => {
   // Estado para almacenar la opción seleccionada del cultivo
@@ -15,53 +20,44 @@ const DatosExtras = () => {
   };
 
   return (
-    <div className='flex flex-col mt-5 ml-4'>
-      <div className="flex items-center mb-4">
-        <h2 className='text-lg font-semibold text-xl mr-4'>Cultivo</h2>
-        
-        {/* Componente de selección múltiple para elegir el cultivo */}
-        <select
-          value={cultivoSeleccionado}
-          onChange={handleCultivoChange}
-          className='border border-gray-300 rounded-md p-2 w-40'
-        >
-          <option value=''>Selecciona un cultivo</option>
-          <option value='tomate'>Tomate</option>
-          <option value='papa'>Papa</option>
-          <option value='cebolla'>Cebolla</option>
-          {/* Agrega más opciones según sea necesario */}
-        </select>
-      </div>
-
-      {/* Renderizar las gráficas según la opción seleccionada */}
-      {cultivoSeleccionado && (
-        <div className="flex flex-row">
-
-          <div className='flex flex-col bg-white rounded-lg border border-custom-D9D9D9 border-2 w-60 h-64 mr-4'>
-            <h2 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Humedad</h2>
-            <div className='ml-4'>
-              <GraficaHumedad humedad={92} />
+    <div className='flex flex-col mt-5'>
+      <div className='my-4'>
+        <h1 className='text-2xl font-semibold'>Cultivos</h1>
+        <div className='grid grid-cols-1'>
+          <div className='my-2 bg-white p-4 rounded-xl'>
+            <h1 className='text-xl font-medium'>Cultivo: Maíz</h1>
+            <div className='grid grid-cols-2 gap-x-2'>
+              <div className='grid grid-cols-2 gap-x-2'>
+                <div className='p-2 border-2 border-gray-300 rounded-lg'>
+                  <span className='text-xl font-medium text-custom-264948'>Temperatura</span>
+                  <TemperatureLineChart/>
+                </div>
+                <div className='p-2 border-2 border-gray-300 rounded-lg'>
+                  <span className='text-xl font-medium text-custom-264948'>Humedad</span>
+                  <HumidityDoughnutChart/>
+                </div>
+              </div>
+              <div className='p-2 border-2 border-gray-300 rounded-lg'>
+                <span className='text-xl font-medium text-custom-264948'>Nutrientes</span>
+                <div className='grid grid-cols-3 gap-x-2 mt-2'>
+                  <div className='text-center'>
+                    <NitrogenoDoughnutChart/>
+                    <span className='text-yellow-500 font-medium'>Nitrógeno</span>
+                  </div>
+                  <div className='text-center'>
+                    <FosforoDoughnutChart/>
+                    <span className='text-green-600 font-medium'>Fósforo</span>
+                  </div>
+                  <div className='text-center'>
+                    <PotasioDoughnutChart/>
+                    <span className='text-orange-500 font-medium'>Potasio</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className='flex flex-col bg-white rounded-lg border border-custom-D9D9D9 border-2 w-60 h-64 mr-4'>
-            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Temperatura</h3>
-            <div className='ml-4'>
-              <Termometro temperatura={-10} />
-            </div>
-          </div>
-
-          <div className='flex flex-col bg-white rounded-lg border border-custom-D9D9D9 border-2 w-7/12 h-64 mr-4'>
-            <h3 className='flex items-center font-semibold text-custom-204E51 text-xl  mt-2 ml-2'>Nutrientes</h3>
-            <div className='flex flex-rol ml-4'>
-              <GraficaNitrogeno nitrogeno={170} />
-              <GraficaFosforo fosforo={50} />
-              <GraficaPotasio potasio={180} />
-            </div>
-          </div>
-
         </div>
-      )}
+      </div>
     </div>
   );
 }

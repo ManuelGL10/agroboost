@@ -1,16 +1,15 @@
 import React from "react";
-import NavbarAdmin from '../components/Navbar_Admin';
 import NavbarTop from "../components/Navbar_Top";
-import MainRegistro from "../components/dashboard/MainRegistro";
 import UserInfo from "../components/UserInfo";
-
+import NavbarLat from "../components/User/NavBarLat";
+import NavbarUser from "../components/User/NavBarUser";
 
 function UserInf() {
     return(
         <div className='bg-background'>
-            <NavbarTop/>
+            <NavbarUser/>
             <UserInfo/>
-            <NavbarAdmin/>
+            <NavbarLat/>
         </div>
     );
 

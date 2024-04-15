@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/LogoAgroBoostPNG.svg';
-import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout,IconHome } from '@tabler/icons-react';
+import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout, IconHome, IconUser } from '@tabler/icons-react';
 import { useAuth } from '../request/AuthContext';
 import GetUser from '../request/GetUser';
 
@@ -69,9 +69,9 @@ const NavbarLat = () => {
       </ul>
       <ul className='p-6 text-xl absolute bottom-0 left-0 right-0'>
             <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
-                <Link to='/${userData?._id}`}' className='flex w-full'>
-                    <IconSettings size={30} stroke={1.5}/>
-                    <span className='ml-4'>Ajustes</span>
+                <Link to={`/userinf/${userData?._id}`} className='flex w-full'>
+                    <IconUser size={30} stroke={1.5}/>
+                    <span className='ml-4'>Cuenta</span>
                 </Link>
                 
             </li>

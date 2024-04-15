@@ -4,6 +4,7 @@ import IncioUser from '../components/User/InicioUser'
 import Navbartop from '../components/Navbar_Top'
 import { useParams } from 'react-router-dom';
 import GetUser from '../components/request/GetUser';
+import NavbarUser from '../components/User/NavBarUser';
 
 const UserHome = () => {
   const { userId } = useParams();
@@ -24,7 +25,7 @@ const UserHome = () => {
   return (
     <div>
       <NavBarLat userData={userData}/>
-      <Navbartop userData={userData}/>
+      <NavbarUser userData={userData}/>
       <IncioUser/>
     </div>
   )

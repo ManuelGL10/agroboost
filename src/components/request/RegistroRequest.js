@@ -1,4 +1,4 @@
-const RegistroRequest = async ({name, apellidopaterno, apellidomaterno, email, password }) => {
+const RegistroRequest = async ({name, apellidopaterno, apellidomaterno, email, password, rol }) => {
     try {
         const response = await fetch('http://localhost:4000/register', {
           method: 'POST',
@@ -11,6 +11,7 @@ const RegistroRequest = async ({name, apellidopaterno, apellidomaterno, email, p
             apellido_materno: apellidomaterno,
             correo_electronico: email,
             contrasena: password,
+            rol: rol
           }),
         });
     

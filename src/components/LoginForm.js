@@ -129,8 +129,17 @@ const LoginForm = () => {
       <div className="text-center mt-4">
        <p>¿No tienes una cuenta? <a href="/registro" className="text-[#4D7A7D] font-bold">Regístrate</a></p>
       </div>
-      <ModalBienvenida isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
-      <ModalError isOpen={modalIsOpenE} onClose={() => setModalIsOpenE(false)} errorMessage={"Correo electrínico y/o contraseña incorrectas"} />
+      <ModalBienvenida 
+        isOpen={modalIsOpen} 
+        onClose={() => setModalIsOpen(false)}
+        title='¡Inicio de Sesión Exitoso!'
+        mensaje='¡Bienvenido de vuelta! Tu inicio de sesión ha sido exitoso.' 
+      />
+      <ModalError 
+        isOpen={modalIsOpenE} 
+        onClose={() => setModalIsOpenE(false)} 
+        errorMessage={"Correo electrínico y/o contraseña incorrectas"} 
+      />
     </div>
   );
 };

@@ -55,13 +55,9 @@ function App() {
       <Route path='/userDevice/:userId' element={<UserDevice/>} />
       <Route path='/userReminder/:userId' element={<UserReminder/>} />
       <Route path='/userCrop/:userId' element={<UserCrop/>} />
-      <Route path='/userhome' element={<UserHome/>} />
-      <Route path='/userDevice' element={<UserDevice/>} />
-      <Route path='/userinf' element={<UserInf/>} />
+      <Route path='/userinf/:userId' element={<UserInf/>} />
       <Route path='/addressinf' element={<AddressInf/>} />
       <Route path='/cultivo' element={<Cultivo/>} />
-      <Route path='/userReminder' element={<UserReminder/>} />
-      <Route path='/userCrop' element={<UserCrop/>} />
     </Routes>
   );
 }

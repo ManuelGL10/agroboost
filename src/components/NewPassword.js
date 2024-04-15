@@ -5,10 +5,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { UpdatePass } from './request/UpdatePass';
 import { useLocation } from 'react-router-dom'
+import ModalBienvenida from './ModalBienvenida';
+import ModalError from './ModalError';
 
 const NewPassword = () => {
   const [ eyeOpen, setEyeOpen ] = useState(false)
   const [ newEyeOpen, setNewEyeOpen ] = useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenE, setModalIsOpenE] = useState(false);
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -52,6 +56,14 @@ const NewPassword = () => {
     const handleGoBack = () => {
       window.history.back();
     };
+
+    const handleSuccessModal = () => {
+      setModalIsOpen(!modalIsOpen)
+    }
+  
+    const handleErrorModal = () => {
+      setModalIsOpenE(!modalIsOpenE)
+    }
 
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg relative">
@@ -105,6 +117,17 @@ const NewPassword = () => {
               </div>
             </Form>
           </Formik>
+      <ModalBienvenida 
+        isOpen={modalIsOpen} 
+        onClose={handleSuccessModal}
+        title='¡Cambio de Contraseña Exitoso'
+        mensaje='Su contraseña se ha actualizado correctamente' 
+      />
+      <ModalError 
+        isOpen={modalIsOpenE} 
+        onClose={handleErrorModal} 
+        errorMessage={"Ocurrió un error al actualizar la contraseña"} 
+      />
     </div>
   );
 };

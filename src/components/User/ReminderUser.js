@@ -1,72 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconBug } from '@tabler/icons-react';
+import { useParams } from 'react-router-dom';
+import NewReminder from "../../img/NewReminder";
 
 const ReminderUser = () => {
-    const [reminderActive1, setReminderActive1] = useState(false);
-    const [reminderActive2, setReminderActive2] = useState(false);
+    const [recordatorios, setRecordatorios] = useState([]);
+    const { userId } = useParams();
 
-    const toggleReminder1 = () => {
-        setReminderActive1(!reminderActive1);
+    useEffect(() => {
+        fetch(`http://localhost:4000/recordatorio/${userId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener los datos de los recordatorios');
+            }
+            return response.json();
+        })
+        .then(data => setRecordatorios(data))
+        .catch(error => console.error('Error al obtener los recordatorios:', error));
+    }, [userId]);
+
+    const formatTime = (timeString) => {
+        const time = new Date(timeString);
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        const amPm = hours >= 12 ? 'p.m.' : 'a.m.';
+        const formattedHours = hours % 12 || 12;
+        return `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${amPm}`;
     };
 
-    const toggleReminder2 = () => {
-        setReminderActive2(!reminderActive2);
+    const formatDays = (daysArray) => {
+        const abbreviatedDays = daysArray.map(day => day.substr(0, 3));
+        return abbreviatedDays.join(', ');
+    };
+
+    const toggleReminder = (index) => {
+        const updatedRecordatorios = [...recordatorios];
+        updatedRecordatorios[index].activo = !updatedRecordatorios[index].activo;
+        setRecordatorios(updatedRecordatorios);
+
+        // Actualizar el estado en la base de datos
+        fetch(`http://localhost:4000/recordatorio/${recordatorios[index]._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ activo: updatedRecordatorios[index].activo }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al actualizar el estado del recordatorio');
+            }
+        })
+        .catch(error => console.error('Error al actualizar el estado del recordatorio:', error));
     };
 
     return (
         <div className='bg-background ml-[20%] p-4 h-screen'>
-            <div className='mt-20 mb-6'>
-                <h1 className='text-3xl font-semibold mt-20'>Recordatorios</h1>
-                <div className='flex flex-wrap justify-evenly'>
-                    <div className={`flex items-center rounded-lg border border-custom-D9D9D9 border-2 flex mt-5 w-[35%] h-40 mr-5 ml-2 relative ${reminderActive1 ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
-                        <div className='bg-[#E6E6E7] w-[35%] h-[90%] ml-3 rounded-lg flex items-center'>
-                            <IconBug className='ml-6' size={90} stroke={2}/>
+            <div className='h-full py-20'>
+                <h1 className='text-3xl font-semibold'>Recordatorios</h1>
+                {recordatorios.length === 0 ? (
+                    <div className='mt-6 h-full flex justify-center items-center px-12 bg-white rounded-xl'>
+                        <div className='grid grid-cols-3 gap-x-6'>
+                            <div className='flex items-center justify-center'>
+                                <NewReminder/>
+                            </div>
+                            <div className='items-center justify-center flex flex-col col-span-2'>
+                                <h1 className='text-2xl font-medium'>¡Registra un Nuevo Recordatorio!</h1>
+                                <span className='text-justify text-lg text-gray-600 my-4'>Registra un nuevo recordatorio para mantenerte al tanto de tus pendientes y compromisos. Con un simple clic, asegúrate de no perder de vista lo que es importante para ti.</span>
+                                <button className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold'>
+                                    Crear Recordatorio
+                                </button>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <h2 className='text-[#4D7A7D] text-lg text-boad ml-5  w-[150px]'>Aplicar pesticidas</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5  w-[150px]'>Lun, Vie</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5 w-[150px]'>09:00 am</h2>
-                        </div>
-                        <button 
-                            className={`absolute top-0 right-0 mr-4 mt-4 w-14 h-8 rounded-full p-1 ${reminderActive1 ? 'bg-green-500' : 'bg-gray-300'}`}
-                            onClick={toggleReminder1}
-                        >
-                            <div className={`w-6 h-6 bg-white rounded-full shadow-md transform ${reminderActive1 ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
-                        </button>
                     </div>
-                    <div className={`flex items-center rounded-lg border border-custom-D9D9D9 border-2 flex mt-5 w-[35%] h-40 mr-2 ml-2 relative ${reminderActive2 ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
-                        <div className='bg-[#E6E6E7] w-[35%] h-[90%] ml-3 rounded-lg flex items-center'>
-                            <IconBug className='ml-6' size={90} stroke={2}/>
+                ) : (
+                <div className='grid grid-cols-2 gap-y-4 gap-x-6 mt-6'>
+                    {recordatorios.map((recordatorio, index) => (
+                        <div key={index} className={`grid grid-cols-5 gap-x-2 rounded-lg p-4 border-custom-D9D9D9 border-2 ${recordatorio.activo ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
+                            <div className={`rounded-lg flex items-center justify-center ${recordatorio.activo ? 'bg-white' : 'bg-gray-200'}`}>
+                                <IconBug size={90} stroke={2}/>
+                            </div>
+                            <div className="flex flex-col col-span-3 w-full h-full">
+                                <span className='text-xl font-semibold'>{recordatorio.nombre_recordatorio}</span>
+                                <span className='text-gray-600 text-lg'>{formatDays(recordatorio.dias_recordatorio)}</span>
+                                <span className='text-lg font-medium'>{formatTime(recordatorio.hora_recordatorio)}</span>
+                            </div>
+                            <div className="flex justify-end">
+                                <button 
+                                    className={`w-14 h-8 rounded-full p-1 ${recordatorio.activo ? 'bg-green-500' : 'bg-gray-300'}`}
+                                    onClick={() => toggleReminder(index)}
+                                >
+                                    <div className={`w-6 h-6 bg-white rounded-full shadow-md transform ${recordatorio.activo ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
+                                </button>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <h2 className='text-[#4D7A7D] text-lg text-boad ml-5  w-[150px]'>Aplicar pesticidas</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5  w-[150px]'>Lun, Vie</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5 w-[150px]'>09:00 am</h2>
-                        </div>
-                        <button 
-                            className={`absolute top-0 right-0 mr-4 mt-4 w-14 h-8 rounded-full p-1 ${reminderActive2 ? 'bg-green-500' : 'bg-gray-300'}`}
-                            onClick={toggleReminder2}
-                        >
-                            <div className={`w-6 h-6 bg-white rounded-full shadow-md transform ${reminderActive2 ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
-                        </button>
-                    </div>
-                    <div className={`flex items-center rounded-lg border border-custom-D9D9D9 border-2 flex mt-5 w-[35%] h-40 mr-2 ml-2 relative ${reminderActive2 ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
-                        <div className='bg-[#E6E6E7] w-[35%] h-[90%] ml-3 rounded-lg flex items-center'>
-                            <IconBug className='ml-6' size={90} stroke={2}/>
-                        </div>
-                        <div className="flex flex-col">
-                            <h2 className='text-[#4D7A7D] text-lg text-boad ml-5  w-[150px]'>Aplicar pesticidas</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5  w-[150px]'>Lun, Vie</h2>
-                            <h2 className='text-[#203651] text-lg text-boad ml-5 w-[150px]'>09:00 am</h2>
-                        </div>
-                        <button 
-                            className={`absolute top-0 right-0 mr-4 mt-4 w-14 h-8 rounded-full p-1 ${reminderActive2 ? 'bg-green-500' : 'bg-gray-300'}`}
-                            onClick={toggleReminder2}
-                        >
-                            <div className={`w-6 h-6 bg-white rounded-full shadow-md transform ${reminderActive2 ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
-                        </button>
-                    </div>
+                    ))}
                 </div>
+                )}
             </div>  
         </div>
     );

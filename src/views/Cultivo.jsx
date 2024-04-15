@@ -1,16 +1,15 @@
 import React from "react";
-import NavbarAdmin from '../components/Navbar_Admin';
-import NavbarTop from "../components/Navbar_Top";
-import MainRegistro from "../components/dashboard/MainRegistro";
+import NavBarLat from '../components/User/NavBarLat'
+import NavBarUser from '../components/User/NavBarUser'
 import CultivoForm from "../components/CultivoForm";
 
 
 function Cultivo() {
     return(
         <div className='bg-background'>
-            <NavbarTop/>
+            <NavBarLat/>
+            <NavBarUser/>
             <CultivoForm/>
-            <NavbarAdmin/>
         </div>
     );
 

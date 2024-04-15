@@ -1,123 +1,214 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { IconEye, IconEyeOff } from '@tabler/icons-react';
+import React, { useState, useEffect, useContext } from 'react';
+import { IconCameraUp, IconEye, IconEyeOff } from '@tabler/icons-react';
+import { UpdateUser } from './request/UpdateUser';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { DarkModeContext } from '../context/DarkModeContext';
+import { DeleteUser } from './request/DeleteUser';
+import DeleteModal from './Modals/DeleteModal';
+import SuccessModal from './Modals/SuccessModal';
+import { useParams } from 'react-router-dom';
 
 const UserInfo = () => {
-    const [nombre, setNombre] = useState('');
-    const [correo, setCorreo] = useState('');
-    const [apellidoPaterno, setApellidoPaterno] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(true);
-    const [apellidoMaterno, setApellidoMaterno] = useState('');
+    const [ userData, setUserData] = useState('')
+    const [ isOpen, setIsOpen] = useState(false);
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const [ onClose, setIsOnClose] = useState(false)
+    const [ onCloseS, setIsOnCloseS] = useState(false)
+    const [ onCloseSE, setIsOnCloseSE] = useState(false)
+    const { userId } = useParams();
+    
+    const validationSchema = Yup.object({
+        nombre: Yup.string().required('Campo requerido'),
+        apellido_paterno: Yup.string().required('Campo requerido'),
+        apellido_materno: Yup.string().required('Campo requerido'),
+        correo_electronico: Yup.string().email('Correo electrónico inválido').required('Campo requerido'),
+        contrasena: Yup.string().min(8, 'La contraseña debe tener al menos 8 caracteres').required('Campo requerido')
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        fetch(`http://localhost:4000/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener los datos del cultivo');
+            }
+            return response.json();
+        })
+        .then(data => setUserData(data))
+        .catch(error => console.error('Error al obtener los cultivos:', error));
+    }, []);
 
-        console.log('Nombre:', nombre);
-        console.log('Correo', correo);
-        console.log('Apellido Paterno', apellidoPaterno);
-        console.log('Contraseña:', password);
-        console.log('Apellido Materno', apellidoMaterno);
+    const handleSubmit = async (values, { setSubmitting }) => {
+        const {nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena} = values
+        setTimeout(async () => {
+            try {
+                await UpdateUser({
+                    id: userData._id,
+                    nombre: nombre,
+                    apellido_paterno: apellido_paterno,
+                    apellido_materno: apellido_materno,
+                    correo_electronico: correo_electronico,
+                    contrasena: contrasena
+                });
+                setIsOnCloseS(!onCloseS)
+                console.log('Datos actualizados:');
+            } catch (error) {
+                console.error('Error al actualizar los datos:', error.message);
+            }
+            setSubmitting(false);
+        }, 400);
     };
 
-    const handleTogglePasswordVisibility = (field) => {
-        if (field === 'password') {
-            setShowPassword(!showPassword);
-        }
+    const handleOpen = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleCloseModal = () => {
+        setIsOnClose(!onClose);
+    };
+
+    const handleCloseModalS = () => {
+        setIsOnCloseS(!onCloseS);
+    };
+
+    const handleCloseModalSE = () => {
+        setIsOnCloseSE(!onCloseSE);
     };
 
     return (
-        <div>
-            <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-gray-100 mb-10 text-left ml-72">.</h1>
-            <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-black mb-6 text-left ml-72">Información del usuario</h1>
-            <div className="relative max-w-5xl mx-auto mt-5 p-3 bg-white rounded-lg shadow-lg ml-auto mr-auto" style={{ marginLeft: '270px', borderRadius: '20px' }}>
-                <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="mb-4">
-                            <label htmlFor="nombre" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Nombre</label>
-                            <input
-                                type="text"
-                                id="nombre"
-                                value={nombre}
-                                onChange={(e) => setNombre(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-                                placeholder=""
-                                required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="correo" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Correo</label>
-                            <input
-                                type="text"
-                                id="correo"
-                                value={correo}
-                                onChange={(e) => setCorreo(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-                                placeholder=""
-                                required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="apellidoPaterno" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Apellido paterno</label>
-                            <input
-                                type="text"
-                                id="apellidoPaterno"
-                                value={apellidoPaterno}
-                                onChange={(e) => setApellidoPaterno(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-                                placeholder=""
-                                required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
-                            />
-                        </div>
-                        <div className="mb-4 relative">
-                            <label htmlFor="password" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Contraseña</label>
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                id="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 pr-12"
-                                placeholder=""
-                                required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
-                            />
-                            <button
-                                type="button"
-                                onClick={() => handleTogglePasswordVisibility('password')}
-                                className="absolute inset-y-0 right-2 flex items-center bg-transparent focus:outline-none"
-                                style={{ top: 'calc(50% + -5px)' }}
-                            >
-                                {showPassword ? <IconEyeOff size={24} /> : <IconEye size={24} />}
+        <div className={`${darkMode && "dark"}`}>
+            <div className='bg-background dark:bg-[#1B2431] ml-[20%] p-4'>
+                <h1 className='text-3xl font-semibold mt-20 dark:text-white'>Perfil de Usuario</h1>
+                <div className='py-6'>
+                    <div className='w-full bg-white dark:bg-[#273142] rounded-2xl py-4 px-8'>
+                        <div className='w-full flex flex-col items-center justify-center py-2'>
+                            <div className='bg-gray-300 rounded-full p-10'>
+                                <IconCameraUp size={32} />
+                            </div>
+                            <button className='mt-4 text-lg font-medium py-1 px-3 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                                Cambiar foto
                             </button>
                         </div>
-                        <div className="mb-4 col-span-2">
-                            <label htmlFor="apellidoMaterno" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Apellido materno</label>
-                            <input
-                                type="text"
-                                id="apellidoMaterno"
-                                value={apellidoMaterno}
-                                onChange={(e) => setApellidoMaterno(e.target.value)}
-                                className="w-1/2 px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
-                                placeholder=""
-                                required
-                                style={{ backgroundColor: '#E3EBEE', borderColor: '#AFC1C4' }}
-                            />
-                        </div>
+                        <Formik
+                            enableReinitialize
+                            initialValues={userData ? {
+                                nombre: userData.nombre || '',
+                                apellido_paterno: userData.apellido_paterno || '',
+                                apellido_materno: userData.apellido_materno || '',
+                                correo_electronico: userData.correo_electronico || '',
+                                contrasena: userData.contrasena || ''
+                            } : {
+                                nombre: '',
+                                apellido_paterno: '',
+                                apellido_materno: '',
+                                correo_electronico: '',
+                                contrasena: ''
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={handleSubmit}
+                        >
+                            <Form className='flex flex-col'>
+                                <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600 dark:text-gray-300'>
+                                    <div className='flex flex-col order-1'>
+                                        <span>Nombre</span>
+                                        <Field 
+                                            type='text' 
+                                            id='nombre' 
+                                            name='nombre' 
+                                            className='border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' />
+                                        <ErrorMessage name='nombre' component='div' className='text-red-500' />
+                                    </div>
+                                    <div className='flex flex-col order-1'>
+                                        <span>Apellido Paterno</span>
+                                        <Field 
+                                            type='text' 
+                                            id='apellido_paterno'
+                                            name='apellido_paterno' 
+                                            className='border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' 
+                                        />
+                                        <ErrorMessage name='apellido_paterno' component='div' className='text-red-500' />
+                                    </div>
+                                    <div className='flex flex-col order-1'>
+                                        <span>Apellido Materno</span>
+                                        <Field 
+                                            type='text' 
+                                            id='apellido_materno'
+                                            name='apellido_materno' 
+                                            className='border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2' 
+                                        />
+                                        <ErrorMessage name='apellido_materno' component='div' className='text-red-500' />
+                                    </div>
+                                    <div className='flex flex-col order-1'>
+                                        <span>Correo Electrónico</span>
+                                        <Field 
+                                            type='email' 
+                                            id='correo_electronico'
+                                            name='correo_electronico' 
+                                            className='border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'
+                                            disabled={true}
+                                        />
+                                        <ErrorMessage name='correo_electronico' component='div' className='text-red-500' />
+                                    </div>
+                                    <div className='flex flex-col order-1'>
+                                        <span>Contraseña</span>
+                                        <div className='flex border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'>
+                                            <Field
+                                                type={isOpen ? "text" : "password"} 
+                                                id="contrasena"
+                                                name="contrasena"
+                                                className="w-full bg-background dark:bg-[#323D4E] focus:outline-none"
+                                                placeholder="Ingresa su contraseña"
+                                                />
+                                                <button
+                                                type="button"
+                                                onClick={handleOpen}
+                                                >
+                                                {isOpen ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
+                                            </button>
+                                        </div>
+                                        <ErrorMessage name='contrasena' component='div' className='text-red-500' />
+                                    </div>
+                                </div>
+                                <div className='justify-evenly flex py-2'>
+                                    <button type='button' onClick={handleCloseModal} className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
+                                        Eliminar Cuenta
+                                    </button>
+                                    <button type='submit' className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                                        Actualizar Datos
+                                    </button>
+                                </div>
+                            </Form>
+                        </Formik>
                     </div>
-                    <div className="mb-8 flex justify-center" style={{ marginTop: '5px' }}>
-                        <button type="submit" className="bg-green-700 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-green-400 focus:outline-none focus:bg-green-400 focus:ring-2 focus:ring-green-300" style={{ fontSize: '1.1rem' }}>
-                            Actualizar datos
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
+            <DeleteModal 
+                users={userData} 
+                isOpen={onClose} 
+                onClose={handleCloseModal}
+                onSuccessModalOpen={handleCloseModalSE}
+                title={"Eliminar Cuenta"}
+                mensaje={"¿Está seguro de que desea eliminar su cuenta? Esta acción no puede deshacerse."}
+            />
+            <SuccessModal
+                isOpen={onCloseS}
+                onClose={handleCloseModalS}
+                title={"Datos Actualizados"}
+                mensaje={"Sus datos se han actualizado"}
+            />
+            <SuccessModal
+                isOpen={onCloseSE}
+                onClose={handleCloseModalSE}
+                title={"Usuario Eliminado"}
+                mensaje={"Su cuenta ha sido eliminada"}
+            />
         </div>
     );
-};
+}
 
 export default UserInfo;

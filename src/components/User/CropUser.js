@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { IconSearch } from '@tabler/icons-react';
 import NewCultivo from '../../img/NewCultivo'
+import maiz from '../../img/Maiz.jpeg'
+import frambuesa from '../../img/pexels-andre-altergott-6889551.jpg'
 
 const CropUser = () => {
     const [cultivos, setCultivos] = useState([]);
@@ -23,6 +25,15 @@ const CropUser = () => {
         .then(data => setCultivos(data))
         .catch(error => console.error('Error al obtener los cultivos:', error));
     }, []);
+
+    const cosechaDate = (dateString) => {
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const monthIndex = date.getMonth();
+        const year = date.getFullYear();
+        return `${day < 10 ? '0' + day : day} de ${months[monthIndex]} de ${year}`;
+    };
     
     return (
         <div className='bg-background ml-[20%] p-4 h-screen'>
@@ -39,9 +50,9 @@ const CropUser = () => {
                             <div className='items-center justify-center flex flex-col col-span-2'>
                                 <h1 className='text-2xl font-medium'>¡Empieza a cultivar tu propio camino!</h1>
                                 <span className='text-justify text-lg text-gray-600 my-4'>Parece que aún no has registrado ningún cultivo. ¿Por qué no comienzas tu viaje agrícola ahora mismo? Registra tu primer cultivo y empieza a cultivar tus propios alimentos de manera sostenible y gratificante.</span>
-                                <button className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold'>
+                                <Link to='/cultivo' className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold'>
                                     Agregar Cultivo
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -50,37 +61,31 @@ const CropUser = () => {
                 <div>
                     <div className='flex mt-20'>
                         <h1 className='text-3xl font-semibold dark:text-white'>Cultivos</h1>
-                        <Link to='/' className='bg-custom-color_logo hover:bg-[#2F9B5D] text-white px-4 py-2 rounded-lg ml-auto mr-5'>Agregar Cultivo</Link>
+                        <Link to='/cultivo' className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
+                             Agregar Cultivo
+                        </Link>                    
                     </div>
                     <div className='py-6'>
-                        <div className='w-full bg-white rounded-2xl overflow-hidden'>
-                            <table className='w-full'>
-                                <thead className='bg-custom-color_logo text-medium'>
-                                    <tr>
-                                        <th className='px-2 py-4 text-left text-white'>ID</th>
-                                        <th className='px-2 py-4 text-left text-white'>Tipo de Cultivo</th>
-                                        <th className='px-2 py-4 text-left text-white'>Tipo de Riego</th>
-                                        <th className='px-2 py-4 text-left text-white'>Método de Fertilización</th>
-                                        <th className='px-2 py-4 text-left text-white'>Superficie</th>
-                                    </tr>
-                                </thead>
-                                <tbody className='dark:text-gray-300'>
-                                    {cultivos.map(cultivo => (
-                                        <tr key={cultivo._id} className='border-gray-200 dark:border-gray-600 border-y'>
-                                            <td className='px-2 py-4'>{cultivo._id}</td>
-                                            <td className='px-2 py-4'>{cultivo.tipoCultivo}</td>
-                                            <td className='px-2 py-4'>{cultivo.tipoRiego}</td>
-                                            <td className='px-2 py-4'>{cultivo.metodoFertilizacion}</td>
-                                            <td className='px-2 py-4'>{cultivo.superficie}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div className='flex'>
-                        <div className='flex justify-around py-2 px-4 rounded-lg bg-gray-50 dark:bg-[#323D4E] border border-gray-300 ml-auto'>
-                            <IconSearch size={18} className='text-[#9ca3af] ml-2' />
+                        <div className='w-full p-4 bg-white rounded-2xl overflow-hidden grid grid-cols-2 gap-x-4'>
+                            {cultivos.map(cultivo => {
+                                const imagenCultivo = cultivo.tipo_cultivo === 'Maíz' ? maiz : frambuesa;
+                                return(
+                                    <div className='flex flex-col p-4 rounded-xl border-2 border-gray-300'>
+                                        <div className='relative'>
+                                            <img src={imagenCultivo} alt={cultivo.tipo_cultivo} className='w-full h-auto filter: brightness-50 rounded-xl' />
+                                            <div className='absolute top-0 p-2 w-full grid grid-cols-2 text-white text-lg'>
+                                                <span className='font-semibold'>{cultivo.tipo_cultivo}</span>
+                                                <span className='text-end'>{cultivo.medidas_siembra} m²</span>
+                                            </div>
+                                        </div>
+                                        <div className='flex flex-col mt-2 text-lg'>
+                                            <span>Programa de riego: {cultivo.programa_riego}</span>
+                                            <span>Técnicas de polinización: {cultivo.tecnica_polinizacion}</span>
+                                            <span>Se prevé que la fecha estimada de cosecha es del <span className='text-green-500 font-medium'>{cosechaDate(cultivo.fecha_prevista)}</span></span>
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
