@@ -41,6 +41,7 @@ const DeviceUser = () => {
     console.log(dispositivos)
 
     return (
+<<<<<<< HEAD
         <div className='bg-background ml-[20%] p-4 h-screen'>
             <div className='mb-6 h-full py-20'>
                 <h1 className='text-3xl font-semibold'>Dispositivos</h1>
@@ -56,6 +57,41 @@ const DeviceUser = () => {
                                 <button className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold'>
                                     Agregar Dispositivo
                                 </button>
+=======
+        <div className='bg-background ml-[20%] p-4 h-screen h-full'>
+            <div className='mt-20 mb-6'>
+                <h1 className='text-3xl font-semibold mt-20'>Dispositivos</h1>
+                <div className="flex flex-wrap justify-between">
+                    {[1, 2,3, 4].map((index) => (
+                        <div key={index} className='bg-white flex items-center rounded-lg border border-custom-D9D9D9 border-2 flex mt-5 w-[45%] h-48 mr-5 ml-5'>
+                            <img src={Sensor} alt='Sensor' className="w-40 h-40 rounded-lg ml-7" />
+                            <div className='flex flex-col flex-grow'>
+                                <div className='flex items-center'>
+                                    <h2 className='text-[#4D7A7D] text-lg ml-5 w-[60px]'>Nombre:</h2>
+                                    <input
+                                        type="text"
+                                        value={nombre}
+                                        onChange={handleNombreChange}
+                                        className='text-custom-204E51 text-lg text-semiboad ml-5 mt-1 border border-gray-300 rounded-md px-1 py-1'
+                                    />
+                                </div>
+                                <div className='flex items-center mt-2'>
+                                    <h2 className='text-[#4D7A7D] text-lg ml-5 w-[60px]'>Cultivo:</h2>
+                                    <select
+                                        value={cultivo}
+                                        onChange={handleCultivoChange}
+                                        className='text-custom-204E51 text-lg text-semiboad ml-5 mt-1 border border-gray-300 rounded-md px-1 py-1'
+                                    >
+                                        {opcionesCultivo.map((opcion, index) => (
+                                            <option key={index} value={opcion}>{opcion}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="mt-7 flex justify-center">
+                                    <button onClick={abrirModalEditar} className="bg-custom-color_logo  hover:bg-[#2F9B5D]  text-white font-semibold py-2 px-8 rounded-lg mr-2">Editar</button>
+                                    <button onClick={abrirModalEliminar} className="bg-[#D33363] hover:bg-red-700 text-white font-semibold rounded-lg py-2 px-8 ">Borrar</button>
+                                </div>
+>>>>>>> 85c43c0c0bd78d5d5a2ade54562d3bafe0f76dc0
                             </div>
                         </div>
                     </div>
