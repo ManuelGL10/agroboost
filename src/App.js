@@ -29,6 +29,7 @@ import Cultivo from './views/Cultivo';
 import UserReminder from './views/UserReminder';
 import UserCrop from './views/UserCrop';
 import Venta from './views/Venta';
+import VentaCart from './views/VentaCart';
 
 function App() {
   return (
@@ -59,12 +60,10 @@ function App() {
       <Route path='/userinf/:userId' element={<UserInf/>} />
       <Route path='/addressinf' element={<AddressInf/>} />
       <Route path='/cultivo' element={<Cultivo/>} />
-<<<<<<< HEAD
-=======
       <Route path='/userReminder' element={<UserReminder/>} />
       <Route path='/userCrop' element={<UserCrop/>} />
       <Route path='/venta' element={<Venta/>}/>
->>>>>>> 85c43c0c0bd78d5d5a2ade54562d3bafe0f76dc0
+      <Route path='/ventacard' element={<VentaCart/>}/>
     </Routes>
   );
 }
