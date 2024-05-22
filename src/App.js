@@ -63,10 +63,7 @@ function App() {
       <Route path='/userReminder' element={<UserReminder/>} />
       <Route path='/userCrop' element={<UserCrop/>} />
       <Route path='/venta' element={<Venta/>}/>
-<<<<<<< HEAD
-=======
       <Route path='/ventacard' element={<VentaCart/>}/>
->>>>>>> 7ba6cc64100a209686d2537c96cb09def5cb97d9
     </Routes>
   );
 }

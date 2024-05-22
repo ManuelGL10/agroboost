@@ -29,13 +29,12 @@ const DeviceModal = ({ isOpen, onClose}) => {
                     <label htmlFor="contrasena">Cultivo:</label>
                     <select className='mt-2 border border-gray-300 rounded-lg p-1'>
                         <option disabled={true}>selecciona una opcion</option>
-                        <option>Sensor de Temperatura</option>
-                        <option>Sensor de Humedad</option>
-                        <option>Sensor de Nutrientes</option>
+                        <option>Maíz</option>
+                        <option>Frambuesa</option>
                     </select>
                 </div>
                 <div className='flex justify-center items-center mt-4'>
-                    <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+                    <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Crear</button>
                 </div>
             </form>
         </div>
