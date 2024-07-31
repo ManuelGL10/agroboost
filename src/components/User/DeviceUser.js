@@ -66,7 +66,7 @@ const DeviceUser = () => {
             ) : (
                 <div className='mt-20'>
                     <div className='flex'>
-                        <h1 className='text-3xl font-semibold dark:text-white'>Dispositivos</h1>
+                        <h1 className='text-3xl font-semibold dark:text-white'>Cultivos</h1>
                         <button onClick={handleAddModal} className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
                              Agregar Dispositivo
                         </button>                    

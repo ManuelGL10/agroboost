@@ -6,6 +6,7 @@ const Venta = () => {
         <div>
             <InfoVenta/>
         </div>
+        
     )
 }
 
