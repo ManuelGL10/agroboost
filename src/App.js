@@ -29,6 +29,7 @@ import Cultivo from './views/Cultivo';
 import UserReminder from './views/UserReminder';
 import UserCrop from './views/UserCrop';
 import Venta from './views/Venta';
+import VentaCart from './views/VentaCart';
 import Clima from './views/Clima';
 import VentaCart from './views/VentaCart';
 
@@ -64,6 +65,7 @@ function App() {
       <Route path='/userReminder' element={<UserReminder/>} />
       <Route path='/userCrop' element={<UserCrop/>} />
       <Route path='/venta' element={<Venta/>}/>
+      <Route path='/ventacard' element={<VentaCart/>}/>
       <Route path='/clima' element={<Clima/>}/>
       <Route path='/ventacard' element={<VentaCart/>}/>
     </Routes>
