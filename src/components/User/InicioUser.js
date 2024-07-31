@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Clima from "../../img/dom.png";
 import DatosUser from './DatosUser'
 import ClimateDay from "./ClimateDay";
-import WeatherComponent from '../WeatherComponent';
+import WeatherComponent from './WeatherComponent';
 import {IconCloud, IconMapPin} from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 
@@ -61,7 +61,7 @@ const InicioUser = () => {
 
   return (
     <div className='bg-background ml-[20%] p-4'>
-      <WeatherComponent city={city} setTemperature={setTemperature} setDescription={setDescription} setHourlyForecast={setHourlyForecast} />
+      <WeatherComponent city={city} setTemperature={setTemperature} setDescription={setDescription} setHourlyForecast={setHourlyForecast} /> 
       <div className='mt-20 mb-6 flex flex-row items-center'>
         <div className='bg-white rounded-lg flex items-center justify-between px-8 w-full'>
           <div className='flex items-end'> 
@@ -84,8 +84,6 @@ const InicioUser = () => {
         </div>
       </div>
       <ClimateDay hourlyForecast={hourlyForecast}/>
-      <DatosUser/>
-      <ClimateDay/>
       <DatosUser datos={dispositivos}/>
     </div>
   );
