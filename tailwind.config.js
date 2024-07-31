@@ -32,7 +32,6 @@ module.exports = {
     "./src/views/UserCrop.jsx",
     "./src/views/VentaCart.jsx",
     "./src/views/Venta.jsx",
-    "./src/views/Clima.jsx",
     "./src/components/Hero.js",
     "./src/components/Agroboost.js",
     "./src/components/Cards.js",
@@ -92,8 +91,6 @@ module.exports = {
     "./src/components/Venta/ProductDetails.js",
     "./src/components/Venta/ModalVentaEx.js",
     "./src/components/Venta/ShoppingCart.js",
-    "./src/components/WeatherComponent.js",
-    "./src/components/WeatherService.js",
 
 
   ],

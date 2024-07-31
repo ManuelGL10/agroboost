@@ -30,6 +30,7 @@ import UserReminder from './views/UserReminder';
 import UserCrop from './views/UserCrop';
 import Venta from './views/Venta';
 import Clima from './views/Clima';
+import VentaCart from './views/VentaCart';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
       <Route path='/userCrop' element={<UserCrop/>} />
       <Route path='/venta' element={<Venta/>}/>
       <Route path='/clima' element={<Clima/>}/>
+      <Route path='/ventacard' element={<VentaCart/>}/>
     </Routes>
   );
 }
