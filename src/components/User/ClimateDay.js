@@ -32,7 +32,7 @@ const ClimateDay = ({ hourlyForecast }) => {
 
     return (
         <div className='mt-2 flex flex-row items-center'>
-            <div className='bg-white rounded-lg border border-custom-D9D9D9 border-2 flex items-center w-full h-32 overflow-x-auto'>
+            <div className='bg-white rounded-lg border-custom-D9D9D9 border-2 flex items-center w-full h-32 overflow-x-auto'>
                 {futureForecast.map((hour, index) => (
                     <div key={index} className="bg-custom-F0F0F0 rounded-xl p-2 ml-4 mr-4 mt-2 mb-2 w-20">
                         <div className='flex flex-col'>
