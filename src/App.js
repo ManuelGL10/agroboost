@@ -31,7 +31,6 @@ import UserCrop from './views/UserCrop';
 import Venta from './views/Venta';
 import VentaCart from './views/VentaCart';
 import Clima from './views/Clima';
-import VentaCart from './views/VentaCart';
 
 function App() {
   return (
@@ -67,7 +66,6 @@ function App() {
       <Route path='/venta' element={<Venta/>}/>
       <Route path='/ventacard' element={<VentaCart/>}/>
       <Route path='/clima' element={<Clima/>}/>
-      <Route path='/ventacard' element={<VentaCart/>}/>
     </Routes>
   );
 }
