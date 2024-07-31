@@ -3,10 +3,7 @@ import InfoVenta from "../components/Venta/InfoVenta";
 
 const Venta = () => {
     return (
-        <div>
-            <InfoVenta/>
-        </div>
-        
+        <InfoVenta/>
     )
 }
 

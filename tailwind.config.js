@@ -95,6 +95,7 @@ module.exports = {
     "./src/components/WeatherComponent.js",
     "./src/components/WeatherService.js",
 
+
   ],
   theme: {
     extend: {
