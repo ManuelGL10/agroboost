@@ -42,8 +42,12 @@ return (
       <div className='grid grid-cols-1'>
         <div className='my-2 bg-white p-4 rounded-xl'>
           <h1 className='text-xl font-medium mb-4'>Cultivo: Maíz</h1>
-          <div className='grid grid-cols-3 gap-x-2'>
-            <div className='grid grid-cols-1 gap-x-2'>
+          <div className='grid grid-cols-2 gap-x-2'>
+            <div className='grid grid-cols-2 gap-x-2'>
+              <div className='p-2 border-2 border-gray-300 rounded-lg'>
+                <span className='text-xl font-medium text-custom-264948'>Temperatura</span>
+                <TemperatureLineChart datos={[ultimaTemperatura]}/>
+              </div>
               <div className='p-2 border-2 border-gray-300 rounded-lg'>
                 <span className='text-xl font-medium text-custom-264948'>Humedad</span>
                 <HumidityDoughnutChart datos={[ultimaHumedad]}/>
@@ -52,7 +56,7 @@ return (
                 </div>
               </div>
             </div>
-            <div className='p-2 col-span-2 border-2 border-gray-300 rounded-lg'>
+            <div className='p-2 border-2 border-gray-300 rounded-lg'>
               <span className='text-xl font-medium text-custom-264948'>Nutrientes</span>
               <div className='grid grid-cols-3 gap-x-2 mt-2'>
                 <div className='text-center'>

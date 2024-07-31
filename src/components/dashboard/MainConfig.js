@@ -110,12 +110,54 @@ const MainConfig = () => {
                     <span>Todas</span>
                   </div>
                 </div>
-                <div className='py-2 flex justify-center'>
-                  <button className='flex py-2 px-6 rounded-lg bg-custom-color_logo right-0 text-white font-medium hover:bg-[#2F9B5D]' onClick={handleBackup}>
-                    Respaldar
-                  </button>
-                </div>
               </div>
+              <div className='px-4 py-2'>
+                <div className='flex flex-col'>
+                  <span className='text-lg font-medium mb-2'>Frecuencia de Respaldo</span>
+                  <select
+                    className='border-2 border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 rounded-lg p-2'
+                    value={frecuenciaRespaldo}
+                    onChange={(e) => setFrecuenciaRespaldo(e.target.value)}
+                  >
+                    <option value="" disabled>Selecciona una opción</option>
+                    <option value="Diario">Diario</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensual">Mensual</option>
+                  </select>
+                </div>
+                {frecuenciaRespaldo === 'Semanal' && (
+                  <div className='flex flex-col mt-4'>
+                    <span className='text-lg font-medium mb-2'>Día de Respaldo</span>
+                    <select className='border-2 border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 rounded-lg p-2'>
+                      <option value="" disabled>Selecciona una opción</option>
+                      <option value="Lunes">Lunes</option>
+                      <option value="Martes">Martes</option>
+                      <option value="Miércoles">Miércoles</option>
+                      <option value="Jueves">Jueves</option>
+                      <option value="Viernes">Viernes</option>
+                      <option value="Sábado">Sábado</option>
+                      <option value="Domingo">Domingo</option>
+                    </select>
+                  </div>
+                )}
+                {(frecuenciaRespaldo === 'Mensual') && (
+                  <div className='flex flex-col mt-4'>
+                    <span className='text-lg font-medium mb-2'>Fecha de Respaldo</span>
+                    <input type='date' className='border-2 border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 rounded-lg p-2'/>
+                  </div>
+                )}
+                {(frecuenciaRespaldo === 'Mensual' || frecuenciaRespaldo === 'Diario' || frecuenciaRespaldo === 'Semanal') && (
+                  <div className='flex flex-col mt-4'>
+                    <span className='text-lg font-medium mb-2 w-full'>Hora de Respaldo</span>
+                    <input type='time' className='border-2 border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 rounded-lg p-2'/>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className='py-2 flex justify-center'>
+              <button className='flex py-2 px-6 rounded-lg bg-custom-color_logo right-0 text-white font-medium hover:bg-[#2F9B5D]' onClick={handleBackup}>
+                Respaldar
+              </button>
             </div>
           </div>
         </div>
