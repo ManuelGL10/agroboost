@@ -15,24 +15,32 @@ const InicioUser = () => {
 
   const [ dispositivos, setDispositivos ] = useState([]);
 
-  useEffect(() => {
+  const fetchDispositivos = () => {
     fetch(`http://localhost:4000/dispositivo/${userId}`, {
-      method: 'GET',
-      headers: {
+      method: 'GET', 
+      headers:{
         'Content-Type': 'application/json',
       },
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al obtener los datos de los dispositivos');
-      }
+      .then(response => {
+        if(!response.ok){
+          throw new Error('Error al obtener los datos de los dispositivos');
+        }
         return response.json();
     })
     .then(data => setDispositivos(data))
-    .catch(error => console.error('Error al obtener los dispositivos:', error));
-  }, []);
+    .catch(error => console.error('Error al obtener los dispositivos', error)); 
+  }
 
-  console.log(dispositivos)
+  useEffect(() => {
+    fetchDispositivos();
+
+    const interval = setInterval(() => {
+      fetchDispositivos();
+    }, 5000); 
+
+    return () => clearInterval(interval);
+  }, [userId]); 
 
   useEffect(() => {
     fetch(`http://localhost:4000/user/${userId}`, {
