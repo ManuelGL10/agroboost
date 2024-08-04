@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/LogoAgroBoostPNG.svg';
-import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout, IconHome, IconUser } from '@tabler/icons-react';
+import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout, IconHome, IconUser, IconGraph } from '@tabler/icons-react';
 import { useAuth } from '../request/AuthContext';
 import GetUser from '../request/GetUser';
 
@@ -59,10 +59,17 @@ const NavbarLat = () => {
                 </Link>
                 
             </li>
-            <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+            <li className='flex p-2 my-4 ursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                 <Link to={`/userReminder/${userData?._id}`} className='flex w-full'>
                     <IconListDetails size={30} stroke={1.5}/>
                     <span className='ml-4'>Recordatorio</span>
+                </Link>
+                
+            </li>
+            <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+                <Link to={`/userstatesman/${userData?._id}`} className='flex w-full'>
+                    <IconGraph size={30} stroke={1.5}/>
+                    <span className='ml-4'>Estadística</span>
                 </Link>
                 
             </li>
