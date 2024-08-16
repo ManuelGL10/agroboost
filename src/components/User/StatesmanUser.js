@@ -5,7 +5,7 @@ import { IconCheck, IconX } from '@tabler/icons-react';
 const StatesmanUser = () => {
     const { userId } = useParams();
     const [prediction, setPrediction] = useState(null);
-    const [explanation, setExplanation] = useState(null);
+    const [explanation, setExplanation] = useState([]);
     const [error, setError] = useState(null);
     const [chartError, setChartError] = useState(null);
     const [humidityChartError, setHumidityChartError] = useState(null);
