@@ -57,29 +57,30 @@ const StatesmanUser = () => {
     return (
         <div className='bg-background ml-[20%] p-4'>
             <div className='h-full py-20'>
-                <div>
-                    <h1 className='text-3xl font-semibold dark:text-white'>Reporte</h1>
-                </div>
-                <div className='mt-6'>
-                    {error ? (
-                        <div className='text-red-500'>{error}</div>
-                    ) : (
-                        <div className='text-2xl'>
-                            {prediction === null ? (
-                                'Cargando...'
+
+                <div className='mt-2 mb-6 flex items-center justify-center'> 
+                    <div className='bg-white shadow-lg rounded-lg flex items-center justify-between px-8 py-6 w-full max-w-4xl'>
+                        
+                        <div className='flex items-center'>
+                            {prediction === 1 ? (
+                                <IconCheck size={50} color="green" />
                             ) : (
-                                <div>
-                                    <div>
-                                        {prediction === 1 ? 'Las condiciones son buenas' : 'Las condiciones no son buenas'}
-                                    </div>
-                                    <div className='text-xl mt-4'>
-                                        {renderExplanation()}
-                                    </div>
-                                </div>
+                                <IconX size={50} color="red" />
                             )}
+                            <div className='text-2xl font-semibold ml-4'>
+                                {prediction === 1 ? 'Las condiciones son buenas' : 'Las condiciones no son buenas'}
+                            </div>
                         </div>
-                    )}
+
+                        <div className='flex flex-col ml-12'>
+                            <h2 className='text-xl font-bold mb-4'>Explicación</h2>
+                            <div className='text-lg'>
+                                {renderExplanation()}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
 
                 <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mt-6'>
                     <div>
