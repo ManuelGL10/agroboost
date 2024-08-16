@@ -60,7 +60,7 @@ const CropUser = () => {
             ) : (
                 <div>
                     <div className='flex mt-20'>
-                        <h1 className='text-3xl font-semibold dark:text-white'>Cultivos</h1>
+                        <h1 className='text-3xl font-semibold dark:text-white'>Cultivo</h1>
                         <Link to='/cultivo' className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
                              Agregar Cultivo
                         </Link>                    
