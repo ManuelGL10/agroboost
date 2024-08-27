@@ -4,7 +4,7 @@ import monitorear from '../img/monitorear.jpeg';
 
 const Agroboost = () => {
   return (
-    <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2 my-8'>
+    <section className='flex justify-center items-center py-6 max-w-[1240px] h-[calc(100vh-60px)] mx-auto md:px-12 px-4 p-2'>
         <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
             <div className='m-6 text-center flex flex-col justify-center'>
                 <span className='block font-medium lg:text-4xl md:text-3xl text-2xl text-custom-204E51 mb-4 text-justify'>
@@ -14,9 +14,11 @@ const Agroboost = () => {
                     Descubre las últimas innovaciones tecnológicas diseñadas para potenciar tus cultivos y optimizar tu producción. Obtén pronósticos climáticos precisos, análisis de suelos detallados y herramientas avanzadas para una gestión agrícola eficiente.
                 </span>
             </div>
-            <img src={monitorear} className='rounded-2xl w-[450px] mx-auto my-4 shadow-2xl' alt="imagen de monitoreo"/>
+            <div className='flex justify-end'>
+                <img src={monitorear} className='rounded-2xl w-[450px] my-4 shadow-2xl' alt="imagen de monitoreo"/>
+            </div>
         </div>
-    </div>
+    </section>
   )
 }
 
