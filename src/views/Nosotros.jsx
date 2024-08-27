@@ -7,7 +7,7 @@ const Nosotros = () => {
   return (
     <div>
         <Navbar/>
-        <div className='text-center px-12 py-6'>
+        <div className='text-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
           <span className='block font-semibold md:text-6xl sm:text-5xl text-4xl text-custom-204E51'>
             Sobre Nosotros
           </span>

@@ -13,11 +13,11 @@ const Inicio = () => {
     <div>
       <Navbar />
       <Hero />
-      <Agroboost/>
-      <InfoNosotros/>
-      <InfoProducto/>
-      <Download/>
-      <Questions/>
+        <Agroboost/>
+        <InfoNosotros/>
+        <InfoProducto/>
+        <Download/>
+        <Questions/>
       <Footer/>
     </div>
   );

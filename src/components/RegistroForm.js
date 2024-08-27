@@ -65,7 +65,7 @@ const RegistroForm = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
       <h2 className="block font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 text-center">Regístrate</h2>
       <div className="flex items-center my-4">
         <img src={Logo} alt="Logo AgroBoost" className="w-32 h-auto mx-auto"/>

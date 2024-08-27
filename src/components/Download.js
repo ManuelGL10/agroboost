@@ -5,7 +5,7 @@ import appmovil from '../img/App-removebg-preview.png'
 
 const Download = () => {
   return (
-    <div className='w-full flex justify-center items-center py-6 px-12'>
+    <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2 my-8'>
     <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
         <img src={appmovil} className='order-2 md:order-none rounded-2xl w-[250px] mx-auto my-4 bg-transparent' alt="appmovil"/>
         <div className='order-1 md:order-none m-6 flex flex-col justify-center'>

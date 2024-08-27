@@ -6,7 +6,7 @@ import monitoreo from '../img/monitoreo.jpeg';
 
 const CardsProduct = () => {
   return (
-    <div className='w-full py-[2rem] px-12 bg-white'>
+    <div className='py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
       <div className='max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8'>
         <div className='w-44 mx-auto flex flex-col p-4 my-4 bg-custom-F0F0F0 rounded-xl'>
           <img className='w-40 mx-auto rounded-xl' src={regar} alt='regar' />
