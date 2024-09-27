@@ -5,6 +5,7 @@ import NitrogenoDoughnutChart from '../graphics/NitrogenoDoughnutChart';
 import FosforoDoughnutChart from '../graphics/FosforoDoughnutChart';
 import PotasioDoughnutChart from '../graphics/PotasioDoughnutChart';
 import { useParams } from 'react-router-dom';
+import { array } from 'yup';
 
 const DatosExtras = ({datos}) => {
   // Estado para almacenar la opción seleccionada del cultivo
@@ -30,10 +31,19 @@ const obtenerUltimoDato = (data) => {
   return null;
 };
 
+const obtenerUltimoElementoArray = (array) => {
+  if (array && array.length > 0){
+    return array [array.length - 1]; 
+  }
+}
+
 // Obtener los últimos valores de temperatura, humedad y nutrientes
 const ultimaTemperatura = obtenerUltimoDato(temperaturaData);
 const ultimaHumedad = obtenerUltimoDato(humedadData);
-const ultimosNutrientes = nutrientesData ? nutrientesData.datos : null;
+const ultimoNitrogeno = obtenerUltimoElementoArray(nutrientesData?.datos?.nitrogeno); 
+const ultimoFosforo = obtenerUltimoElementoArray(nutrientesData?.datos.fosforo); 
+const ultimoPotasio = obtenerUltimoElementoArray(nutrientesData?.datos?.potasio);
+
 
 return (
   <div className='flex flex-col mt-5'>
@@ -60,24 +70,24 @@ return (
               <span className='text-xl font-medium text-custom-264948'>Nutrientes</span>
               <div className='grid grid-cols-3 gap-x-2 mt-2'>
                 <div className='text-center'>
-                  <NitrogenoDoughnutChart datos={ultimosNutrientes?.nitrogeno}/>
+                  <NitrogenoDoughnutChart datos={[ultimoNitrogeno]}/>
                   <span className='text-yellow-500 font-medium text-lg'>Nitrógeno</span>
                   <div className='text-yellow-500 flex items-center justify-center'>
-                    <span>{ultimosNutrientes?.nitrogeno} ppm</span>
+                    <span>{ultimoNitrogeno} ppm</span>
                   </div>
                 </div>
                 <div className='text-center'>
-                  <FosforoDoughnutChart datos={ultimosNutrientes?.fosforo}/>
+                  <FosforoDoughnutChart datos={[ultimoFosforo]}/>
                   <span className='text-green-600 font-medium text-lg'>Fósforo</span>
                   <div className='text-green-600 flex items-center justify-center'>
-                    <span>{ultimosNutrientes?.fosforo} ppm</span>
+                    <span>{ultimoFosforo} ppm</span>
                   </div>
                 </div>
                 <div className='text-center'>
-                  <PotasioDoughnutChart datos={ultimosNutrientes?.potasio}/>
+                  <PotasioDoughnutChart datos={[ultimoPotasio]}/>
                   <span className='text-orange-500 font-medium text-lg'>Potasio</span>
                   <div className='text-orange-500 flex items-center justify-center'>
-                    <span>{ultimosNutrientes?.potasio} ppm</span>
+                    <span>{ultimoPotasio} ppm</span>
                   </div>
                 </div>
               </div>
