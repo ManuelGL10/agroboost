@@ -65,10 +65,14 @@ const RegistroForm = () => {
   }
 
   return (
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="block font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 text-center">Regístrate</h2>
-      <div className="flex items-center my-4">
-        <img src={Logo} alt="Logo AgroBoost" className="w-32 h-auto mx-auto"/>
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-rows-4">
+      <div className='row-span-1 grid grid-rows-4'>
+        <div className='flex justify-center items-center'>
+          <h2 className="font-medium lg:text-3xl text-2xl text-custom-204E51 text-center">Regístrate</h2>
+        </div>      
+        <div className="flex items-center my-4 row-span-3">
+          <img src={Logo} alt="Logo AgroBoost" className="size-32 mx-auto"/>
+        </div>
       </div>
       <Formik
         initialValues={initialValues}
@@ -76,59 +80,59 @@ const RegistroForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form>
-            <div className="mb-3">
+          <Form className='row-span-3 grid'>
+            <div>
               <label htmlFor="name" className="block font-medium text-base text-custom-00000 mb-2 text-left">Nombre(s)</label>
               <Field
                 type="text"
                 id="name"
                 name="name"
-                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
                 placeholder="Ingrese su Nombre"
               />
               <ErrorMessage name="name" component="div" className="text-red-500" />
             </div>
-            <div className="mb-3">
+            <div>
               <label htmlFor="apellidopaterno" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Paterno</label>
               <Field
                 type="text"
                 id="apellidopaterno"
                 name="apellidopaterno"
-                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
                 placeholder="Ingrese su Apellido Paterno"
               />
               <ErrorMessage name="apellidopaterno" component="div" className="text-red-500" />
             </div>
-            <div className="mb-3">
+            <div>
               <label htmlFor="apellidomaterno" className="block font-medium text-base text-custom-00000 mb-2 text-left">Apellido Materno</label>
               <Field
                 type="text"
                 id="apellidomaterno"
                 name="apellidomaterno"
-                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
                 placeholder="Ingrese su Apellido Materno"
               />
               <ErrorMessage name="apellidomaterno" component="div" className="text-red-500" />
             </div>
-            <div className="mb-3">
+            <div>
               <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 text-left">Correo Electrónico</label>
               <Field
                 type="email"
                 id="email"
                 name="email"
-                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
                 placeholder="Ingrese su nombre"
               />
               <ErrorMessage name="email" component="div" className="text-red-500" />
             </div>
-            <div className="mb-3">
+            <div>
               <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-              <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
+              <div className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
                 <Field
                   type={showPassword ? "text" : "password"} 
                   id="password"
                   name="password"
-                  className="w-full focus:outline-none focus:border-[#204E51]"
+                  className="w-[100%] focus:outline-none focus:border-[#204E51]"
                   placeholder="Ingresa su contraseña"
                 />
                 <button
@@ -140,10 +144,12 @@ const RegistroForm = () => {
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500" />
             </div>
-            <button type="submit" className="w-full my-4 bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
-              Registrarse
-            </button>
-            <div className="text-center">
+            <div className='flex items-center'>
+              <button type="submit" className="w-[100%] bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51">
+                Registrarse
+              </button>
+            </div>
+            <div className="flex items-center justify-center">
               <p>¿Ya tienes cuenta? <a href="/login" className="text-[#4D7A7D] font-bold">Inicia sesión</a></p>
             </div>
           </Form>

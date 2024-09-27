@@ -60,10 +60,14 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="block font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 text-center">Inicio de Sesión</h2>
-      <div className="flex items-center my-4">
-        <img src={Logo} alt="Logo AgroBoost" className="w-32 h-auto mx-auto"/>
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-row-3">
+      <div className='row-span-1 grid grid-rows-4'>
+        <div className='flex justify-center items-center'>
+          <h2 className="font-medium text-3xl text-custom-204E51 text-center">Inicio de Sesión</h2>
+        </div>
+        <div className="flex items-center my-4 row-span-3">
+          <img src={Logo} alt="Logo AgroBoost" className="size-32 mx-auto"/>
+        </div>
       </div>
       <Formik
         initialValues={initialValues}
@@ -71,26 +75,26 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form>
-            <div className="mb-3">
-              <label htmlFor="email" className="block font-medium text-base text-custom-00000 mb-2 text-left">Correo Electrónico</label>
+          <Form className="grid grid-rows-6 row-span-1 items-center">
+            <div className="w-[100%] row-span-2">
+              <label htmlFor="email" className="block font-medium text-custom-00000 mb-2 text-left">Correo Electrónico</label>
               <Field
                 type="email"
                 id="email"
                 name="email"
-                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
+                className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-[#204E51]"
                 placeholder="Ingrese su correo"
               />
               <ErrorMessage name="email" component="div" className="text-red-500" />
             </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="block font-medium text-base text-custom-00000 mb-2 text-left">Contraseña</label>
-              <div className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
+            <div className="w-[100%] row-span-2">
+              <label htmlFor="password" className="block font-medium text-custom-00000 mb-2 text-left">Contraseña</label>
+              <div className="w-[100%] px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500 flex">
                 <Field
                   type={showPassword ? "text" : "password"} 
                   id="password"
                   name="password"
-                  className="w-full focus:outline-none focus:border-[#204E51]"
+                  className="w-[100%] focus:outline-none focus:border-[#204E51]"
                   placeholder="Ingresa su contraseña"
                 />
                 <button
@@ -102,33 +106,36 @@ const LoginForm = () => {
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500" />
             </div>
-            <div className="text-right my-4">
+            <div className="text-right w-[100%]">
               <a href="/password" className="text-[#4D7A7D]">¿Olvidaste tu contraseña?</a>
             </div>
-            <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51" disabled={isSubmitting}>
+            <button type="submit" className="w-[100%] bg-custom-204E51 text-white font-semibold px-6 py-3 rounded-lg hover:bg-custom-306C73 focus:outline-none focus:bg-custom-306C73 focus:ring-2 focus:ring-custom-204E51" disabled={isSubmitting}>
               Ingresar 
             </button>
           </Form>
         )}
       </Formik>
-      <div className="flex items-center my-4">
-        <hr className="border-black flex-grow" />
-        <span className="text-black px-4">o iniciar sesión con</span>
-        <hr className="border-black flex-grow" />
+      <div className='row-span-1 grid grid-rows-4'>
+        <div className="flex items-center my-4 row-span-2">
+          <hr className="border-black flex-grow" />
+          <span className="text-black px-4">o iniciar sesión con</span>
+          <hr className="border-black flex-grow" />
+        </div>
+        <div className="grid grid-cols-2 gap-x-4">
+          <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+            <img src={ImgGoogle} alt="ImgGoogle" className="w-6 h-6 mr-2" />
+            <span>Google</span>
+          </button>
+          <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+            <img src={ImgFacebook} alt="ImgFacebook" className="w-6 h-6 mr-2" />
+            <span>Facebook</span>
+          </button>
+        </div>
+        <div className="flex items-center justify-center mt-4">
+          <p>¿No tienes una cuenta? <a href="/registro" className="text-[#4D7A7D] font-bold">Regístrate</a></p>
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-x-4">
-        <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
-          <img src={ImgGoogle} alt="ImgGoogle" className="w-6 h-6 mr-2" />
-          <span>Google</span>
-        </button>
-        <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
-          <img src={ImgFacebook} alt="ImgFacebook" className="w-6 h-6 mr-2" />
-          <span>Facebook</span>
-        </button>
-      </div>
-      <div className="text-center mt-4">
-       <p>¿No tienes una cuenta? <a href="/registro" className="text-[#4D7A7D] font-bold">Regístrate</a></p>
-      </div>
+      
       <ModalBienvenida 
         isOpen={modalIsOpen} 
         onClose={() => setModalIsOpen(false)}

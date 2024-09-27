@@ -60,10 +60,10 @@ const MainCultivo = () => {
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] ml-[20%] p-4 h-screen'>
+      <div className='bg-background dark:bg-[#1B2431] p-4 h-screen'>
         <div className='flex mt-20'>
-          <h1 className='text-3xl font-semibold dark:text-white'>Cultivos</h1>
-          <div className='flex items-center bg-white dark:bg-[#323D4E] border-2 border-gray-200 dark:border-gray-600 p-2 rounded-full w-[30%] ml-auto'>
+          <h1 className='lg:text-3xl text-2xl font-semibold dark:text-white'>Cultivos</h1>
+          <div className='flex items-center bg-white dark:bg-[#323D4E] border-2 border-gray-200 dark:border-gray-600 p-2 rounded-full lg:w-[30%] md:w-[40%] w-[50%] ml-auto'>
             <IconSearch size={18} className='text-[#9ca3af] ml-2' />
             <input 
               placeholder='Buscar' 
@@ -75,14 +75,14 @@ const MainCultivo = () => {
         </div>
         <div className='py-6'>
           <div className='w-full bg-white dark:bg-[#273142] rounded-2xl overflow-hidden'>
-            <table className='w-full'>
-              <thead className='bg-slate-200 dark:bg-[#313D4F] dark:text-white text-medium'>
+            <table className='w-[100%]'>
+              <thead className='bg-slate-200 dark:bg-[#313D4F] dark:text-white text-medium text-sm lg:text-base'>
                 <tr>
                   <th className='px-2 py-4 text-left'>ID</th>
                   <th className='px-2 py-4 text-left'>Nombre del Agricultor</th>
                   <th className='px-2 py-4 text-left'>Dirección</th>
                   <th className='px-2 py-4 text-left'>Tipo de Cultivo</th>
-                  <th className='px-2 py-4 text-left'>Superficie</th>
+                  <th className='px-2 py-4 text-left lg:table-cell hidden'>Superficie</th>
                   <th className='px-2 py-4 text-left'>Días para Cosechar</th>
                 </tr>
               </thead>
@@ -97,15 +97,15 @@ const MainCultivo = () => {
                   const cultivoIndex = indexOfFirstCultivo + index + 1;
 
                   return (
-                    <tr key={cultivo._id} className='border-gray-200 border-y'>
+                    <tr key={cultivo._id} className='border-gray-200 border-y text-sm lg:text-base'>
                       <td className='px-2 py-4 font-semibold'>{cultivoIndex}</td>
                       <td className='px-2 py-4'>{cultivo.usuario.nombre}</td>
-                      <td className='px-2 py-4'>
+                      <td className='px-2 py-4 max-w-[120px] lg:max-w-none md:max-w-none truncate'>
                         {cultivo.usuario.direccion.colonia}, {cultivo.usuario.direccion.ciudad},{' '}
                         {cultivo.usuario.direccion.estado}, {cultivo.usuario.direccion.codigo_postal}
                       </td>
                       <td className='px-2 py-4'>{cultivo.tipo_cultivo}</td>
-                      <td className='px-2 py-4'>{cultivo.medidas_siembra} m²</td>
+                      <td className='px-2 py-4 lg:table-cell hidden'>{cultivo.medidas_siembra} m²</td>
                       <td className='px-2 py-4'>
                         {diasRestantes > 0 ? `${diasRestantes} días` : 'Hoy'}
                       </td>

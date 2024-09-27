@@ -53,9 +53,7 @@ module.exports = {
     "./src/components/dashboard/MainUsers.js",
     "./src/components/dashboard/MainConfig.js",
     "./src/components/dashboard/MainCultivo.js",
-    "./src/components/LoginForm.js", 
-    "./src/components/RegistroForm.js",
-    "./src/components/LoginForm.js", 
+    "./src/components/LoginForm.js",
     "./src/components/RegistroForm.js",
     "./src/components/ModalError.js", 
     "./src/components/ModalBienvenida.js",
@@ -107,6 +105,14 @@ module.exports = {
         },
         background: '#F5F6FA'
       }
+    },
+    width: {
+      'sidebar': '20%',
+      'content': '80%',
+      'sidebar-cero': '0%',
+      'content-full': '100%',
+      'width-full':'100%',
+      'modal': '90%'
     },
   },
   plugins: [],

@@ -64,15 +64,15 @@ const MainConfig = () => {
   
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] ml-[20%] p-4 h-screen'>
-        <h1 className='text-3xl font-semibold mt-20 dark:text-white'>Ajustes</h1>
+      <div className='bg-background dark:bg-[#1B2431] p-4 h-screen'>
+        <h1 className='lg:text-3xl text-2xl font-semibold mt-20 dark:text-white'>Ajustes</h1>
         <div className='p-4 gap-x-4 bg-white dark:bg-[#273142] dark:text-white mt-6 rounded-2xl'>
           <div>
             <span className='text-xl font-semibold'>Respaldo</span>
-            <div className='px-4 py-2 grid grid-cols-2'>
+            <div className='px-4 py-2 grid lg:grid-cols-2 grid-cols-1 lg:gap-x-4 gap-y-4'>
               <div>
                 <span className='text-lg font-medium'>Selecciona las Colecciones</span>
-                <div className='grid gap-2 grid-cols-3 mt-2'>
+                <div className='grid gap-2 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 mt-2'>
                   {collections.map(collection => (
                     <div key={collection} className='flex text-lg'>
                       <input
@@ -111,7 +111,7 @@ const MainConfig = () => {
                   </div>
                 </div>
               </div>
-              <div className='px-4 py-2'>
+              <div>
                 <div className='flex flex-col'>
                   <span className='text-lg font-medium mb-2'>Frecuencia de Respaldo</span>
                   <select
@@ -154,8 +154,8 @@ const MainConfig = () => {
                 )}
               </div>
             </div>
-            <div className='py-2 flex justify-center'>
-              <button className='flex py-2 px-6 rounded-lg bg-custom-color_logo right-0 text-white font-medium hover:bg-[#2F9B5D]' onClick={handleBackup}>
+            <div className='py-2 flex justify-center px-4'>
+              <button className='py-2 px-6 lg:max-w-36 md:max-w-36 w-width-full rounded-lg bg-custom-color_logo right-0 text-white font-medium hover:bg-[#2F9B5D]' onClick={handleBackup}>
                 Respaldar
               </button>
             </div>

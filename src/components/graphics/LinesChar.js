@@ -42,5 +42,5 @@ var misoptions = {
 };
 
 export default function LinesChart() {
-    return <Line data={midata} options={misoptions} className='w-full' />
+    return <Line data={midata} options={misoptions} />
 }

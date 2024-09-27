@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconRestore, IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
+import { IconRestore, IconChevronRight, IconChevronLeft, IconCheck, IconClock, IconX } from '@tabler/icons-react';
 import GetVentas from '../request/GetVentas';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
@@ -53,50 +53,48 @@ const MainVenta = () => {
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] ml-[20%] p-4 h-screen'>
+      <div className='bg-background dark:bg-[#1B2431] p-4 lg:h-[100%] h-screen'>
         <div className='flex mt-20'>
           <h1 className='text-3xl font-semibold dark:text-white'>Ventas</h1>
         </div> 
         <div className='py-4'>
-          <table className='bg-white dark:bg-[#313D4F] w-[60%] text-sm dark:text-white'>
-            <thead>
-              <tr>
-                <th className='border border-gray-200 py-2'>Filtrar por:</th>
-                <th className='border border-gray-200 py-2'>
-                  <select value={filtroProducto} onChange={(e) => setFiltroProducto(e.target.value)} className='w-full dark:bg-[#313D4F]'>
-                    <option value=''>Producto</option>
-                    <option>Sensor de Humedad</option>
-                    <option>Sensor de Temperatura</option>
-                    <option>Sensor de Nutrientes</option>
-                  </select>
-                </th>
-                <th className='border border-gray-200 py-2'>
-                  <select value={filtroEstado} onChange={(e) => setFiltroEstado(e.target.value)} className='w-full dark:bg-[#313D4F]'>
-                    <option value=''>Estado</option>
-                    <option>Completado</option>
-                    <option>Rechazado</option>
-                    <option>Pendiente</option>
-                  </select>
-                </th>
-                <th className='border border-gray-200 py-2'>
-                  <button onClick={handleLimpiarFiltros} className='flex items-center w-full justify-center text-[#D33363] dark:text-red-500'>
-                    <IconRestore/>
-                    <span className='ml-2'>Limpiar filtros</span>
-                  </button>
-                </th>
-              </tr>
-            </thead>
-          </table>
+          <div className='bg-white dark:bg-[#313D4F] lg:w-[60%] w-[100%] text-sm lg:text-base dark:text-white grid grid-cols-7 rounded-md'>
+            <div className='border border-gray-200 p-1 flex items-center rounded-s-md'>
+              <p className='w-[100%]'>Filtrar por:</p>
+            </div>
+            <div className='border border-gray-200 p-1 flex items-center col-span-2'>
+              <select value={filtroProducto} onChange={(e) => setFiltroProducto(e.target.value)} className='w-[100%] dark:bg-[#313D4F]'>
+                <option value=''>Producto</option>
+                <option>Sensor de Humedad</option>
+                <option>Sensor de Temperatura</option>
+                <option>Sensor de Nutrientes</option>
+              </select>
+            </div>
+            <div className='border border-gray-200 p-1 flex items-center col-span-2'>
+              <select value={filtroEstado} onChange={(e) => setFiltroEstado(e.target.value)} className='w-[100%] dark:bg-[#313D4F]'>
+                <option value=''>Estado</option>
+                <option>Completado</option>
+                <option>Rechazado</option>
+                <option>Pendiente</option>
+              </select>
+            </div>
+            <div className='border border-gray-200 p-1 flex items-center rounded-e-md col-span-2'>
+              <button onClick={handleLimpiarFiltros} className='flex items-center w-[100%] justify-start text-[#D33363] dark:text-red-500'>
+                <IconRestore/>
+                <span className='text-left'>Limpiar filtros</span>
+              </button>
+            </div>
+          </div>
         </div>    
-        <div className='py-2'>
+        <div className='pb-6'>
           <div className='w-full bg-white dark:bg-[#273142] rounded-2xl overflow-hidden'>
-            <table className='w-full'>
-              <thead className='bg-slate-200 dark:bg-[#313D4F] dark:text-white text-medium'>
+            <table className='w-[100%]'>
+              <thead className='bg-slate-200 dark:bg-[#313D4F] dark:text-white text-medium text-sm lg:text-base'>
                 <tr>
-                    <th className='px-2 py-4 text-left'>ID</th>
+                    <th className='px-2 py-4 text-left'></th>
                     <th className='px-2 py-4 text-left'>Nombre</th>
                     <th className='px-2 py-4 text-left'>Dirección</th>
-                    <th className='px-2 py-4 text-left'>Fecha</th>
+                    <th className='px-2 py-4 text-left lg:table-cell hidden'>Fecha</th>
                     <th className='px-2 py-4 text-left'>Producto</th>
                     <th className='px-2 py-4 text-left'>Estado</th>
                   </tr>
@@ -119,13 +117,25 @@ const MainVenta = () => {
                     }
 
                     return(
-                      <tr className='border-gray-200 border-y'>
+                      <tr className='border-gray-200 border-y text-sm lg:text-base'>
                         <td className='px-2 py-4 text-center font-semibold'>{index + 1}</td>
                         <td className='px-2 py-4'>{venta.usuario.nombre}</td>
-                        <td className='px-2 py-4'>{venta.usuario.direccion.colonia}, {venta.usuario.direccion.ciudad}, {venta.usuario.direccion.estado}, {venta.usuario.direccion.codigo_postal}</td>
-                        <td className='px-2 py-4'>{formatDate(venta.fecha_venta)}</td>
+                        <td className='px-2 py-4 max-w-[120px] lg:max-w-none md:max-w-none truncate'>{venta.usuario.direccion.colonia}, {venta.usuario.direccion.ciudad}, {venta.usuario.direccion.estado}, {venta.usuario.direccion.codigo_postal}</td>
+                        <td className='px-2 py-4 lg:table-cell hidden'>{formatDate(venta.fecha_venta)}</td>
                         <td className='px-2 py-4'>{venta.producto.nombre_producto}</td>
-                        <td className='px-2 py-4'><span className={`rounded-md ${estadoClass}`}>{venta.estado_venta}</span></td>
+                        <td className='px-2 py-4'>
+                          {/* Mostrar el estado completo en pantallas grandes */}
+                          <span className={`hidden sm:inline-block rounded-md px-3 py-1 ${estadoClass}`}>
+                            {venta.estado_venta}
+                          </span>
+                          
+                          {/* Mostrar íconos en pantallas pequeñas */}
+                          <span className='sm:hidden'>
+                            {venta.estado_venta === 'Completado' && <div className='rounded-full size-8 p-1 bg-green-500'><IconCheck className="text-white" /></div>}
+                            {venta.estado_venta === 'Rechazado' && <div className='rounded-full size-8 p-1 bg-red-500'><IconX className="text-white" /></div>}
+                            {venta.estado_venta === 'Pendiente' && <div className='rounded-full size-8 p-1 bg-yellow-500'><IconClock className="text-white" /></div>}
+                          </span>
+                        </td>
                       </tr>
                     )
                   })}

@@ -52,7 +52,7 @@ const PasswordModal = ({ userData, isOpen, onClose, onSuccessModalOpen }) => {
     <div className={`${darkMode && "dark"}`}>
       <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black opacity-50"></div>
-        <div className="bg-white dark:bg-[#273142] px-4 py-4 rounded-xl z-20 w-[35%]">
+        <div className="bg-white dark:bg-[#273142] px-4 py-4 rounded-xl z-20 lg:max-w-md md:max-w-md w-width-full m-4">
           <div className='flex w-full justify-end'>
             <button onClick={onClose}>
               <IconX size={28} className='dark:text-white'/>
@@ -73,7 +73,7 @@ const PasswordModal = ({ userData, isOpen, onClose, onSuccessModalOpen }) => {
                                   type={eyeOpen ? "text" : "password"} 
                                   id="contrasena"
                                   name="contrasena"
-                                  className="w-full focus:outline-none dark:bg-[#323D4E]"
+                                  className="w-width-full focus:outline-none dark:bg-[#323D4E]"
                                   placeholder="Ingrese la nueva contraseña"
                               />
                               <button type='button' onClick={handleOpen}>
@@ -89,7 +89,7 @@ const PasswordModal = ({ userData, isOpen, onClose, onSuccessModalOpen }) => {
                                   type={newEyeOpen ? "text" : "password"} 
                                   id="newContrasena"
                                   name="newContrasena"
-                                  className="w-full focus:outline-none dark:bg-[#323D4E]"
+                                  className="w-width-full focus:outline-none dark:bg-[#323D4E]"
                                   placeholder="Ingrese de nuevo la contraseña"
                               />
                               <button type='button' onClick={handleOpenNew}>
@@ -98,7 +98,7 @@ const PasswordModal = ({ userData, isOpen, onClose, onSuccessModalOpen }) => {
                           </div>
                           <ErrorMessage name="newContrasena" component="div" className="text-red-500"/>
                           <div className='flex justify-center items-center mt-4'>
-                              <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+                              <button type='submit' className="px-4 py-2 w-width-full bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
                           </div>
                       </div>
                   </Form>

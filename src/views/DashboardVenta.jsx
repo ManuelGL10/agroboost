@@ -5,10 +5,14 @@ import MainVenta from '../components/dashboard/MainVenta'
 
 const DashboardVenta = () => {
   return (
-    <div>
+    <div className='flex'>
+      <div className='w-sidebar-cero lg:w-sidebar'>
+        <NavbarAdmin />
+      </div>
+      <div className='w-content-full lg:w-content'>
         <NavbarTop/>
-        <NavbarAdmin/>
         <MainVenta/>
+      </div>
     </div>
   )
 }

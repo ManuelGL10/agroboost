@@ -26,8 +26,7 @@ var beneficios = [72, 56, 20, 36, 80, 40, 30, 10, 25, 30, 12, 60];
 var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 var misoptions = {
-    responsive : true,
-    animation : false,
+    responsive: true,
     plugins : {
         legend : {
             display : false
@@ -57,5 +56,5 @@ var midata = {
 };
 
 export default function Bars() {
-    return <Bar data={midata} options={misoptions} className='w-full' />
+    return <Bar data={midata} options={misoptions} />
 }

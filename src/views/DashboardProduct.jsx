@@ -5,10 +5,14 @@ import MainProduct from '../components/dashboard/MainProduct'
 
 function DashboardProduct() {
   return (
-    <div>
-      <NavbarTop/>
-      <NavbarAdmin/>
-      <MainProduct/>
+    <div className='flex'>
+      <div className='w-sidebar-cero lg:w-sidebar'>
+        <NavbarAdmin />
+      </div>
+      <div className='w-content-full lg:w-content'>
+        <NavbarTop/>
+        <MainProduct/>
+      </div>
     </div>
   )
 }

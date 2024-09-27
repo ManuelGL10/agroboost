@@ -5,8 +5,7 @@ import { Pie } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 var options = {
-    responsive : true,
-    maintainAspectRatio: false,
+    tooltip:false
 };
 
 var data = {
@@ -26,6 +25,6 @@ var data = {
 
 export default function Pies() {
     return (
-        <Pie data={data} options={options} className='w-full h-full' />
+        <Pie data={data} options={options}/>
     );
 }

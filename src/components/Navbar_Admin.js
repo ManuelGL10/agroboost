@@ -22,8 +22,8 @@ const NavbarAdmin = () => {
       }
 
   return (
-    <div className={`${darkMode && "dark"}`}>
-        <div className='bg-white dark:bg-[#273142] w-[20%] h-full fixed left-0 top-0'>
+    <div className={`${darkMode && "dark"} hidden lg:block`}>
+        <div className='bg-white dark:bg-[#273142] w-[20%] h-screen fixed left-0 top-0'>
             <div className='mt-4'>
                 <div className='flex items-center justify-center'>
                     <img className='h-14' src={Logo} alt="Logo AgroBoost" />
@@ -74,9 +74,9 @@ const NavbarAdmin = () => {
                     
                 </li>
                 <li className='flex p-2 cursor-pointer hover:text-[#D33363] hover:rounded-md hover:font-semibold'>
-                    <button onClick={handleModal} className='flex w-full'>
+                    <button onClick={handleModal} className='flex w-full items-center'>
                         <IconLogout size={30} stroke={1.5}/>
-                        <span className='ml-4'>Cerrar Sesión</span>
+                        <span className='ml-4 text-left'>Cerrar Sesión</span>
                     </button>
                 </li>
             </ul>

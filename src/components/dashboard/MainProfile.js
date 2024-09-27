@@ -62,15 +62,15 @@ const MainProfile = ({ userData }) => {
 
     return (
         <div className={`${darkMode && "dark"}`}>
-            <div className='bg-background dark:bg-[#1B2431] ml-[20%] p-4'>
-                <h1 className='text-3xl font-semibold mt-20 dark:text-white'>Perfil de Administrador</h1>
+            <div className='bg-background dark:bg-[#1B2431] h-[100%] p-4'>
+                <h1 className='lg:text-3xl text-2xl font-semibold mt-20 dark:text-white'>Perfil de Administrador</h1>
                 <div className='py-6'>
                     <div className='w-full bg-white dark:bg-[#273142] rounded-2xl py-4 px-8'>
                         <div className='w-full flex flex-col items-center justify-center py-2'>
-                            <div className='bg-gray-300 rounded-full p-10'>
+                            <div className='bg-gray-300 rounded-full lg:p-10 p-8'>
                                 <IconCameraUp size={32} />
                             </div>
-                            <button className='mt-4 text-lg font-medium py-1 px-3 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                            <button className='mt-4 lg:text-lg text-base font-medium py-1 px-3 lg:max-w-36 md:max-w-36 w-width-full rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
                                 Cambiar foto
                             </button>
                         </div>
@@ -93,7 +93,7 @@ const MainProfile = ({ userData }) => {
                             onSubmit={handleSubmit}
                         >
                             <Form className='flex flex-col'>
-                                <div className='grid grid-cols-2 gap-x-8 gap-y-4 my-6 text-lg font-medium text-gray-600 dark:text-gray-300'>
+                                <div className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-4 my-6 lg:text-lg text-base font-medium text-gray-600 dark:text-gray-300'>
                                     <div className='flex flex-col order-1'>
                                         <span>Nombre</span>
                                         <Field 
@@ -134,32 +134,13 @@ const MainProfile = ({ userData }) => {
                                         />
                                         <ErrorMessage name='correo_electronico' component='div' className='text-red-500' />
                                     </div>
-                                    <div className='flex flex-col order-1'>
-                                        <span>Contraseña</span>
-                                        <div className='flex border border-gray-300 bg-background dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'>
-                                            <Field
-                                                type={isOpen ? "text" : "password"} 
-                                                id="contrasena"
-                                                name="contrasena"
-                                                className="w-full bg-background dark:bg-[#323D4E] focus:outline-none"
-                                                placeholder="Ingresa su contraseña"
-                                                />
-                                                <button
-                                                type="button"
-                                                onClick={handleOpen}
-                                                >
-                                                {isOpen ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
-                                            </button>
-                                        </div>
-                                        <ErrorMessage name='contrasena' component='div' className='text-red-500' />
-                                    </div>
                                 </div>
-                                <div className='justify-evenly flex py-2'>
-                                    <button type='button' onClick={handleCloseModal} className='text-xl font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
-                                        Eliminar Cuenta
-                                    </button>
-                                    <button type='submit' className='text-xl font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
+                                <div className='lg:justify-evenly grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-8 md:grid-cols-2 md:gap-x-8 py-4'>
+                                    <button type='submit' className='lg:text-xl text-base font-semibold py-2 px-6 rounded-lg bg-custom-color_logo text-white hover:bg-[#2F9B5D]'>
                                         Actualizar Datos
+                                    </button>
+                                    <button type='button' onClick={handleCloseModal} className='lg:text-xl text-base font-semibold py-2 px-6 rounded-lg bg-red-500 text-white hover:bg-red-600'>
+                                        Eliminar Cuenta
                                     </button>
                                 </div>
                             </Form>

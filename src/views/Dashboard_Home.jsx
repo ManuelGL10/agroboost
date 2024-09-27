@@ -22,10 +22,14 @@ const Dashboard_Home = () => {
   }, [userId]);
 
   return (
-    <div>
-      <NavbarAdmin />
-      <NavbarTop userData={userData}/>
-      <MainHome/>
+    <div className='flex'>
+      <div className='w-sidebar-cero lg:w-sidebar'>
+        <NavbarAdmin />
+      </div>
+      <div className='w-content-full lg:w-content'>
+        <NavbarTop userData={userData}/>
+        <MainHome/>
+      </div>
     </div>
   );
 };

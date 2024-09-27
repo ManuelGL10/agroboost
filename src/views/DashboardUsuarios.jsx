@@ -21,13 +21,15 @@ const DashboardUsuarios = () => {
     }
   }, [userId]);
 
-  console.log(userData)
-
   return (
-    <div>
+    <div className='flex'>
+      <div className='w-sidebar-cero lg:w-sidebar'>
+        <NavbarAdmin />
+      </div>
+      <div className='w-content-full lg:w-content'>
         <NavbarTop userData={userData}/>
-        <NavbarAdmin userData={userData}/>
         <MainUsers/>
+      </div>
     </div>
   )
 }
