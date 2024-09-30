@@ -19,7 +19,7 @@ function ProductDModal({product, isOpen, onClose}) {
     <div className={`${darkMode && "dark"}`}>
         <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
             <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 max-w-md">
+            <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 lg:max-w-md md:max-w-md w-width-full m-4">
                 <div className='flex flex-col w-full justify-end p-2'>
                     <div className='justify-center items-center flex flex-col'>
                         <div className='h-10 w-10 rounded-full bg-red-200 flex items-center justify-center'>

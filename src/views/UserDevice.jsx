@@ -6,11 +6,15 @@ import DeviceUser from '../components/User/DeviceUser'
 
 const UserDevice = () =>{
     return (
-        <div>
-            <NavbarUser/>
-            <NavbarLat/>
-            <DeviceUser/>
+      <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavbarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavbarUser/>
+          <DeviceUser/>
+        </div>
+      </div>
     )
 }
 

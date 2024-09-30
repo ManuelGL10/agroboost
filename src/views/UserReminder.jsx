@@ -5,11 +5,15 @@ import ReminderUser from "../components/User/ReminderUser"
 
 const UserReminder = () => {
     return (
-        <div>
-            <NavbarUser/>
-            <NavbarLat/>
-            <ReminderUser/>
+        <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavbarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavbarUser/>
+          <ReminderUser/>
+        </div>
+      </div>
     )
 }
 

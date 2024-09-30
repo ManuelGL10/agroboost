@@ -55,26 +55,26 @@ const StatesmanUser = () => {
     };
 
     return (
-        <div className='bg-background ml-[20%] p-4'>
-            <div className='h-full py-20'>
+        <div className='bg-background p-4'>
+            <div className='h-full mt-20'>
 
                 <div className='mt-2 mb-6 flex items-center justify-center'> 
-                    <div className='bg-white shadow-lg rounded-lg flex items-center justify-between px-8 py-6 w-full max-w-4xl'>
+                    <div className='bg-white shadow-lg rounded-lg lg:flex md:flex items-center justify-between p-4 w-width-full'>
                         
-                        <div className='flex items-center'>
+                        <div className='flex items-center lg:justify-start md:justify-start justify-center'>
                             {prediction === 1 ? (
-                                <IconCheck size={50} color="green" />
+                                <IconCheck className='lg:size-10 md:size-8 size-6' color="green" />
                             ) : (
-                                <IconX size={50} color="red" />
+                                <IconX className='lg:size-10 md:size-8 size-6' color="red" />
                             )}
-                            <div className='text-2xl font-semibold ml-4'>
+                            <div className='lg:text-2xl md:text-2xl text-xl font-semibold ml-4'>
                                 {prediction === 1 ? 'Las condiciones son buenas' : 'Las condiciones no son buenas'}
                             </div>
                         </div>
 
-                        <div className='flex flex-col ml-12'>
-                            <h2 className='text-xl font-bold mb-4'>Explicación</h2>
-                            <div className='text-lg'>
+                        <div className='flex flex-col lg:ml-10 md:ml-10'>
+                            <h2 className='lg:text-xl md:text-xl text-lg font-medium mb-4'>Explicación</h2>
+                            <div className='lg:text-lg md:text-lg text-base'>
                                 {renderExplanation()}
                             </div>
                         </div>
@@ -82,7 +82,7 @@ const StatesmanUser = () => {
                 </div>
 
 
-                <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mt-6'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-6'>
                     <div>
                         {chartError ? (
                             <div className='text-red-500'>{chartError}</div>

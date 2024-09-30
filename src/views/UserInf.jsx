@@ -6,11 +6,15 @@ import NavbarUser from "../components/User/NavBarUser";
 
 function UserInf() {
     return(
-        <div className='bg-background'>
-            <NavbarUser/>
-            <UserInfo/>
-            <NavbarLat/>
+        <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavbarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavbarUser/>
+          <UserInfo/>
+        </div>
+      </div>
     );
 
 };

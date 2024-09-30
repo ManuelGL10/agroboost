@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Clima from "../../img/dom.png";
+import Clima from "../../img/lluvia.png";
 import DatosUser from './DatosUser'
 import ClimateDay from "./ClimateDay";
 import WeatherComponent from './WeatherComponent';
@@ -68,32 +68,55 @@ const InicioUser = () => {
   const formattedDate = currentDate.toLocaleDateString('es-ES', options);
 
   return (
-    <div className='bg-background ml-[20%] p-4'>
-      <WeatherComponent city={city} setTemperature={setTemperature} setDescription={setDescription} setHourlyForecast={setHourlyForecast} /> 
-      <div className='mt-20 mb-6 flex flex-row items-center'>
-        <div className='bg-white rounded-lg flex items-center justify-between px-8 w-full'>
-          <div className='flex items-end'> 
-            <p className='text-custom-204E51 text-7xl font-boad'>{temperature !== null ? `${temperature}°C` : 'Cargando...'}</p>
-            <div className="text-sm text-gray-600 font-medium flex flex-col ml-4">
-              <span>{formattedDate}</span>
-              <div className="flex items-center">
-                <IconMapPin size={18}/>
-                <span>{userData && userData.direccion.ciudad ? userData.direccion.ciudad : 'Cargando...'}, {userData && userData.direccion.estado ? userData.direccion.estado : 'Cargando...'}</span>
-              </div>
-            </div>
-          </div>
-          <div className='flex flex-col' >
-            <h2 className='flex items-center text-lg font-semibold'>{temperature !== null ? `${temperature}°C` : 'Cargando...'}</h2>
-            <div className='flex items-center justify-center'> 
-              <p className='text-custom-204E51 text-5xl font-boad'>{description ? description.charAt(0).toUpperCase() + description.slice(1) : 'Cargando...'}</p>
-            </div>
-          </div>
-          <img src={Clima} alt='Clima' className='w-40 h-40 rounded-md'  />
-        </div>
+    <div className='bg-background p-4'>
+  <WeatherComponent city={city} setTemperature={setTemperature} setDescription={setDescription} setHourlyForecast={setHourlyForecast} />
+  
+  {/* Diseño para pantallas pequeñas (sm) */}
+  <div className='block sm:hidden mt-20 mb-6 items-center'>
+    <div className='bg-white rounded-lg px-4 pb-4 pt-6 w-full grid grid-cols-1 text-center'>
+      <span className="text-lg mb-6 font-semibold text-gray-600">
+        {userData && userData.direccion.ciudad ? userData.direccion.ciudad : 'Cargando...'}, 
+        {userData && userData.direccion.estado ? userData.direccion.estado : 'Cargando...'}
+      </span>
+      <div className="flex flex-col justify-center items-center">
+        <img src={Clima} alt='Clima' className='size-20 rounded-md mb-6' />
       </div>
-      <ClimateDay hourlyForecast={hourlyForecast}/>
-      <DatosUser datos={dispositivos}/>
+      <p className='text-custom-204E51 text-4xl font-semibold mb-2'>
+        {temperature !== null ? `${temperature}°` : 'Cargando...'}
+      </p>
+      <p className='text-gray-400 text-xl'>
+          {description ? description.charAt(0).toUpperCase() + description.slice(1) : 'Cargando...'}
+      </p>
     </div>
+  </div>
+
+  {/* Diseño para pantallas medianas y grandes (md y lg) */}
+  <div className='hidden sm:block mt-20 mb-6 items-center'>
+    <div className='bg-white rounded-lg px-4 pb-4 pt-10 w-full grid grid-cols-2'>
+      <div>
+        <p className='text-custom-204E51 text-8xl font-semibold mb-2'>
+          {temperature !== null ? `${temperature}°` : 'Cargando...'}
+        </p>
+        <span className="text-lg">
+          {userData && userData.direccion.ciudad ? userData.direccion.ciudad : 'Cargando...'}, 
+          {userData && userData.direccion.estado ? userData.direccion.estado : 'Cargando...'}
+        </span>
+      </div>
+      <div className="flex flex-col justify-end items-end">
+        <div className="flex mb-2 items-center">
+          <img src={Clima} alt='Clima' className='size-12 rounded-md mr-2' />
+          <p className='text-gray-600 text-2xl font-medium'>
+            {description ? description.charAt(0).toUpperCase() + description.slice(1) : 'Cargando...'}
+          </p>
+        </div>
+        <span className="text-lg text-right">{formattedDate}</span>
+      </div>
+    </div>
+  </div>
+
+  <ClimateDay hourlyForecast={hourlyForecast} />
+  <DatosUser datos={dispositivos} />
+</div>
   );
 };
 

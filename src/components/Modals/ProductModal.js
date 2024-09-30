@@ -37,7 +37,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
     <div className={`${darkMode && "dark"}`}>
       <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black opacity-50"></div>
-        <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 max-w-lg">
+        <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 lg:max-w-md md:max-w-md w-width-full m-4">
           <div className='flex w-full justify-end'>
             <button onClick={onClose}>
               <IconX size={28} className='dark:text-white'/>
@@ -71,7 +71,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
               </div>
             </div>
             <div className='flex justify-center items-center mt-4'>
-              <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+              <button type='submit' className="px-4 py-2 w-width-full bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
             </div>
           </form>
           

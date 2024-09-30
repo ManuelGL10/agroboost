@@ -8,7 +8,7 @@ const DeviceModal = ({ isOpen, onClose}) => {
   return (
       <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
         <div className="fixed bg-black inset-0 opacity-50"></div>
-        <div className="bg-white px-4 py-4 rounded-xl z-20 w-[35%]">
+        <div className="bg-white px-4 py-4 rounded-xl z-20 lg:max-w-md md:max-w-md w-width-full m-4">
           <div className='flex w-full justify-end'>
             <button onClick={onClose}>
               <IconX size={28} className='dark:text-white'/>
@@ -35,7 +35,7 @@ const DeviceModal = ({ isOpen, onClose}) => {
                     </select>
                 </div>
                 <div className='flex justify-center items-center mt-4'>
-                    <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+                    <button type='submit' className="px-4 py-2 w-width-full bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
                 </div>
             </form>
         </div>

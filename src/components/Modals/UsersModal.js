@@ -27,7 +27,6 @@ const ProductModal = ({ users, isOpen, onClose }) => {
               apellido_paterno: apellido_paterno,
               apellido_materno: apellido_materno,
               correo_electronico: correo_electronico,
-              contrasena: contrasena
             });
             console.log("Datos actualizados")
             onClose()
@@ -45,7 +44,7 @@ const ProductModal = ({ users, isOpen, onClose }) => {
     <div className={`${darkMode && "dark"}`}>
         <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
             <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 w-[55%]">
+            <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 lg:max-w-md md:max-w-md w-width-full m-4">
                 <div className='flex w-full justify-end'>
                     <button onClick={onClose}>
                         <IconX size={28} className='dark:text-white'/>
@@ -59,13 +58,11 @@ const ProductModal = ({ users, isOpen, onClose }) => {
                             apellido_paterno: users.apellido_paterno || '',
                             apellido_materno: users.apellido_materno || '',
                             correo_electronico: users.correo_electronico || '',
-                            contrasena: users.contrasena || ''
                         } : {
                             nombre: '',
                             apellido_paterno: '',
                             apellido_materno: '',
                             correo_electronico: '',
-                            contrasena: ''
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
@@ -112,28 +109,9 @@ const ProductModal = ({ users, isOpen, onClose }) => {
                                     />
                                     <ErrorMessage name='correo_electronico' component='div' className='text-red-500' />
                                 </div>
-                                <div className='flex flex-col order-1'>
-                                    <span>Contraseña</span>
-                                    <div className='flex border border-gray-300 bg-white dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 p-2 rounded-md text-black mt-2'>
-                                        <Field
-                                            type={eyeOpen ? "text" : "password"} 
-                                            id="contrasena"
-                                            name="contrasena"
-                                            className="w-full bg-white dark:bg-[#323D4E] focus:outline-none"
-                                            placeholder="Ingresa su contraseña"
-                                            />
-                                            <button
-                                            type="button"
-                                            onClick={handleOpen}
-                                            >
-                                            {eyeOpen ? <IconEye size={24} /> : <IconEyeOff size={24}/>}
-                                        </button>
-                                    </div>
-                                    <ErrorMessage name='contrasena' component='div' className='text-red-500' />
-                                </div>
                             </div>
                             <div className='flex justify-center items-center mt-4'>
-                                <button type='submit' className="px-4 py-2 bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
+                                <button type='submit' className="px-4 py-2 w-width-full bg-custom-color_logo text-white rounded-md font-semibold">Actualizar</button>
                             </div>
                         </Form>
                     </Formik>

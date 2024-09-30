@@ -29,11 +29,11 @@ const CultivoForm = () => {
     };
 
     return (
-        <div className='bg-background ml-[20%] p-4'>
+        <div className='bg-background p-4'>
             <h1 className="block font-medium md:text-3xl sm:text-2xl text-xl text-black mb-6 text-left mt-20">Agregar cultivo</h1>
             <div className="max-w-5xl mx-auto mt-5 p-3 bg-white rounded-lg shadow-lg">
                 <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4">
                         <div className="mb-4">
                             <label htmlFor="fechaSiembra" className="block font-medium text-lg text-custom-00000 mb-2 text-left">Fecha de siembra</label>
                             <input
@@ -41,7 +41,7 @@ const CultivoForm = () => {
                                 id="fechaSiembra"
                                 value={fechaSiembra}
                                 onChange={(e) => setFechaSiembra(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
@@ -52,7 +52,7 @@ const CultivoForm = () => {
                                 id="tipoRiego"
                                 value={tipoRiego}
                                 onChange={(e) => setTipoRiego(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
                             >
                                 <option value="">Seleccionar tipo de riego</option>
@@ -68,7 +68,7 @@ const CultivoForm = () => {
                                 id="programaRiego"
                                 value={programaRiego}
                                 onChange={(e) => setProgramaRiego(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
@@ -79,7 +79,7 @@ const CultivoForm = () => {
                                 id="metodoFertilizacion"
                                 value={metodoFertilizacion}
                                 onChange={(e) => setMetodoFertilizacion(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
                             >
                                 <option value="">Seleccionar método de fertilizacion</option>
@@ -95,7 +95,7 @@ const CultivoForm = () => {
                                 id="tiempoFertilizacion"
                                 value={tiempoFertilizacion}
                                 onChange={(e) => setTiempoFertilizacion(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
@@ -107,7 +107,7 @@ const CultivoForm = () => {
                                 id="cantidadFertilizante"
                                 value={cantidadFertilizante}
                                 onChange={(e) => setCantidadFertilizante(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
@@ -118,7 +118,7 @@ const CultivoForm = () => {
                                 id="metodoControl"
                                 value={metodoControl}
                                 onChange={(e) => setMetodoControl(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
                             >
                                 <option value="">Seleccionar método de control de plagas</option>
@@ -133,7 +133,7 @@ const CultivoForm = () => {
                                 id="tecnicaPolinizacion"
                                 value={tecnicaPolinizacion}
                                 onChange={(e) => setTecnicaPolinizacion(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 required
                             >
                                 <option value="">Seleccionar técnica de polinización</option>
@@ -149,7 +149,7 @@ const CultivoForm = () => {
                                 id="metroSiembra"
                                 value={metroSiembra}
                                 onChange={(e) => setMetroSiembra(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
@@ -161,14 +161,14 @@ const CultivoForm = () => {
                                 id="fechaCosecha"
                                 value={fechaCosecha}
                                 onChange={(e) => setFechaCosecha(e.target.value)}
-                                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
+                                className="w-width-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500"
                                 placeholder=""
                                 required
                             />
                         </div>
                     </div>
                     <div className="mb-8 flex justify-center" style={{ marginTop: '5px' }}>
-                        <button type="submit" className="bg-green-700 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-green-400 focus:outline-none focus:bg-green-400 focus:ring-2 focus:ring-green-300" style={{ fontSize: '1.1rem' }}>
+                        <button type="submit" className="bg-green-700 text-white font-semibold lg:max-w-48 md:max-w-48 py-2 w-width-full rounded-lg hover:bg-green-400 focus:outline-none focus:bg-green-400 focus:ring-2 focus:ring-green-300">
                             Agregar Cultivo
                         </button>
                     </div>

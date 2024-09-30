@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { IconSearch } from '@tabler/icons-react';
+import { IconSearch, IconPlus } from '@tabler/icons-react';
 import NewCultivo from '../../img/NewCultivo'
 import maiz from '../../img/Maiz.jpeg'
 import frambuesa from '../../img/pexels-andre-altergott-6889551.jpg'
@@ -36,9 +36,9 @@ const CropUser = () => {
     };
     
     return (
-        <div className='bg-background ml-[20%] p-4 h-screen'>
+        <div className='bg-background p-4'>
             {cultivos.length === 0 ? (
-                <div className='h-full py-20'>
+                <div className='h-screen py-20'>
                     <div className=''>
                         <h1 className='text-3xl font-semibold dark:text-white'>Cultivos</h1>
                     </div>
@@ -61,19 +61,21 @@ const CropUser = () => {
                 <div>
                     <div className='flex mt-20'>
                         <h1 className='text-3xl font-semibold dark:text-white'>Cultivo</h1>
-                        <Link to='/cultivo' className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
-                             Agregar Cultivo
+                        <Link to='/cultivo' className='bg-custom-color_logo lg:py-3 lg:px-6 md:py-3 md:px-6 p-2 lg:rounded-lg md:rounded-lg rounded-full text-white font-semibold ml-auto'>
+                            <p className="lg:block md:block hidden">Agregar Cultivo</p>
+                            {/* Ícono visible solo en pantallas sm */}
+                            <IconPlus className="lg:hidden md:hidden visible" size={24} />
                         </Link>                    
                     </div>
                     <div className='py-6'>
-                        <div className='w-full p-4 bg-white rounded-2xl overflow-hidden grid grid-cols-2 gap-x-4'>
+                        <div className='w-width-full p-4 bg-white rounded-2xl overflow-hidden grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4'>
                             {cultivos.map(cultivo => {
                                 const imagenCultivo = cultivo.tipo_cultivo === 'Maíz' ? maiz : frambuesa;
                                 return(
                                     <div className='flex flex-col p-4 rounded-xl border-2 border-gray-300'>
-                                        <div className='relative'>
-                                            <img src={imagenCultivo} alt={cultivo.tipo_cultivo} className='w-full h-auto filter: brightness-50 rounded-xl' />
-                                            <div className='absolute top-0 p-2 w-full grid grid-cols-2 text-white text-lg'>
+                                        <div className='w-width-full relative'>
+                                            <img src={imagenCultivo} alt={cultivo.tipo_cultivo} className='filter brightness-50 rounded-xl z-0 relative' />                                        
+                                            <div className='absolute top-0 p-2 w-width-full grid grid-cols-2 text-white text-lg'>
                                                 <span className='font-semibold'>{cultivo.tipo_cultivo}</span>
                                                 <span className='text-end'>{cultivo.medidas_siembra} m²</span>
                                             </div>

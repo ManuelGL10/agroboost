@@ -33,7 +33,6 @@ const MainProfile = ({ userData }) => {
                     apellido_paterno: apellido_paterno,
                     apellido_materno: apellido_materno,
                     correo_electronico: correo_electronico,
-                    contrasena: contrasena
                 });
                 setIsOnCloseS(!onCloseS)
                 console.log('Datos actualizados:');
@@ -81,13 +80,11 @@ const MainProfile = ({ userData }) => {
                                 apellido_paterno: userData.apellido_paterno || '',
                                 apellido_materno: userData.apellido_materno || '',
                                 correo_electronico: userData.correo_electronico || '',
-                                contrasena: userData.contrasena || ''
                             } : {
                                 nombre: '',
                                 apellido_paterno: '',
                                 apellido_materno: '',
                                 correo_electronico: '',
-                                contrasena: ''
                             }}
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}

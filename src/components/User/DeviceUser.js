@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { NewDispositivo } from "../../img/NewDispositivo";
 import { Link } from "react-router-dom";
 import DeviceModal from "../Modals/DeviceModal";
+import { IconPlus, IconX } from '@tabler/icons-react';
 
 const DeviceUser = () => {
     const [modalEditarIsOpen, setModalEditarIsOpen] = useState(false);
@@ -44,7 +45,7 @@ const DeviceUser = () => {
     }
 
     return (
-        <div className='bg-background ml-[20%] p-4 h-screen'>
+        <div className='bg-background p-4'>
             {dispositivos.length === 0 ? (
                 <div className='mb-6 py-20'>
                     <h1 className='text-3xl font-semibold'>Dispositivos</h1>
@@ -66,30 +67,33 @@ const DeviceUser = () => {
             ) : (
                 <div className='mt-20'>
                     <div className='flex'>
-                        <h1 className='text-3xl font-semibold dark:text-white'>Dispositivos</h1>
-                        <button onClick={handleAddModal} className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
-                             Agregar Dispositivo
-                        </button>                    
+                        <h1 className='lg:text-3xl md:text-3xl text-2xl font-semibold dark:text-white'>Dispositivos</h1>
+                        <button onClick={handleAddModal} className='bg-custom-color_logo lg:py-3 lg:px-6 md:py-3 md:px-6 p-2 lg:rounded-lg md:rounded-lg rounded-full text-white font-semibold ml-auto'>
+                            {/* Texto visible solo en pantallas lg y md */}
+                            <p className="lg:block md:block hidden">Agregar Dispositivo</p>
+                            {/* Ícono visible solo en pantallas sm */}
+                            <IconPlus className="lg:hidden md:hidden visible" size={24} />
+                        </button>                 
                     </div>
-                    <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mt-4">
                         {dispositivos.map((dispositivo, index) => (
-                            <div key={index} className='bg-white grid grid-cols-3 gap-x-2 items-center rounded-xl border-custom-D9D9D9 border-2 py-2 px-3'>
-                                <img src={Sensor} alt='Sensor' className="w-36 h-36 rounded-lg" />
-                                <div className='grid gap-y-3 col-span-2 h-full'>
-                                    <div className='flex items-center w-full'>
-                                        <h2 className='text-[#4D7A7D] text-lg mr-2'>Sensor:</h2>
+                            <div key={index} className='bg-white flex items-center rounded-xl border-custom-D9D9D9 border-2 p-2 w-width-full'>
+                                <img src={Sensor} alt='Sensor' className="lg:size-36 size-32 mr-2 rounded-lg" />
+                                <div className='grid gap-y-3 col-span-2 w-width-full'>
+                                    <div className='flex items-center w-width-full'>
+                                        <h2 className='text-[#4D7A7D] lg:text-lg md:text-lg text-base mr-2'>Sensor:</h2>
                                         <input
                                             type="text"
                                             value={dispositivo.nombre_dispositivo}
-                                            className='text-custom-204E51 text-lg text-semiboad border border-gray-300 rounded-md px-1 py-1 w-full'
+                                            className='text-custom-204E51 lg:text-lg md:text-lg text-base text-semiboad border border-gray-300 rounded-md px-1 py-1 w-width-full'
                                         />
                                     </div>
                                     <div className='flex items-center'>
-                                        <h2 className='text-[#4D7A7D] text-lg mr-2'>Cultivo:</h2>
+                                        <h2 className='text-[#4D7A7D] lg:text-lg md:text-lg text-base mr-2'>Cultivo:</h2>
                                         <input
                                             type="text"
                                             value={dispositivo.id_cultivo.tipo_cultivo}
-                                            className='text-custom-204E51 text-lg text-semiboad border border-gray-300 rounded-md px-1 py-1 w-full'
+                                            className='text-custom-204E51 lg:text-lg md:text-lg text-base text-semiboad border border-gray-300 rounded-md px-1 py-1 w-width-full'
                                         />
                                     </div>
                                     <div className="grid grid-cols-2 gap-x-4">

@@ -52,8 +52,8 @@ return (
       <div className='grid grid-cols-1'>
         <div className='my-2 bg-white p-4 rounded-xl'>
           <h1 className='text-xl font-medium mb-4'>Cultivo: Maíz</h1>
-          <div className='grid grid-cols-2 gap-x-2'>
-            <div className='grid grid-cols-2 gap-x-2'>
+          <div className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4'>
+            <div className='grid grid-cols-2 gap-4'>
               <div className='p-2 border-2 border-gray-300 rounded-lg'>
                 <span className='text-xl font-medium text-custom-264948'>Temperatura</span>
                 <TemperatureLineChart datos={[ultimaTemperatura]}/>
@@ -61,7 +61,7 @@ return (
               <div className='p-2 border-2 border-gray-300 rounded-lg'>
                 <span className='text-xl font-medium text-custom-264948'>Humedad</span>
                 <HumidityDoughnutChart datos={[ultimaHumedad]}/>
-                <div className='flex items-center justify-center font-medium text-lg text-gray-500'>
+                <div className='flex items-center justify-center font-medium lg:text-lg md:text-lg text-gray-500'>
                   <span>Humedad al {ultimaHumedad}%</span>
                 </div>
               </div>
@@ -71,23 +71,23 @@ return (
               <div className='grid grid-cols-3 gap-x-2 mt-2'>
                 <div className='text-center'>
                   <NitrogenoDoughnutChart datos={[ultimoNitrogeno]}/>
-                  <span className='text-yellow-500 font-medium text-lg'>Nitrógeno</span>
+                  <span className='text-yellow-500 font-medium lg:text-lg md:lg:text-lg md:text-lg'>Nitrógeno</span>
                   <div className='text-yellow-500 flex items-center justify-center'>
-                    <span>{ultimoNitrogeno} ppm</span>
+                    <span className='lg:text-base md:text-base text-sm'>{ultimoNitrogeno} ppm</span>
                   </div>
                 </div>
                 <div className='text-center'>
                   <FosforoDoughnutChart datos={[ultimoFosforo]}/>
-                  <span className='text-green-600 font-medium text-lg'>Fósforo</span>
+                  <span className='text-green-600 font-medium lg:text-lg md:text-lg'>Fósforo</span>
                   <div className='text-green-600 flex items-center justify-center'>
-                    <span>{ultimoFosforo} ppm</span>
+                    <span className='lg:text-base md:text-base text-sm'>{ultimoFosforo} ppm</span>
                   </div>
                 </div>
                 <div className='text-center'>
                   <PotasioDoughnutChart datos={[ultimoPotasio]}/>
-                  <span className='text-orange-500 font-medium text-lg'>Potasio</span>
+                  <span className='text-orange-500 font-medium lg:text-lg md:text-lg'>Potasio</span>
                   <div className='text-orange-500 flex items-center justify-center'>
-                    <span>{ultimoPotasio} ppm</span>
+                    <span className='lg:text-base md:text-base text-sm'>{ultimoPotasio} ppm</span>
                   </div>
                 </div>
               </div>

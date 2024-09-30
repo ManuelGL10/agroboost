@@ -5,11 +5,15 @@ import CropUser from "../components/User/CropUser"
 
 const UserCrop = () => {
     return(
-        <div>
-            <NavbarUser/>
-            <NavbarLat/>
-            <CropUser/>
+      <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavbarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavbarUser/>
+          <CropUser/>
+        </div>
+      </div>
     )
 }
 

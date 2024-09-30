@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IconBug } from '@tabler/icons-react';
+import { IconBug, IconPlus } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 import NewReminder from "../../img/NewReminder";
 import ReminderModal from "../Modals/ReminderModal";
@@ -61,7 +61,7 @@ const ReminderUser = () => {
     }
 
     return (
-        <div className='bg-background ml-[20%] p-4 h-screen'>
+        <div className='bg-background p-4 lg:h-screen h-full'>
             {recordatorios.length === 0 ? (
                 <div className='h-full py-20'>
                     <h1 className='text-3xl font-semibold'>Recordatorios</h1>
@@ -83,28 +83,30 @@ const ReminderUser = () => {
             ) : (
                 <div className='mt-20'>
                     <div className='flex'>
-                        <h1 className='text-3xl font-semibold dark:text-white'>Recordatorios</h1>
-                        <button onClick={handleAddModal} className='bg-custom-color_logo py-3 px-6 rounded-lg text-white font-semibold ml-auto'>
-                            Crear Recordatorio                            
-                        </button>                    
+                        <h1 className='lg:text-3xl text-2xl font-semibold dark:text-white'>Recordatorios</h1>
+                        <button onClick={handleAddModal} className='bg-custom-color_logo lg:py-3 lg:px-6 md:py-3 md:px-6 p-2 lg:rounded-lg md:rounded-lg rounded-full text-white font-semibold ml-auto'>
+                            <p className="lg:block md:block hidden">Agregar Cultivo</p>
+                            {/* Ícono visible solo en pantallas sm */}
+                            <IconPlus className="lg:hidden md:hidden visible" size={24} />
+                        </button>                   
                     </div>
-                    <div className='grid grid-cols-2 gap-y-4 gap-x-6 mt-6'>
+                    <div className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mt-6'>
                         {recordatorios.map((recordatorio, index) => (
-                            <div key={index} className={`grid grid-cols-5 gap-x-2 rounded-lg p-4 border-custom-D9D9D9 border-2 ${recordatorio.activo ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
+                            <div key={index} className={`flex rounded-lg p-4 border-custom-D9D9D9 border-2 ${recordatorio.activo ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-500'}`}>
                                 <div className={`rounded-lg flex items-center justify-center ${recordatorio.activo ? 'bg-white' : 'bg-gray-200'}`}>
-                                    <IconBug size={90} stroke={2}/>
+                                    <IconBug className="lg:size-20 md:size-20 size-16" stroke={2}/>
                                 </div>
-                                <div className="flex flex-col col-span-3 w-full h-full">
-                                    <span className='text-xl font-semibold'>{recordatorio.nombre_recordatorio}</span>
-                                    <span className='text-gray-600 text-lg'>{formatDays(recordatorio.dias_recordatorio)}</span>
-                                    <span className='text-lg font-medium'>{formatTime(recordatorio.hora_recordatorio)}</span>
+                                <div className="flex flex-col w-width-full ml-2">
+                                    <span className='lg:text-xl text-lg font-semibold'>{recordatorio.nombre_recordatorio}</span>
+                                    <span className='text-gray-600 lg:text-lg text-base'>{formatDays(recordatorio.dias_recordatorio)}</span>
+                                    <span className='lg:text-xl text-lg font-medium'>{formatTime(recordatorio.hora_recordatorio)}</span>
                                 </div>
                                 <div className="flex justify-end">
                                     <button 
-                                        className={`w-14 h-8 rounded-full p-1 ${recordatorio.activo ? 'bg-green-500' : 'bg-gray-300'}`}
+                                        className={`w-[52px] h-[28px] rounded-full p-1 ${recordatorio.activo ? 'bg-green-500' : 'bg-gray-300'}`}
                                         onClick={() => toggleReminder(index)}
                                     >
-                                        <div className={`w-6 h-6 bg-white rounded-full shadow-md transform ${recordatorio.activo ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
+                                        <div className={`size-5 bg-white rounded-full shadow-md transform ${recordatorio.activo ? 'translate-x-6' : 'translate-x-0'} transition-transform`}></div>
                                     </button>
                                 </div>
                             </div>

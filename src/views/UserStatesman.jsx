@@ -5,11 +5,15 @@ import StatesmanUser from "../components/User/StatesmanUser";
 
 const UserStatesman = () => {
     return(
-        <div>
-            <NavbarUser/>
-            <NavbarLat/>
-            <StatesmanUser/>
+        <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavbarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavbarUser/>
+          <StatesmanUser/>
+        </div>
+      </div>
     )
 }
 

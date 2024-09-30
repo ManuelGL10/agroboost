@@ -11,7 +11,7 @@ const WeatherComponent = ({ city, setTemperature, setDescription, setHourlyForec
             const data = await getWeatherData(city);
             const forecastData = await getHourlyForecast(city);
 
-            setTemperature(data.main.temp);
+            setTemperature(Math.round(data.main.temp));
             setDescription(data.weather[0].description);
             setHourlyForecast(forecastData.list);
         } catch (error) {

@@ -23,10 +23,14 @@ const UserHome = () => {
   }, [userId]);
 
   return (
-    <div>
-      <NavBarLat userData={userData}/>
-      <NavbarUser userData={userData}/>
-      <IncioUser/>
+    <div className='flex'>
+      <div className='w-sidebar-cero lg:w-sidebar'>
+        <NavBarLat userData={userData}/>
+      </div>
+      <div className='w-content-full lg:w-content'>
+        <NavbarUser userData={userData}/>
+        <IncioUser/>
+      </div>
     </div>
   )
 }

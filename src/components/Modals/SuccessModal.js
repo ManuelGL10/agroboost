@@ -9,7 +9,7 @@ const SuccessModal = ({ isOpen, onClose, title, mensaje }) => {
         <div className={`${darkMode && "dark"}`}>
             <div className={`fixed inset-0 flex items-center justify-center ${isOpen ? 'visible' : 'hidden'}`}>
                 <div className="fixed inset-0 bg-black opacity-50"></div>
-                <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 w-[45%]">
+                <div className="bg-white dark:bg-[#273142] px-4 py-6 rounded-xl z-10 lg:max-w-md md:max-w-md w-width-full m-4">
                     <div className='flex flex-col w-full justify-end p-2'>
                         <div className='flex items-center'>
                             <div className='h-8 w-8 rounded-full bg-green-500 flex items-center justify-center'>

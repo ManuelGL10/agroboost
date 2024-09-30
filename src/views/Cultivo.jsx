@@ -6,11 +6,15 @@ import CultivoForm from "../components/CultivoForm";
 
 function Cultivo() {
     return(
-        <div className='bg-background'>
-            <NavBarLat/>
-            <NavBarUser/>
-            <CultivoForm/>
+        <div className='flex'>
+        <div className='w-sidebar-cero lg:w-sidebar'>
+          <NavBarLat/>
         </div>
+        <div className='w-content-full lg:w-content'>
+          <NavBarUser/>
+          <CultivoForm/>
+        </div>
+      </div>
     );
 
 };
