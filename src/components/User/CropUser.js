@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { IconSearch, IconPlus } from '@tabler/icons-react';
+import { IconPlus } from '@tabler/icons-react';
 import NewCultivo from '../../img/NewCultivo'
 import maiz from '../../img/Maiz.jpeg'
 import frambuesa from '../../img/pexels-andre-altergott-6889551.jpg'

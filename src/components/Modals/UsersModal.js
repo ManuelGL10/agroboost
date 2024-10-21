@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { IconX } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser'
-import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { DarkModeContext } from '../../context/DarkModeContext';

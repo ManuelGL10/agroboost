@@ -1,5 +1,4 @@
 import React from "react";
-import { IconCloud, IconSun, IconCloudRain, IconSnowflake, IconWind, IconCloudStorm} from '@tabler/icons-react';
 import soleado from '../../img/soleado.png'
 import nube from '../../img/nublado.png'
 import lluvia from '../../img/lluvia_hour.png'

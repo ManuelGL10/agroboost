@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconMenu2, IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout, IconHome, IconUser, IconGraph, IconX } from '@tabler/icons-react';
+import { IconMenu2, IconListDetails, IconPlant, IconDevices, IconLogout, IconHome, IconUser, IconGraph, IconX } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../request/AuthContext';
 import GetUser from '../request/GetUser'
-import PasswordModal from '../Modals/PasswordModal'
-import SuccessModal from '../Modals/SuccessModal';
 import Logo from '../../img/LogoAgroBoostPNG.svg';
 
 const NavbarUser = () => {

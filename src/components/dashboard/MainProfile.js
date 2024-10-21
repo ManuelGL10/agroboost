@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconCameraUp, IconEye, IconEyeOff } from '@tabler/icons-react';
+import { IconCameraUp } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';

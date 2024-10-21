@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import HumidityDoughnutChart from '../graphics/HumidityDoughtnutChar';
 import TemperatureLineChart from '../graphics/TemperatureBarChart';
 import NitrogenoDoughnutChart from '../graphics/NitrogenoDoughnutChart';
 import FosforoDoughnutChart from '../graphics/FosforoDoughnutChart';
 import PotasioDoughnutChart from '../graphics/PotasioDoughnutChart';
 import { useParams } from 'react-router-dom';
-import { array } from 'yup';
 
 const DatosExtras = ({datos}) => {
   // Estado para almacenar la opción seleccionada del cultivo
   const [cultivoSeleccionado, setCultivoSeleccionado] = useState('');
   const { userId } = useParams();
-  const [ dispositivos, setDispositivos ] = useState([]);
 
   // Función para manejar el cambio en la selección del cultivo
   const handleCultivoChange = (event) => {

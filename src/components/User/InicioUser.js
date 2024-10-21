@@ -3,7 +3,6 @@ import Clima from "../../img/lluvia.png";
 import DatosUser from './DatosUser'
 import ClimateDay from "./ClimateDay";
 import WeatherComponent from './WeatherComponent';
-import {IconCloud, IconMapPin} from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 
 const InicioUser = () => {

@@ -4,9 +4,8 @@ import ModalEditar from '../User/ModalEditar'
 import ModalEliminar from '../User/ModalEliminar'
 import { useParams } from 'react-router-dom';
 import { NewDispositivo } from "../../img/NewDispositivo";
-import { Link } from "react-router-dom";
 import DeviceModal from "../Modals/DeviceModal";
-import { IconPlus, IconX } from '@tabler/icons-react';
+import { IconPlus} from '@tabler/icons-react';
 
 const DeviceUser = () => {
     const [modalEditarIsOpen, setModalEditarIsOpen] = useState(false);
