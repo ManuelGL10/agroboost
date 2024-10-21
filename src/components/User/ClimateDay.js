@@ -18,7 +18,7 @@ const iconMap = {
     "thunderstorm": <img src={tormenta} className="size-8"/>,
     "snow": <img src={nieve} className="size-8"/>,
     "mist": <img src={dianublado} className="size-8"/>,
-    "cielo claro": <IconSun size={34} />,
+    "cielo claro": <img src={soleado} className="size-8"/>,
     "algo de nubes": <img src={nube} className="size-8"/>,
     "nubes dispersas": <img src={nube} className="size-8"/>,
     "nubes rotas": <img src={nube} className="size-8"/>,

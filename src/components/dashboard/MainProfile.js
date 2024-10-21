@@ -24,7 +24,7 @@ const MainProfile = ({ userData }) => {
     });
 
     const handleSubmit = async (values, { setSubmitting }) => {
-        const {nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena} = values
+        const {nombre, apellido_paterno, apellido_materno, correo_electronico} = values
         setTimeout(async () => {
             try {
                 await UpdateUser({
