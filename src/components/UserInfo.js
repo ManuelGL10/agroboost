@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconCameraUp, IconEye, IconEyeOff } from '@tabler/icons-react';
+import { IconCameraUp } from '@tabler/icons-react';
 import { UpdateUser } from './request/UpdateUser';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { DarkModeContext } from '../context/DarkModeContext';
-import { DeleteUser } from './request/DeleteUser';
 import DeleteModal from './Modals/DeleteModal';
 import SuccessModal from './Modals/SuccessModal';
 import { useParams } from 'react-router-dom';

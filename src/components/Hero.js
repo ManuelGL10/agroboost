@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 import plantio from '../img/plantio.jpeg';
-import gsap from 'gsap';
 
 const Hero = () => {
-  useEffect(() => {
-    gsap.to('#hero', { opacity: 1, delay: 0.5 });
-  }, []);
-
   return (
     <div className="w-full relative -mt-4">
       <img className="filter brightness-50 my-4 z-0" src={plantio} alt="invernadero" />

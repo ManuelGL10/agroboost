@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react'
-import { IconUsers, IconTrendingUp, IconShoppingCart, IconClockStop, IconTrendingDown } from '@tabler/icons-react'
+import { IconUsers, IconTrendingUp, IconShoppingCart, IconClockStop } from '@tabler/icons-react'
 import LinesChart from '../graphics/LinesChar'
 import PiesChar from '../graphics/PiesChar'
 import BarsChar from '../graphics/BarsChar'

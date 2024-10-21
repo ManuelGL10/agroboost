@@ -1,10 +1,8 @@
 import React from 'react'
 import servicio from '../img/dron.png'
 import Button from './Button'
-import { useScrollAnimation } from './useScrollAnimation'
 
 const InfoProducto = () => {
-    useScrollAnimation('#producto-container');
   return (
     <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
         <div id='producto-container' className='max-w-[1240px] mx-auto grid md:grid-cols-2 opacity-0 translate-y-20'>

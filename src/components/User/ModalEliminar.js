@@ -21,7 +21,7 @@ const ModalEditar = ({ isOpen, onClose }) => {
           </div>
           <div className="text-center">¿Estás seguro de eliminar el dispositivo?</div>
           <div className="flex justify-center mt-4">
-            <button onClick={onClose} className="bg-custom-color_logo text-white hover:bg-[#2F9B5D] text-white font-semibold px-6 py-3 mr-4 rounded-lg">Aceptar</button>
+            <button onClick={onClose} className="bg-custom-color_logo hover:bg-[#2F9B5D] text-white font-semibold px-6 py-3 mr-4 rounded-lg">Aceptar</button>
             <button onClick={onClose} className="bg-[#D33363] hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg ">Cancelar</button>
           </div>
         </div>

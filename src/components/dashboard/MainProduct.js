@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IconTrash, IconEdit, IconSearch } from '@tabler/icons-react';
-import regar from '../../img/pexels-fox-750836.jpg';
-import sensor from '../../img/sensor.jpeg';
+import { IconTrash, IconEdit } from '@tabler/icons-react';
 import nutriente from '../../img/nutriente.jpeg';
 import GetProductos from '../request/GetProductos';
 import ProductModal from '../Modals/ProductModal';

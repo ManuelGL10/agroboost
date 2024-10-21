@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { IconTrash } from '@tabler/icons-react';
 import { DeleteUser } from '../request/DeleteUser';
-import SuccessModal from './SuccessModal'
 
 function DeleteModal({ users, isOpen, onClose, title, mensaje, onSuccessModalOpen }) {
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);

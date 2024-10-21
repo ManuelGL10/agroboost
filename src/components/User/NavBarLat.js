@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/LogoAgroBoostPNG.svg';
-import { IconListDetails, IconPlant, IconDevices, IconSettings, IconLogout, IconHome, IconUser, IconGraph } from '@tabler/icons-react';
+import { IconListDetails, IconPlant, IconDevices, IconLogout, IconHome, IconUser, IconGraph } from '@tabler/icons-react';
 import { useAuth } from '../request/AuthContext';
 import GetUser from '../request/GetUser';
 

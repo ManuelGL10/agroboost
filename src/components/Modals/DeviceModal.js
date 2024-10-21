@@ -1,7 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { IconX } from '@tabler/icons-react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 
 const DeviceModal = ({ isOpen, onClose}) => {
 
