@@ -6,9 +6,6 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 var beneficios = [0, 56, 20, 36, 80, 40, 30, 10, 25, 30, 12, 60];
 var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-// Crear un gradiente lineal para el fondo
-var ctx = document.createElement('canvas').getContext('2d');
-
 var midata = {
     labels: meses,
     datasets: [
