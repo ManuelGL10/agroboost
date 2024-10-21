@@ -5,7 +5,7 @@ import brote from '../img/brote.jpeg'
 
 const Cards = () => {
   return (
-    <div className='w-full py-[2rem] px-12 bg-white'>
+    <div className='py-[2rem] bg-white max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
         <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'>
             <div className='w-full flex flex-col p-4 my-4 rounded-lg'>
                 <img className='w-80 mx-auto bg-white rounded-xl' src={mision} alt='mision' />

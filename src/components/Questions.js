@@ -36,42 +36,44 @@ const Questions = () => {
     }
     
     return (
-        <div className='px-12 py-8 mx-auto'>
-            <h1 className='text-custom-264948 font-semibold lg:text-4xl md:text-3xl text-2xl text-center mb-6'>Preguntas Frecuentes</h1>
-            <div class="bg-white shadow-md rounded-lg mb-4">
-                <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd1}>
-                    <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Qué es AgroBoost y cómo puede beneficiarme?</p>
-                    {!hidd1 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+        <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
+            <div className='w-full'>
+                <h1 className='text-custom-264948 font-semibold lg:text-4xl md:text-3xl text-2xl text-center mb-6'>Preguntas Frecuentes</h1>
+                <div class="bg-white shadow-md rounded-lg mb-4 max-w">
+                    <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd1}>
+                        <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Qué es AgroBoost y cómo puede beneficiarme?</p>
+                        {!hidd1 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+                    </div>
+                    <div class={!hidd1 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
+                        <p className='lg:text-lg md:text-base text-sm'>AgroBoost es una plataforma innovadora diseñada para optimizar la producción agrícola. Ofrecemos herramientas avanzadas de monitoreo y gestión para ayudarte a mejorar la eficiencia de tus cultivos, maximizar los rendimientos y reducir los costos operativos.</p>
+                    </div>
                 </div>
-                <div class={!hidd1 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
-                    <p className='lg:text-lg md:text-base text-sm'>AgroBoost es una plataforma innovadora diseñada para optimizar la producción agrícola. Ofrecemos herramientas avanzadas de monitoreo y gestión para ayudarte a mejorar la eficiencia de tus cultivos, maximizar los rendimientos y reducir los costos operativos.</p>
+                <div class="bg-white shadow-md rounded-lg mb-4">
+                    <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd2}>
+                        <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cómo funciona AgroBoost?</p>
+                        {!hidd2 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+                    </div>
+                    <div class={!hidd2 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
+                        <p className='lg:text-lg md:text-base text-sm'>AgroBoost utiliza tecnología de vanguardia, como sensores de campo, análisis de datos y algoritmos inteligentes, para recopilar información en tiempo real sobre tus cultivos. Esta información se utiliza para proporcionarte recomendaciones personalizadas y acciones específicas para optimizar el crecimiento y la salud de tus plantas.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white shadow-md rounded-lg mb-4">
-                <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd2}>
-                    <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cómo funciona AgroBoost?</p>
-                    {!hidd2 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+                <div class="bg-white shadow-md rounded-lg mb-4">
+                    <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd3}>
+                        <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cómo puedo empezar a usar AgroBoost en mi granja?</p>
+                        {!hidd3 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+                    </div>
+                    <div class={!hidd3 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
+                        <p className='lg:text-lg md:text-base text-sm'>Es fácil comenzar con AgroBoost. Solo necesitas registrarte en nuestra plataforma, configurar tus cultivos y empezar a recibir recomendaciones personalizadas para optimizar tu producción. Nuestro equipo de soporte está disponible para ayudarte en cada paso del proceso.</p>
+                    </div>
                 </div>
-                <div class={!hidd2 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
-                    <p className='lg:text-lg md:text-base text-sm'>AgroBoost utiliza tecnología de vanguardia, como sensores de campo, análisis de datos y algoritmos inteligentes, para recopilar información en tiempo real sobre tus cultivos. Esta información se utiliza para proporcionarte recomendaciones personalizadas y acciones específicas para optimizar el crecimiento y la salud de tus plantas.</p>
-                </div>
-            </div>
-            <div class="bg-white shadow-md rounded-lg mb-4">
-                <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd3}>
-                    <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cómo puedo empezar a usar AgroBoost en mi granja?</p>
-                    {!hidd3 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
-                </div>
-                <div class={!hidd3 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
-                    <p className='lg:text-lg md:text-base text-sm'>Es fácil comenzar con AgroBoost. Solo necesitas registrarte en nuestra plataforma, configurar tus cultivos y empezar a recibir recomendaciones personalizadas para optimizar tu producción. Nuestro equipo de soporte está disponible para ayudarte en cada paso del proceso.</p>
-                </div>
-            </div>
-            <div class="bg-white shadow-md rounded-lg mb-4">
-                <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd4}>
-                    <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cuáles son los beneficios de usar AgroBoost en mi granja?</p>
-                    {!hidd4 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
-                </div>
-                <div class={!hidd4 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
-                    <p className='lg:text-lg md:text-base text-sm'>Algunos de los principales beneficios de utilizar AgroBoost incluyen un aumento en los rendimientos de los cultivos, una reducción en los costos operativos, una mejor gestión del riego y los nutrientes, y una mayor eficiencia en general en la producción agrícola.</p>
+                <div class="bg-white shadow-md rounded-lg mb-4">
+                    <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd4}>
+                        <p className='lg:text-xl md:text-lg text-base font-semibold'>¿Cuáles son los beneficios de usar AgroBoost en mi granja?</p>
+                        {!hidd4 ? <IconMinus size={32}/> : <IconPlus size={32}/>}
+                    </div>
+                    <div class={!hidd4 ? "p-4 border-t transition-all duration-300 ease-in-out" : "hidden"}>
+                        <p className='lg:text-lg md:text-base text-sm'>Algunos de los principales beneficios de utilizar AgroBoost incluyen un aumento en los rendimientos de los cultivos, una reducción en los costos operativos, una mejor gestión del riego y los nutrientes, y una mayor eficiencia en general en la producción agrícola.</p>
+                    </div>
                 </div>
             </div>
         </div>

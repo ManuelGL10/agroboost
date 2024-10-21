@@ -1,0 +1,43 @@
+import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+
+const GraficaPotasio = ({ potasio }) => {
+  // Definir el color basado en el valor de potasio
+  let color;
+  if (potasio >= 0 && potasio < 150) {
+    color = "#FFC107";
+  } else if (potasio >= 150 && potasio <= 160) {
+    color = "#4CAF50";
+  } else {
+    color = "#FF6347";
+  }
+
+  // Ajustar el valor máximo a 160 para que se muestre correctamente en la gráfica
+  const valorMaximo = 200;
+
+  return (
+    <div className="flex flex-col bg-white w-50 h-40 mr-4 p-2">
+      <div className="flex items-center justify-center h-52 relative">
+        <CircularProgressbar
+          value={potasio}
+          text={`${potasio}`}
+          maxValue={valorMaximo}
+          strokeWidth={8}
+          styles={buildStyles({
+            textSize: "25px",
+            textColor: color,
+            pathColor: color,
+            trailColor: "#d6d6d6",
+          })}
+        />
+        <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center text-lg font-bold mb-10" style={{ color }}>
+          ppm
+        </div>
+      </div>
+      <h3 className="flex items-center justify-center font-bold mb-2 ml-2 text-[#4D7A7D]">Potasio</h3>
+    </div>
+  );
+};
+
+export default GraficaPotasio;
