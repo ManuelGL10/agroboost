@@ -66,13 +66,13 @@ const NewPassword = () => {
     }
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg relative">
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white rounded-lg shadow-lg relative">
       <button onClick={handleGoBack}>
         <IconArrowLeft size={32}/>
       </button>
-      <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51 text-center mt-4">Nueva contraseña</h2>
+      <h2 className="block font-medium md:text-4xl text-3xl text-custom-204E51 text-center mt-6">Nueva contraseña</h2>
       <div className="flex items-center my-14">
-        <h1 className="block font-medium md:text-xl sm:text-lg text-base text-gray-500 text-center">Asegúrese de incluir una contraseña segura con al menos 8 caracteres.</h1>
+        <h1 className="block md:text-xl text-lg text-gray-500 text-center">Asegúrese de incluir una contraseña segura con al menos 8 caracteres.</h1>
       </div>
       <Formik
         initialValues={inictalValues}
@@ -81,13 +81,13 @@ const NewPassword = () => {
       >
             <Form>
               <div className='text-lg flex flex-col dark:text-gray-300'>
-                <label htmlFor="contrasena">Nueva Contraseña:</label>
+                <label htmlFor="contrasena" className='font-medium'>Nueva Contraseña:</label>
                 <div className='mt-2 border border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100  rounded-lg py-1 px-1 flex'>
                   <Field
                     type={eyeOpen ? "text" : "password"} 
                     id="contrasena"
                     name="contrasena"
-                    className="w-full focus:outline-none dark:bg-[#323D4E]"
+                    className="w-width-full focus:outline-none dark:bg-[#323D4E]"
                     placeholder="Ingrese la nueva contraseña"
                   />
                   <button type='button' onClick={handleOpen}>
@@ -97,13 +97,13 @@ const NewPassword = () => {
                 <ErrorMessage name="contrasena" component="div" className="text-red-500"/>
               </div>
               <div className='text-lg mt-4 flex flex-col dark:text-gray-300'>
-                <label htmlFor="newContrasena">Confirmar Contraseña:</label>
+                <label htmlFor="newContrasena" className='font-medium'>Confirmar Contraseña:</label>
                 <div className='mt-2 border border-gray-300 dark:bg-[#323D4E] dark:border-gray-600 dark:text-slate-100 rounded-lg py-1 px-1 flex'>
                   <Field
                     type={newEyeOpen ? "text" : "password"} 
                     id="newContrasena"
                     name="newContrasena"
-                    className="w-full focus:outline-none dark:bg-[#323D4E]"
+                    className="w-width-full focus:outline-none dark:bg-[#323D4E]"
                     placeholder="Ingrese de nuevo la contraseña"
                   />
                   <button type='button' onClick={handleOpenNew}>
@@ -112,7 +112,7 @@ const NewPassword = () => {
                 </div>
                 <ErrorMessage name="newContrasena" component="div" className="text-red-500"/>
                 <div className='flex justify-center items-center mt-12'>
-                  <button type='submit' className="w-full bg-custom-204E51 text-white font-semibold py-3 rounded-lg">Actualizar</button>
+                  <button type='submit' className="w-width-full bg-custom-204E51 text-white font-semibold py-3 rounded-lg">Actualizar</button>
                 </div>
               </div>
             </Form>

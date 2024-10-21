@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { IconTrash } from '@tabler/icons-react';
 import { DeleteUser } from '../request/DeleteUser';
 
 function DeleteModal({ users, isOpen, onClose, title, mensaje, onSuccessModalOpen }) {
-    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
 
     const handleSubmit = async () => {
         try {
-            const data = await DeleteUser({id: users._id})
+            await DeleteUser({id: users._id})
             onClose()
             onSuccessModalOpen()
         } catch (error) {

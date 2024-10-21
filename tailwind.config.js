@@ -114,6 +114,10 @@ module.exports = {
       'width-full':'100%',
       'modal': '90%'
     },
+    height: {
+      'height-full': '100%',
+      'height-screen': '100vh'
+    },
   },
   plugins: [],
   darkMode: "class"

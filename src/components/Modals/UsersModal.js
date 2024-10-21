@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { IconX } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -6,8 +6,7 @@ import * as Yup from 'yup';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
 const ProductModal = ({ users, isOpen, onClose }) => {
-    const [eyeOpen, setEyeOpen] = useState(false);
-    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
 
     const validationSchema = Yup.object({
         nombre: Yup.string().required('Campo requerido'),
@@ -18,9 +17,9 @@ const ProductModal = ({ users, isOpen, onClose }) => {
     });
 
     const handleSubmit = async (values) => {
-        const { nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena } = values
+        const { nombre, apellido_paterno, apellido_materno, correo_electronico} = values
         try {
-            const data = await UpdateUser({
+            await UpdateUser({
               id: users._id,
               nombre: nombre,
               apellido_paterno: apellido_paterno,
@@ -33,10 +32,6 @@ const ProductModal = ({ users, isOpen, onClose }) => {
         } catch (error) {
             console.error('Error al actualizar los datos:', error.message);
         }
-    };
-
-    const handleOpen = () => {
-        setEyeOpen(!eyeOpen);
     };
 
   return (

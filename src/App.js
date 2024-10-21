@@ -18,7 +18,6 @@ import DashboardConfig from './views/DashboardConfig';
 import DasboardCultivo from './views/DasboardCultivo';
 import VerificationPage from './views/VerificationPage';
 import ProfileUser from './views/ProfileUser';
-import Navbar_Top from './components/Navbar_Top';
 import ProductosVenta from './views/ProductosVenta';
 import UserHome from './views/UserHome';
 import UserDevice from './views/UserDevice';

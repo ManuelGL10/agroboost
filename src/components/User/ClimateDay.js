@@ -7,26 +7,26 @@ import dianublado from'../../img/dia_nublado.png'
 import nieve from '../../img/nevando_hour.png'
 
 const iconMap = {
-    "clear sky": <img src={soleado} className="size-8"/>,
-    "few clouds": <img src={nube} className="size-8"/>,
-    "clouds": <img src={nube} className="size-8"/>,
-    "scattered clouds": <img src={nube} className="size-8"/>,
-    "broken clouds": <img src={nube} className="size-8"/>,
-    "shower rain": <img src={lluvia} className="size-8"/>,
-    "rain": <img src={lluvia} className="size-8"/>,
-    "thunderstorm": <img src={tormenta} className="size-8"/>,
-    "snow": <img src={nieve} className="size-8"/>,
-    "mist": <img src={dianublado} className="size-8"/>,
-    "cielo claro": <img src={soleado} className="size-8"/>,
-    "algo de nubes": <img src={nube} className="size-8"/>,
-    "nubes dispersas": <img src={nube} className="size-8"/>,
-    "nubes rotas": <img src={nube} className="size-8"/>,
-    "lluvia ligera": <img src={lluvia} className="size-8"/>,
-    "lluvia": <img src={lluvia} className="size-8"/>,
-    "tormenta": <img src={tormenta} className="size-8"/>,
-    "nieve": <img src={nieve} className="size-8"/>,
-    "neblina": <img src={dianublado} className="size-8"/>,
-    "nubes": <img src={nube} className="size-8"/>,
+    "clear sky": <img src={soleado} className="size-8" alt="soleado"/>,
+    "few clouds": <img src={nube} className="size-8" alt="nube"/>,
+    "clouds": <img src={nube} className="size-8" alt="nube"/>,
+    "scattered clouds": <img src={nube} className="size-8" alt="nube"/>,
+    "broken clouds": <img src={nube} className="size-8" alt="nube"/>,
+    "shower rain": <img src={lluvia} className="size-8" alt="lluvia"/>,
+    "rain": <img src={lluvia} className="size-8" alt="lluvia"/>,
+    "thunderstorm": <img src={tormenta} className="size-8" alt="tormenta"/>,
+    "snow": <img src={nieve} className="size-8" alt="nieve"/>,
+    "mist": <img src={dianublado} className="size-8" alt="dianublado"/>,
+    "cielo claro": <img src={soleado} className="size-8" alt="soleado"/>,
+    "algo de nubes": <img src={nube} className="size-8" alt="nube"/>,
+    "nubes dispersas": <img src={nube} className="size-8" alt="nube"/>,
+    "nubes rotas": <img src={nube} className="size-8" alt="nube"/>,
+    "lluvia ligera": <img src={lluvia} className="size-8" alt="lluvia"/>,
+    "lluvia": <img src={lluvia} className="size-8" alt="lluvia"/>,
+    "tormenta": <img src={tormenta} className="size-8" alt="tormenta"/>,
+    "nieve": <img src={nieve} className="size-8" alt="nieve"/>,
+    "neblina": <img src={dianublado} className="size-8" alt="dianublado"/>,
+    "nubes": <img src={nube} className="size-8" alt="nube"/>,
 };
 
 const ClimateDay = ({ hourlyForecast }) => {
@@ -46,7 +46,7 @@ const ClimateDay = ({ hourlyForecast }) => {
                             <div>
                                 <h2 className='flex items-center justify-center font-semibold'>{new Date(hour.dt * 1000).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</h2>
                                 <div className='flex items-center justify-center'>
-                                    {iconMap[hour.weather[0].description] || <img src={nube} className="size-8"/>}
+                                    {iconMap[hour.weather[0].description] || <img src={nube} className="size-8" alt="nube"/>}
                                 </div>
                                 <div className='flex items-center justify-center'>
                                     <p className='text-gray-600'>{Math.round(hour.main.temp)}°</p>

@@ -30,7 +30,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     const { email, password } = values;
-    const { success, data, error } = await LoginRequest({ email, password });
+    const { success, data } = await LoginRequest({ email, password });
 
     if (success) {
       const userId = data.usuario._id;
@@ -60,7 +60,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-row-3">
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-row-3">
       <div className='row-span-1 grid grid-rows-4'>
         <div className='flex justify-center items-center'>
           <h2 className="font-medium text-3xl text-custom-204E51 text-center">Inicio de Sesión</h2>
@@ -123,11 +123,11 @@ const LoginForm = () => {
         </div>
         <div className="grid grid-cols-2 gap-x-4">
           <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
-            <img src={ImgGoogle} alt="ImgGoogle" className="w-6 h-6 mr-2" />
+            <img src={ImgGoogle} alt="ImgGoogle" className="size-6 mr-2" />
             <span>Google</span>
           </button>
           <button type="button" className="flex items-center justify-center bg-white text-black border border-171717 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
-            <img src={ImgFacebook} alt="ImgFacebook" className="w-6 h-6 mr-2" />
+            <img src={ImgFacebook} alt="ImgFacebook" className="size-6 mr-2" />
             <span>Facebook</span>
           </button>
         </div>

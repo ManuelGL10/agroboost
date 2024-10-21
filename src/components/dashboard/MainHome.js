@@ -9,9 +9,9 @@ import GetProductos from '../request/GetProductos'
 import { DarkModeContext } from '../../context/DarkModeContext'
 
 const MainHome = () => {
-    const [users, setUsers] = useState([]);
-    const [ventas, setVentas] = useState([]);
-    const [productos, setPreductos] = useState([])
+    const [, setUsers] = useState([]);
+    const [, setVentas] = useState([]);
+    const [, setPreductos] = useState([])
     const [usersCount, setUsersCount] = useState(0);
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalSales, setTotalSales] = useState(0);

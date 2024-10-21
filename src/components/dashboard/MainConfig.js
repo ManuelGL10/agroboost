@@ -5,7 +5,7 @@ import ErrorModal from '../Modals/ErrorModal';
 
 const MainConfig = () => {
   const [frecuenciaRespaldo, setFrecuenciaRespaldo] = useState('');
-  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(DarkModeContext);
   const [collections, setCollections] = useState([]);
   const [selectedCollections, setSelectedCollections] = useState([]);
   const [ modalSuccess, setModalSuccess ] = useState(false)

@@ -10,8 +10,7 @@ import { useParams } from 'react-router-dom';
 
 const UserInfo = () => {
     const [ userData, setUserData] = useState('')
-    const [ isOpen, setIsOpen] = useState(false);
-    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
     const [ onClose, setIsOnClose] = useState(false)
     const [ onCloseS, setIsOnCloseS] = useState(false)
     const [ onCloseSE, setIsOnCloseSE] = useState(false)
@@ -42,7 +41,7 @@ const UserInfo = () => {
     }, []);
 
     const handleSubmit = async (values, { setSubmitting }) => {
-        const {nombre, apellido_paterno, apellido_materno, correo_electronico, contrasena} = values
+        const {nombre, apellido_paterno, apellido_materno, correo_electronico} = values
         setTimeout(async () => {
             try {
                 await UpdateUser({
@@ -59,10 +58,6 @@ const UserInfo = () => {
             }
             setSubmitting(false);
         }, 400);
-    };
-
-    const handleOpen = () => {
-        setIsOpen(!isOpen);
     };
 
     const handleCloseModal = () => {

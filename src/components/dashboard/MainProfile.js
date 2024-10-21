@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { IconCameraUp } from '@tabler/icons-react';
 import { UpdateUser } from '../request/UpdateUser';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { DarkModeContext } from '../../context/DarkModeContext';
-import { DeleteUser } from '../request/DeleteUser';
 import DeleteModal from '../Modals/DeleteModal';
 import SuccessModal from '../Modals/SuccessModal';
 
 const MainProfile = ({ userData }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
     const [ onClose, setIsOnClose] = useState(false)
     const [ onCloseS, setIsOnCloseS] = useState(false)
     const [ onCloseSE, setIsOnCloseSE] = useState(false)
@@ -41,10 +39,6 @@ const MainProfile = ({ userData }) => {
             }
             setSubmitting(false);
         }, 400);
-    };
-
-    const handleOpen = () => {
-        setIsOpen(!isOpen);
     };
 
     const handleCloseModal = () => {

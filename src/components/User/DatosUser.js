@@ -1,20 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HumidityDoughnutChart from '../graphics/HumidityDoughtnutChar';
 import TemperatureLineChart from '../graphics/TemperatureBarChart';
 import NitrogenoDoughnutChart from '../graphics/NitrogenoDoughnutChart';
 import FosforoDoughnutChart from '../graphics/FosforoDoughnutChart';
 import PotasioDoughnutChart from '../graphics/PotasioDoughnutChart';
-import { useParams } from 'react-router-dom';
 
 const DatosExtras = ({datos}) => {
-  // Estado para almacenar la opción seleccionada del cultivo
-  const [cultivoSeleccionado, setCultivoSeleccionado] = useState('');
-  const { userId } = useParams();
-
-  // Función para manejar el cambio en la selección del cultivo
-  const handleCultivoChange = (event) => {
-    setCultivoSeleccionado(event.target.value);
-  };
 
 // Filtrar los datos por tipo de dispositivo
   const temperaturaData = datos.find(dispositivo => dispositivo.nombre_dispositivo === 'Sensor de Temperatura');
@@ -31,7 +22,7 @@ const obtenerUltimoDato = (data) => {
 
 const obtenerUltimoElementoArray = (array) => {
   if (array && array.length > 0){
-    return array [array.length - 1]; 
+    return array[array.length - 1]; 
   }
 }
 
