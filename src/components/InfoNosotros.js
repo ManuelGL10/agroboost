@@ -1,10 +1,8 @@
 import React from 'react'
 import nosotros from '../img/pexels-adrien-olichon-3767172.jpg'
 import Button from './Button'
-import { useScrollAnimation } from './useScrollAnimation'
 
 const InfoNosotros = () => {
-    useScrollAnimation('#nosotros-container');
   return (
     <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
         <div id='nosotros-container' className='max-w-[1240px] mx-auto grid md:grid-cols-2 opacity-0 translate-y-20'>

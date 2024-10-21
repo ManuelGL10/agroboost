@@ -1,10 +1,8 @@
 import React from 'react';
 import monitorear from '../img/monitorear.jpeg';
-import { useScrollAnimation } from './useScrollAnimation';
 
 
 const Agroboost = () => {
-    useScrollAnimation('#agroboost-container');
 
   return (
     <section className="flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2">

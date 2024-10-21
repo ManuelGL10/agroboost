@@ -2,10 +2,8 @@ import React from 'react'
 import appstore from '../img/App Store.svg'
 import playstore from '../img/Google Play.svg'
 import appmovil from '../img/App-removebg-preview.png'
-import { useScrollAnimation } from './useScrollAnimation'
 
 const Download = () => {
-    useScrollAnimation('#download-container');
   return (
     <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
     <div id='download-container' className='max-w-[1240px] grid md:grid-cols-2 opacity-0 translate-y-20'>
