@@ -33,13 +33,13 @@ const ForgottenPassword = () => {
   }
 
   return (
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
-      <button onClick={handleGoBack}>
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white rounded-lg shadow-lg flex flex-col lg:justify-center lg:items-center">
+      <button className='self-start mb-6' onClick={handleGoBack}>
         <IconArrowLeft size={32}/>
       </button>
-      <div className='flex flex-col py-6'>
-        <h2 className="font-medium md:text-3xl sm:text-2xl text-xl text-custom-204E51 text-center">¿Olvidaste tu contraseña?</h2>
-        <h1 className="md:text-xl my-16 sm:text-lg text-base text-gray-500 text-center">Te enviaremos un código de verificación para restablecerla</h1>
+      <div className='flex flex-col'>
+        <h2 className="font-medium md:text-3xl text-2xl text-custom-204E51 text-center">¿Olvidaste tu contraseña?</h2>
+        <h1 className="md:text-xl my-16 text-lg text-gray-500 text-center">Te enviaremos un código de verificación para restablecerla</h1>
         <Formik
           initialValues={{email: ''}}
           validationSchema={validationSchema}
@@ -52,10 +52,10 @@ const ForgottenPassword = () => {
               id="email"
               name="email"
               placeholder="Ingrese su correo electrónico"
-              className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-blue-500"
+              className="w-width-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-blue-500"
             />
             <ErrorMessage name='email' component="div" className="text-red-500" />
-            <button type="submit" className="w-full bg-custom-204E51 text-white font-semibold py-3 rounded-lg mt-8">
+            <button type="submit" className="w-width-full bg-custom-204E51 text-white font-semibold py-3 rounded-lg mt-8">
               Enviar código
             </button>
           </Form>

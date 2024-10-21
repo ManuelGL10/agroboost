@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import plantio from '../img/plantio.jpeg';
 
 const Hero = () => {

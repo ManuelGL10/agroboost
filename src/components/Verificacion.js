@@ -100,30 +100,30 @@ const Verificacion = () => {
   };
 
   return (
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg relative mb-8">
+    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white rounded-lg shadow-lg relative mb-8">
       <button onClick={handleGoBack}>
         <IconArrowLeft size={32}/>
       </button>
       <div>
-        <div className="text-center mt-4">
-          <h2 className="block font-medium md:text-4xl sm:text-3xl text-2xl text-custom-204E51">Verificación de cuenta</h2>
+        <div className="text-center mt-6">
+          <h2 className="block font-medium md:text-4xl text-3xl text-custom-204E51">Verificación de cuenta</h2>
         </div>
         <div className="my-14 text-center">
-          <h1 className="md:text-xl sm:text-lg text-base text-gray-500">Se ha enviado un código de verificación al correo proporcionado.</h1>
+          <h1 className="md:text-xl text-lg text-gray-500">Se ha enviado un código de verificación al correo proporcionado.</h1>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-4 gap-x-6">
-          <input type="text" id="digit1" name="digit1" maxLength="1" value={codigo.digit1} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit2" name="digit2" maxLength="1" value={codigo.digit2} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit3" name="digit3" maxLength="1" value={codigo.digit3} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
-            <input type="text" id="digit4" name="digit4" maxLength="1" value={codigo.digit4} onChange={handleChange} required className="h-20 text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit1" name="digit1" maxLength="1" value={codigo.digit1} onChange={handleChange} required className="h-[80px] text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit2" name="digit2" maxLength="1" value={codigo.digit2} onChange={handleChange} required className="h-[80px] text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit3" name="digit3" maxLength="1" value={codigo.digit3} onChange={handleChange} required className="h-[80px] text-center rounded-lg border border-gray-400" />
+            <input type="text" id="digit4" name="digit4" maxLength="1" value={codigo.digit4} onChange={handleChange} required className="h-[80px] text-center rounded-lg border border-gray-400" />
           </div>
-          <div className='w-full flex justify-end mt-4'>
+          <div className='w-width-full flex justify-end mt-4'>
             <button type='button' className="text-[#4D7A7D]" onClick={handleResendCode} disabled={!isResendEnabled}>
               Reenviar código en {timeLeft} segundos
             </button>
           </div>
-          <button type="submit" className="w-full mt-12 bg-custom-204E51 text-white font-semibold py-3 rounded-lg">
+          <button type="submit" className="w-width-full mt-12 bg-custom-204E51 text-white font-semibold py-3 rounded-lg">
             Continuar
           </button>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconMenu2, IconListDetails, IconPlant, IconDevices, IconLogout, IconHome, IconUser, IconGraph, IconX } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../request/AuthContext';
@@ -6,10 +6,7 @@ import GetUser from '../request/GetUser'
 import Logo from '../../img/LogoAgroBoostPNG.svg';
 
 const NavbarUser = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [isModalPassOpen, setIsModalPassOpen] = useState(false);
-  const [successModalOpen, setSuccessModalOpen] = useState(false);
   const { userId } = useAuth();
   const [isSidebarModalOpen, setIsSidebarModalOpen] = useState(false);
 
@@ -37,18 +34,6 @@ const NavbarUser = () => {
       localStorage.setItem('userId', userId);
     }
   }, [userId]);
-
-  const handdleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
-  const handleEditClick = (userData) => {
-    setIsModalPassOpen(!isModalPassOpen);
-  };
-
-  const handleSuccessModal = () => {
-    setSuccessModalOpen(!successModalOpen);
-  };
 
   return (
     <div className="flex items-center bg-white lg:w-[80%] w-[100%] py-1 px-4 fixed">
