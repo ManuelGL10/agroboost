@@ -8,6 +8,6 @@ test('renders learn react link', () => {
       <App />
     </MemoryRouter>
   );
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const titleElement = screen.getByRole('heading', { name: /AgroBoost/i });
+  expect(titleElement).toBeInTheDocument();
 });
