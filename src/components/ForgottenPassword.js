@@ -33,7 +33,7 @@ const ForgottenPassword = () => {
   }
 
   return (
-    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white rounded-lg shadow-lg flex flex-col lg:justify-center lg:items-center">
+    <div className="lg:w-[460px] w-[100%] lg:size-auto h-height-screen p-6 bg-white rounded-lg shadow-lg flex flex-col lg:justify-center lg:items-center">
       <button className='self-start mb-6' onClick={handleGoBack}>
         <IconArrowLeft size={32}/>
       </button>

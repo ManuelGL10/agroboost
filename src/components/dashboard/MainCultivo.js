@@ -60,7 +60,7 @@ const MainCultivo = () => {
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] p-4 h-screen'>
+      <div className='bg-background dark:bg-[#1B2431] p-4 h-height-screen'>
         <div className='flex mt-20'>
           <h1 className='lg:text-3xl text-2xl font-semibold dark:text-white'>Cultivos</h1>
           <div className='flex items-center bg-white dark:bg-[#323D4E] border-2 border-gray-200 dark:border-gray-600 p-2 rounded-full lg:w-[30%] md:w-[40%] w-[50%] ml-auto'>

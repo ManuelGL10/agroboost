@@ -36,7 +36,7 @@ const CropUser = () => {
     };
     
     return (
-        <div className='bg-background p-4'>
+        <div className='bg-background h-height-screen p-4'>
             {cultivos.length === 0 ? (
                 <div className='h-screen py-20'>
                     <div className=''>

@@ -53,7 +53,7 @@ const MainVenta = () => {
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] p-4 lg:h-[100%] h-screen'>
+      <div className='bg-background dark:bg-[#1B2431] p-4 lg:h-height-full xl:h-height-screen h-height-screen'>
         <div className='flex mt-20'>
           <h1 className='text-3xl font-semibold dark:text-white'>Ventas</h1>
         </div> 

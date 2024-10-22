@@ -63,7 +63,7 @@ const MainConfig = () => {
   
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className='bg-background dark:bg-[#1B2431] p-4 h-screen'>
+      <div className='bg-background dark:bg-[#1B2431] p-4 h-height-screen'>
         <h1 className='lg:text-3xl text-2xl font-semibold mt-20 dark:text-white'>Ajustes</h1>
         <div className='p-4 gap-x-4 bg-white dark:bg-[#273142] dark:text-white mt-6 rounded-2xl'>
           <div>

@@ -44,7 +44,7 @@ const DeviceUser = () => {
     }
 
     return (
-        <div className='bg-background p-4'>
+        <div className='bg-background xl:h-height-screen h-height-full p-4'>
             {dispositivos.length === 0 ? (
                 <div className='mb-6 py-20'>
                     <h1 className='text-3xl font-semibold'>Dispositivos</h1>
