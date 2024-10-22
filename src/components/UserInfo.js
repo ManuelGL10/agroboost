@@ -74,7 +74,7 @@ const UserInfo = () => {
 
     return (
         <div className={`${darkMode && "dark"}`}>
-            <div className='bg-background dark:bg-[#1B2431] p-4'>
+            <div className='bg-background dark:bg-[#1B2431] h-height-screen p-4'>
                 <h1 className='lg:text-3xl text-2xl font-semibold mt-20 dark:text-white'>Perfil de Usuario</h1>
                 <div className='py-6'>
                     <div className='w-full bg-white dark:bg-[#273142] rounded-2xl py-4 px-8'>

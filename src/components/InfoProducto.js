@@ -4,8 +4,8 @@ import Button from './Button'
 
 const InfoProducto = () => {
   return (
-    <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
-        <div id='producto-container' className='max-w-[1240px] mx-auto grid md:grid-cols-2 opacity-0 translate-y-20'>
+    <div className='flex justify-center items-center py-12 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
+        <div className='max-w-[1545px] mx-auto grid md:grid-cols-2'>
             <div className='m-6 text-center flex flex-col justify-center'>
                 <span className='block font-medium lg:text-4xl md:text-3xl text-2xl text-custom-204E51 mb-4 md:text-left text-center'>
                     Nuestro Servicio

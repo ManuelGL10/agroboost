@@ -132,7 +132,7 @@ const Navbar_Top = () => {
             </div>
             
             <div className='mb-8'>
-              <img className='h-14' src={Logo} alt="Logo AgroBoost" />
+              <img className='size-14' src={Logo} alt="Logo AgroBoost" />
               <h1 className='font-semibold text-xl dark:text-white'>AgroBoost</h1>
             </div>
             {/* Contenido del menú lateral */}

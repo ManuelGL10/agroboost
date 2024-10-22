@@ -32,10 +32,10 @@ const NavbarLat = () => {
   }, [userId]);
 
   return (
-    <div className='bg-white w-[20%] h-screen fixed left-0 top-0 justify-center hidden lg:block'>
+    <div className='bg-white w-[20%] h-height-screen fixed left-0 top-0 justify-center hidden lg:block'>
       <div className='mt-4'>
         <div className='flex items-center justify-center'>
-          <img className='h-14' src={Logo} alt="Logo AgroBoost" />
+          <img className='size-14' src={Logo} alt="Logo AgroBoost" />
           <h1 className='font-semibold text-xl'>AgroBoost</h1>
         </div>
       </div>

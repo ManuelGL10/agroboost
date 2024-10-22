@@ -100,7 +100,7 @@ const Verificacion = () => {
   };
 
   return (
-    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-height-screen p-6 bg-white rounded-lg shadow-lg relative mb-8">
+    <div className="lg:w-[460px] w-[100%] lg:size-auto h-height-screen p-6 bg-white rounded-lg shadow-lg relative mb-8">
       <button onClick={handleGoBack}>
         <IconArrowLeft size={32}/>
       </button>

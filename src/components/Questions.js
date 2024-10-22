@@ -36,8 +36,8 @@ const Questions = () => {
     }
     
     return (
-        <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
-            <div className='w-full'>
+        <div className='flex justify-center items-center py-12 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
+            <div className='w-width-full'>
                 <h1 className='text-custom-264948 font-semibold lg:text-4xl md:text-3xl text-2xl text-center mb-6'>Preguntas Frecuentes</h1>
                 <div className="bg-white shadow-md rounded-lg mb-4 max-w">
                     <div className='flex items-center justify-between p-4 cursor-pointer' onClick={handleHidd1}>

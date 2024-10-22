@@ -61,7 +61,7 @@ const ReminderUser = () => {
     }
 
     return (
-        <div className='bg-background p-4 lg:h-screen h-full'>
+        <div className='bg-background p-4 h-height-screen'>
             {recordatorios.length === 0 ? (
                 <div className='h-full py-20'>
                     <h1 className='text-3xl font-semibold'>Recordatorios</h1>

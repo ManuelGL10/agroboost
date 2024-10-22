@@ -65,7 +65,7 @@ const RegistroForm = () => {
   }
 
   return (
-    <div className="lg:w-[460px] w-[100%] lg:h-[100%] h-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-rows-4">
+    <div className="lg:w-[460px] w-[100%] lg:size-auto h-height-screen p-6 bg-white lg:rounded-lg lg:shadow-lg lg:m-8 grid grid-rows-4">
       <div className='row-span-1 grid grid-rows-4'>
         <div className='flex justify-center items-center'>
           <h2 className="font-medium lg:text-3xl text-2xl text-custom-204E51 text-center">Regístrate</h2>

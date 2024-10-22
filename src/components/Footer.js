@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className='bg-custom-204E51 mx-auto md:px-12 px-4 p-2'>
-      <div className='flex my-2 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
+      <div className='flex my-2 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
         <div>
           <span className='block font-semibold lg:text-xl md:text-lg text-base text-white mb-2 text-left'>
             Contáctanos:
@@ -28,7 +28,7 @@ const Footer = () => {
             <Link to="/producto" className='block cursor-pointer hover:underline hover:text-white hover:font-medium'>Producto</Link>
         </div>
       </div>
-      <div className='justify-center text-center text-white border-t-2 mt-10 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
+      <div className='justify-center text-center text-white border-t-2 mt-10 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
         <div>
           <span className='block text-white lg:text-lg md:text-base text-sm my-2'>
             Copyright© 2020-2023 AgroBoost. Todos los derechos reservados

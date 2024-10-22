@@ -23,10 +23,10 @@ const NavbarAdmin = () => {
 
   return (
     <div className={`${darkMode && "dark"} hidden lg:block`}>
-        <div className='bg-white dark:bg-[#273142] w-[20%] h-screen fixed left-0 top-0'>
+        <div className='bg-white dark:bg-[#273142] w-[20%] h-height-screen fixed left-0 top-0'>
             <div className='mt-4'>
                 <div className='flex items-center justify-center'>
-                    <img className='h-14' src={Logo} alt="Logo AgroBoost" />
+                    <img className='size-14' src={Logo} alt="Logo AgroBoost" />
                     <h1 className='font-semibold text-xl dark:text-white'>AgroBoost</h1>
                 </div>
             </div>

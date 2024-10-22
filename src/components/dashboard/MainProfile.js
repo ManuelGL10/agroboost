@@ -55,8 +55,8 @@ const MainProfile = ({ userData }) => {
 
     return (
         <div className={`${darkMode && "dark"}`}>
-            <div className='bg-background dark:bg-[#1B2431] h-[100%] p-4'>
-                <h1 className='lg:text-3xl text-2xl font-semibold mt-20 dark:text-white'>Perfil de Administrador</h1>
+            <div className='bg-background dark:bg-[#1B2431] h-height-screen p-4'>
+                <h1 className='lg:text-3xl text-2xl font-semibold mt-16 dark:text-white'>Perfil de Administrador</h1>
                 <div className='py-6'>
                     <div className='w-full bg-white dark:bg-[#273142] rounded-2xl py-4 px-8'>
                         <div className='w-full flex flex-col items-center justify-center py-2'>

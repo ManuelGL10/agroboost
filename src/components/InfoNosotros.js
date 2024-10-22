@@ -4,8 +4,8 @@ import Button from './Button'
 
 const InfoNosotros = () => {
   return (
-    <div className='flex justify-center items-center py-6 max-w-[1240px] mx-auto md:px-12 px-4 p-2'>
-        <div id='nosotros-container' className='max-w-[1240px] mx-auto grid md:grid-cols-2 opacity-0 translate-y-20'>
+    <div className='flex justify-center items-center py-12 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
+        <div className='max-w-[1545px] mx-auto grid md:grid-cols-2'>
             <div className='flex lg:justify-start md:justify-center sm:justify-center'>
                 <img src={nosotros} className='order-2 md:order-none rounded-2xl w-[450px] my-4 shadow-2xl' alt="imagen de monitoreo"/>
             </div>
