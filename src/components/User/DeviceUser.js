@@ -15,7 +15,8 @@ const DeviceUser = () => {
     const { userId } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:4000/dispositivo/${userId}`, {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        fetch(`${backendUrl}/dispositivo/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

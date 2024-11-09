@@ -24,7 +24,8 @@ const UserInfo = () => {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:4000/user/${userId}`, {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        fetch(`${backendUrl}/user/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

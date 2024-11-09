@@ -1,6 +1,7 @@
 const LoginRequest = async ({ email, password }) => {
   try {
-    const response = await fetch('http://localhost:4000/login', {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    const response = await fetch(`${backendUrl}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

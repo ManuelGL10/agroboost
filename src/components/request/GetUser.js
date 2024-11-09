@@ -1,6 +1,7 @@
 const GetUser = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:4000/user/${userId}`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/user/${userId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

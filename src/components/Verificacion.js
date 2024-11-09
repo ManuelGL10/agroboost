@@ -45,7 +45,8 @@ const Verificacion = () => {
     event.preventDefault();
     const codigoVerificacion = Object.values(codigo).join('');
     try {
-      const response = await fetch('http://localhost:4000/verifyCode', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/verifyCode`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 export const DeleteUser = async ( id ) => {
     try {
-        const response = await fetch('http://localhost:4000/deleteUser', {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${backendUrl}/deleteUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

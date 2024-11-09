@@ -1,6 +1,7 @@
 const RegistroRequest = async ({name, apellidopaterno, apellidomaterno, email, password, rol }) => {
     try {
-        const response = await fetch('http://localhost:4000/register', {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${backendUrl}/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

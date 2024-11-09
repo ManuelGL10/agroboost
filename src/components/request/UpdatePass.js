@@ -1,6 +1,7 @@
 export const UpdatePass = async ({ email, contrasena }) => {
     try {
-        const response = await fetch('http://localhost:4000/updatePass', {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${backendUrl}/updatePass`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
