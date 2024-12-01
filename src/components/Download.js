@@ -1,13 +1,13 @@
 import React from 'react'
 import appstore from '../img/App Store.svg'
 import playstore from '../img/Google Play.svg'
-import appmovil from '../img/App-removebg-preview.png'
+import appmovil from '../img/Mockup.png'
 
 const Download = () => {
   return (
     <div className='flex justify-center items-center py-12 max-w-[1545px] mx-auto md:px-12 px-4 p-2'>
     <div className='max-w-[1545px] grid md:grid-cols-2'>
-        <img src={appmovil} className='order-2 md:order-none rounded-2xl w-[250px] mx-auto my-4 bg-transparent' alt="appmovil"/>
+        <img src={appmovil} className='order-2 md:order-none rounded-2xl w-[300px] mx-auto my-4 bg-transparent' alt="appmovil"/>
         <div className='order-1 md:order-none m-6 flex flex-col justify-center'>
             <span className='block font-medium lg:text-4xl md:text-3xl text-2xl text-custom-204E51 mb-8 md:text-left text-center'>
                 Descarga la aplicación en tu dispositivo móvil.

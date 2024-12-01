@@ -18,7 +18,7 @@ const InfoProducto = () => {
                 </div>
             </div>
             <div className='flex lg:justify-end md:justify-center sm:justify-center'>
-                <img src={servicio} className='rounded-2xl w-[450px] my-4 shadow-2xl' alt="imagen de servicio"/>
+                <img src={servicio} className='rounded-2xl w-[500px] my-4 shadow-2xl' alt="imagen de servicio"/>
             </div>
         </div>
     </div>

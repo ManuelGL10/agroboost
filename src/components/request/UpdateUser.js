@@ -1,6 +1,7 @@
 export const UpdateUser = async (userData) => {
     try {
-        const response = await fetch('http://localhost:4000/updateUser', {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${backendUrl}/updateUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

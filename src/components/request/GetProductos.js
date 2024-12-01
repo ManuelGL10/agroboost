@@ -1,6 +1,7 @@
 const GetProductos = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/productos`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/productos`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

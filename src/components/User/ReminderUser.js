@@ -10,7 +10,8 @@ const ReminderUser = () => {
     const [ modalAdd, setModalAdd ] = useState(false)
 
     useEffect(() => {
-        fetch(`http://localhost:4000/recordatorio/${userId}`)
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        fetch(`${backendUrl}/recordatorio/${userId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los datos de los recordatorios');

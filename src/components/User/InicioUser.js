@@ -15,7 +15,8 @@ const InicioUser = () => {
   const [ dispositivos, setDispositivos ] = useState([]);
 
   const fetchDispositivos = () => {
-    fetch(`http://localhost:4000/dispositivo/${userId}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    fetch(`${backendUrl}/dispositivo/${userId}`, {
       method: 'GET', 
       headers:{
         'Content-Type': 'application/json',
@@ -42,7 +43,8 @@ const InicioUser = () => {
   }, [userId]); 
 
   useEffect(() => {
-    fetch(`http://localhost:4000/user/${userId}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    fetch(`${backendUrl}/user/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

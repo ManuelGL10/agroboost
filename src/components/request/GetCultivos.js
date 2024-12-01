@@ -1,6 +1,7 @@
 const GetCultivos = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/cultivos`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/cultivos`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -10,7 +10,8 @@ const CropUser = () => {
     const { userId } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:4000/cultivos/${userId}`, {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        fetch(`${backendUrl}/cultivos/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
