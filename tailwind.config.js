@@ -91,7 +91,7 @@ module.exports = {
     "./src/components/Venta/ProductDetails.js",
     "./src/components/Venta/ModalVentaEx.js",
     "./src/components/Venta/ShoppingCart.js",
-    
+    "./src/components/InfoVideogame.js"
 
   ],
   theme: {
