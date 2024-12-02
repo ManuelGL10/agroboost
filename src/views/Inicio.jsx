@@ -7,6 +7,7 @@ import InfoNosotros from '../components/InfoNosotros';
 import InfoProducto from '../components/InfoProducto';
 import Questions from '../components/Questions';
 import Download from '../components/Download';
+import InfoVideogame from '../components/InfoVideogame';
 
 const Inicio = () => {
   return (
@@ -17,6 +18,7 @@ const Inicio = () => {
         <InfoNosotros/>
         <InfoProducto/>
         <Download/>
+        <InfoVideogame/>
         <Questions/>
       <Footer/>
     </div>

@@ -20,7 +20,6 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
       caches.open(APP_SHELL_CACHE).then((cache) => {
         console.log('Caching app shell');
-        return cache.addAll(APP_SHELL);
       })
     );
 });
@@ -73,7 +72,7 @@ self.addEventListener('fetch', event => {
 
 // Listener para push
 self.addEventListener('push', event => {
-    let data = { title: 'PassGuard', body: 'Nuevo mensaje' };
+    let data = { title: 'Agroboost', body: 'Nuevo mensaje' };
 
     if (event.data) {
         console.log("Contenido del evento push:", event.data.text()); // Verifica qué se recibe
@@ -94,3 +93,103 @@ self.addEventListener('push', event => {
 
     self.registration.showNotification(data.title, opciones);
 });
+
+// Sincronización en segundo plano
+self.addEventListener('sync', (event) => {
+    console.log('Evento de sincronización detectado:', event);
+
+    if (event.tag === 'sync-users') {
+        event.waitUntil(syncUsers());
+    }
+});
+
+// Función para sincronizar usuarios desde IndexedDB
+function syncUsers() {
+    return new Promise((resolve, reject) => {
+        const dbRequest = indexedDB.open('agroboostDB'); // Nombre de la base de datos
+
+        dbRequest.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction('users', 'readonly');
+            const objectStore = transaction.objectStore('users');
+            const getAllRequest = objectStore.getAll();
+
+            getAllRequest.onsuccess = () => {
+                const users = getAllRequest.result;
+
+                if (users.length === 0) {
+                    console.log('No hay usuarios para sincronizar.');
+                    return resolve();
+                }
+
+                // Enviar cada usuario al backend
+                const promises = users.map((user) => {
+                    return fetch(`https://agroboost-server.onrender.com/register`, { 
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(user),
+                    })
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error('Error en la API');
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log('Usuario sincronizado con éxito:', data);
+                            eliminarUsuario(user.id); // Elimina el usuario sincronizado
+                        })
+                        .catch((error) => {
+                            console.error('Error al sincronizar usuario:', error);
+                        });
+                });
+
+                Promise.all(promises)
+                    .then(() => {
+                        console.log('Sincronización completa.');
+                        resolve();
+                    })
+                    .catch((error) => {
+                        console.error('Error en la sincronización:', error);
+                        reject();
+                    });
+            };
+
+            getAllRequest.onerror = (event) => {
+                console.error('Error al obtener usuarios de IndexedDB:', event);
+                reject();
+            };
+        };
+
+        dbRequest.onerror = (event) => {
+            console.error('Error al abrir la base de datos:', event);
+            reject();
+        };
+    });
+}
+
+// Función para eliminar usuarios sincronizados de IndexedDB
+function eliminarUsuario(id) {
+    const request = indexedDB.open('agroboostDB'); // Nombre de la base de datos
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction('users', 'readwrite');
+        const objectStore = transaction.objectStore('users');
+        const deleteRequest = objectStore.delete(id);
+
+        deleteRequest.onsuccess = () => {
+            console.log(`Registro de usuario con ID ${id} eliminado de IndexedDB.`);
+        };
+
+        deleteRequest.onerror = (event) => {
+            console.error(`Error al eliminar el registro con ID ${id}:`, event);
+        };
+    };
+
+    request.onerror = (event) => {
+        console.error('Error al abrir la base de datos para eliminar un usuario:', event);
+    };
+}

@@ -30,6 +30,11 @@ const InicioUser = () => {
     })
     .then(data => setDispositivos(data))
     .catch(error => console.error('Error al obtener los dispositivos', error)); 
+    
+    if (!localStorage.getItem('isSubscribed')) {
+      subscribeToNotifications(userId);
+      localStorage.setItem('isSubscribed', 'true'); // Marca que la suscripción fue hecha
+    }
   }
 
   useEffect(() => {
@@ -59,6 +64,47 @@ const InicioUser = () => {
     .then(data => setUserData(data))
     .catch(error => console.error('Error al obtener los cultivos:', error));
   }, []);
+
+
+  async function subscribeToNotifications(userId) {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+      try {
+        const registration = await navigator.serviceWorker.ready;
+  
+        const existingSubscription = await registration.pushManager.getSubscription();
+        if (existingSubscription) {
+          console.log("El usuario ya está suscrito");
+          return;
+        }
+  
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          const newSubscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: "BOUKMtuCea0YgGZ3nGNekNnNKw9WmHnOx9hKxY4umoh2V5_DcWdDzyfFXD3GBFaeckEkWFKi60clrBA7zYpJCWE",
+          });
+  
+          const subscriptionData = { ...newSubscription.toJSON(), userId };
+          
+          const backendUrl = process.env.REACT_APP_BACKEND_URL;
+          const response = await fetch(`${backendUrl}/suscription`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(subscriptionData),
+          });
+  
+          if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+          console.log('Suscripción guardada en la BD');
+        } else {
+          console.log("Permiso para notificaciones denegado");
+        }
+      } catch (error) {
+        console.error("Error en el proceso de suscripción", error);
+      }
+    } else {
+      console.log("El navegador no soporta Service Worker o Push Notifications");
+    }
+  }
 
   const city = userData && userData.direccion && userData.direccion.ciudad ? userData.direccion.ciudad : null;
 

@@ -99,13 +99,13 @@ const NavbarUser = () => {
                         </Link>
                         
                     </li>
-                    <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
+                    {/* <li className='flex p-2 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>
                         <Link to={`/userstatesman/${userData?._id}`} className='flex w-full'>
                             <IconGraph size={30} stroke={1.5}/>
                             <span className='ml-4'>Reporte</span>
                         </Link>
                         
-                    </li>
+                    </li> */}
               </ul>
               <ul className='p-4 text-xl absolute bottom-0 left-0 right-0'>
                     <li className='flex p-2 mb-4 cursor-pointer hover:bg-custom-color_logo hover:rounded-md hover:text-white'>

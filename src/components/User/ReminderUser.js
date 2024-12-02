@@ -42,7 +42,8 @@ const ReminderUser = () => {
         setRecordatorios(updatedRecordatorios);
 
         // Actualizar el estado en la base de datos
-        fetch(`http://localhost:4000/recordatorio/${recordatorios[index]._id}`, {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        fetch(`${backendUrl}/recordatorio/${recordatorios[index]._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
